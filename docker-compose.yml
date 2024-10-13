@@ -1,8 +1,33 @@
+version: '3.3'
 services:
   php:
     build:
       context: .
       dockerfile: Dockerfile
-    # TODO
+    container_name: php-web
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
   db:
-# TODO
+    image: postgres:15
+    container_name: postgres-db
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
