@@ -1,6 +1,5 @@
 <?php
 
-interface ViewInterface
-{
-    public function render();
+interface ViewInterface {
+  public function render();
 }

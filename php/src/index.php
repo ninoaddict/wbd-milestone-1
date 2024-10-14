@@ -1,4 +1,4 @@
 <?php
-
-echo 'Hello World!';
-echo '<script src="/public/js/index.js"></script>';
+require_once __DIR__ . '/init.php';
+session_start();
+$router = new Router();

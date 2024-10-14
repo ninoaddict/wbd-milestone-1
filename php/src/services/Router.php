@@ -2,10 +2,7 @@
 class Router {
   protected $controller;
   protected $method;
-  protected $params;
-  protected $query;
-  private $db;
-
+  protected $params = [];
   public function __construct() {
     $this->method = 'index';
     
@@ -24,14 +21,16 @@ class Router {
         return;
       }
     } else {
-      header('Location: /home/');
+      // header('Location: /home/');
+      echo "FAIL";
+      return;
     }
     unset($url[0]);
 
     $methodPart = $url[1] ?? null;
     if ($methodPart && method_exists($this->controller, $methodPart)) {
       $this->method = $methodPart;
-    } elseif ($methodPart) {
+    } else if ($methodPart) {
       $this->handleError(404, "Method not found.");
       return;
     }

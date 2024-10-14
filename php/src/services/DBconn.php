@@ -2,7 +2,7 @@
 class DBconn {
   private static $instance = null;
   private $pdo;
-  private $host = 'localhost';
+  private $host = 'db';
   private $user = 'postgres';
   private $dbname = 'linkedin';
   private $password = 'tubeswbd';
@@ -18,10 +18,6 @@ class DBconn {
       die("Connection failed: " . $e->getMessage());
     }
   }
-
-  private function __clone() {}
-
-  private function __wakeup() {}
 
   public static function getInstance() {
     if (self::$instance === null) {
@@ -45,10 +41,29 @@ class DBconn {
       die("Prepare failed: " . $e->getMessage());
     }
   }
+  public function bind(&$statement, $param, $value, $type = null) {
+    if (is_null($type)) {
+      switch (true) {
+        case is_int($value):
+          $type = PDO::PARAM_INT;
+          break;
+        case is_bool($value):
+          $type = PDO::PARAM_BOOL;
+          break;
+        case is_null($value):
+          $type = PDO::PARAM_NULL;
+          break;
+        default:
+          $type = PDO::PARAM_STR;
+      }
+    }
 
-  public function execute($statement, $parameters = []) {
+    $statement->bindValue($param, $value, $type);
+}
+
+  public function execute($statement) {
     try {
-      return $statement->execute($parameters);
+      return $statement->execute();
     } catch (PDOException $e) {
       die("Execution failed: " . $e->getMessage());
     }
