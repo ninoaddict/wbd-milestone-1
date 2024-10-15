@@ -1,6 +1,8 @@
 <?php
 namespace app\core;
 
+use Exception;
+
 class Application {
   public static Application $app;
 
@@ -18,7 +20,7 @@ class Application {
   public function run() {
     try {
       $this->router->resolve();
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
       $this->response->setStatusCode(500);
     }
   }

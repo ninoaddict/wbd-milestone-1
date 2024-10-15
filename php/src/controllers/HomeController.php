@@ -6,7 +6,7 @@ use app\core\Request;
 class HomeController extends Controller {
   public function __construct() {}
 
-  public function getHome(Request $request) {
+  public function homePage(Request $request) {
     $path = __DIR__ . '/../views/home/HomeView.php';
     $data = ["Volvo", "BMW", "Toyota"];
     $this->render($path, $data);

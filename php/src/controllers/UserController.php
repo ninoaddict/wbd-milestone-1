@@ -1,23 +1,33 @@
 <?php
-// class UserController extends Controller {
-//   private UserModel $userModel;
-//   public function __construct() {
-//     $this->userModel = $this->model('UserModel');
-//   }
-//   public function index() {
-//     $notFoundView = $this->view('not-found', 'NotFoundView');
-//     $notFoundView->render();
-//   }
+namespace app\controllers;
 
-//   public function login() {
+use app\model\UserModel;
+use app\core\Controller;
+
+class UserController extends Controller {
+  private UserModel $userModel;
+
+  public function __construct() {
+    $this->userModel = new UserModel();
+  }
+
+  public function loginPage() {
+
+  }
+
+  public function registerPage() {
+
+  }
+
+  public function login() {
+
+  }
+
+  public function register() {
+
+  }
+
+  public function logout() {
     
-//   }
-
-//   public function register() {
-
-//   }
-
-//   public function logout() {
-
-//   }
-// }
+  }
+}
