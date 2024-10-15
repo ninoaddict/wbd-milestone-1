@@ -27,4 +27,8 @@ class SessionManager {
     unset($_SESSION['user_id']);
     return true;
   }
+
+  public function isLogin() {
+    return isset($_SESSION['user_id']);
+  }
 }
