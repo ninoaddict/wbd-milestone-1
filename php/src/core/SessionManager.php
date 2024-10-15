@@ -28,7 +28,7 @@ class SessionManager {
     return true;
   }
 
-  public function isLogin() {
+  public function isLoggedIn() {
     return isset($_SESSION['user_id']);
   }
 }
