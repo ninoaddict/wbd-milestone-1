@@ -1,5 +1,5 @@
 <?php
-namespace app\model;
+namespace app\models;
 
 use app\db\DBconn;
 use Exception;

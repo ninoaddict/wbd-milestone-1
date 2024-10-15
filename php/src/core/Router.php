@@ -44,10 +44,10 @@ class Router {
           $this->request->setParams($matches);
           return $this->routes[$route][$method];
         }
-        throw new Exception();
+        throw new Exception("Page not found");
       }
     }
-    throw new Exception();
+    throw new Exception("Page not found");
   }
 
   public function resolve() {
