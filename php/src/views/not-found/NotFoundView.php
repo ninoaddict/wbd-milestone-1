@@ -1,11 +1,11 @@
-<?php
-class HomeView implements ViewInterface {
-  public $data;
-  public function __construct($data = []) {
-    $this->data = $data;
-  }
-
-  public function render() {
-    require_once __DIR__ . '/../../pages/Example.php';
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found Page</title>
+</head>
+<body>
+    <h1>Not Found</h1>
+</body>
+</html>

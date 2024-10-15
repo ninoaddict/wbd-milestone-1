@@ -1,7 +1,14 @@
 <?php
-class HomeController extends Controller implements ControllerInterface {
-  public function index() {
-    $homeView = $this->view('home', 'HomeView');
-    $homeView->render();
+namespace app\controllers;
+use app\core\Controller;
+use app\core\Request;
+
+class HomeController extends Controller {
+  public function __construct() {}
+
+  public function homePage(Request $request) {
+    $path = __DIR__ . '/../views/home/HomeView.php';
+    $data = ["Volvo", "BMW", "Toyota"];
+    $this->render($path, $data);
   }
 }

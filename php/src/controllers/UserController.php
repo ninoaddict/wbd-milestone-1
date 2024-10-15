@@ -1,16 +1,26 @@
 <?php
-class UserController extends Controller implements ControllerInterface {
+namespace app\controllers;
+
+use app\model\UserModel;
+use app\core\Controller;
+
+class UserController extends Controller {
   private UserModel $userModel;
+
   public function __construct() {
-    $this->userModel = $this->model('UserModel');
+    $this->userModel = new UserModel();
   }
-  public function index() {
-    $notFoundView = $this->view('not-found', 'NotFoundView');
-    $notFoundView->render();
+
+  public function loginPage() {
+
+  }
+
+  public function registerPage() {
+
   }
 
   public function login() {
-    
+
   }
 
   public function register() {
@@ -18,6 +28,6 @@ class UserController extends Controller implements ControllerInterface {
   }
 
   public function logout() {
-
+    
   }
 }

@@ -1,4 +1,9 @@
 <?php
+namespace app\db;
+
+use PDO;
+use PDOException;
+
 class DBconn {
   private static $instance = null;
   private $pdo;

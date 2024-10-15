@@ -1,4 +1,6 @@
 <?php
+namespace app\core;
+
 class SessionManager {
   private static $instance = null;
   private function __construct() {}
