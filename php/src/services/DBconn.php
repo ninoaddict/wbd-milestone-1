@@ -91,4 +91,8 @@ class DBconn {
       die("Fetch failed: " . $e->getMessage());
     }
   }
+
+  public function lastInsertId() {
+    return $this->pdo->lastInsertId();
+  }
 }
