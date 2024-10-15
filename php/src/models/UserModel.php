@@ -1,4 +1,9 @@
 <?php
+namespace app\model;
+
+use app\db\DBconn;
+use Exception;
+
 class UserModel {
   private $db;
   public function __construct() {
