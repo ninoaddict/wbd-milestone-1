@@ -13,7 +13,8 @@ if (!session_id()) {
 $app = new Application();
 
 // add your routers along with its class and function handler
-$app->router->get('/home', handler: [HomeController::class, 'homePage']);
+
+$app->router->get('/', handler: [HomeController::class, 'homePage']);
 $app->router->get('/login', handler: [UserController::class, 'loginPage']);
 $app->router->get('/register', handler: [UserController::class, 'registerPage']);
 
