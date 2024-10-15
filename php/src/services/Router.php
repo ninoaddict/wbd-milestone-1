@@ -21,8 +21,7 @@ class Router {
         return;
       }
     } else {
-      // header('Location: /home/');
-      echo "FAIL";
+      header('Location: /home/');
       return;
     }
     unset($url[0]);
