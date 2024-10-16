@@ -6,17 +6,21 @@ use app\models\UserModel;
 use app\core\Controller;
 use app\core\Request;
 use app\core\SessionManager;
+use Exception;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
   private UserModel $userModel;
   private SessionManager $sessionManager;
 
-  public function __construct() {
+  public function __construct()
+  {
     $this->userModel = new UserModel();
     $this->sessionManager = SessionManager::getInstance();
   }
 
-  public function loginPage() {
+  public function loginPage()
+  {
     if ($this->sessionManager->isLoggedIn()) {
       Application::$app->response->redirect("/");
       return;
@@ -25,7 +29,8 @@ class UserController extends Controller {
     $this->render($path);
   }
 
-  public function registerPage() {
+  public function registerPage()
+  {
     if ($this->sessionManager->isLoggedIn()) {
       Application::$app->response->redirect("/");
       return;
@@ -34,9 +39,10 @@ class UserController extends Controller {
     $this->render($path);
   }
 
-  public function login(Request $request) {
+  public function login(Request $request)
+  {
     if ($this->sessionManager->isLoggedIn()) {
-      Application::$app->response->jsonEncodes(500, ['msg' => 'User has logged in']);
+      echo Application::$app->response->jsonEncodes(500, ['msg' => 'User has logged in']);
       return;
     }
     $body = $request->getBody();
@@ -51,9 +57,10 @@ class UserController extends Controller {
     }
   }
 
-  public function register(Request $request) {
+  public function register(Request $request)
+  {
     if ($this->sessionManager->isLoggedIn()) {
-      Application::$app->response->jsonEncodes(500, ['msg' => 'User has logged in']);
+      echo Application::$app->response->jsonEncodes(500, ['message' => 'User has logged in']);
       return;
     }
     $body = $request->getBody();
@@ -66,16 +73,21 @@ class UserController extends Controller {
     $about = $body['about'];
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $user_id = $this->userModel->addUser($email, $hashedPassword, $currType, $name);
+    try {
+      $user_id = $this->userModel->addUser($email, $hashedPassword, $currType, $name);
 
-    if ($currType === 'company') {
-      $this->userModel->addCompany($user_id, $location, $about);
+      if ($currType === 'company') {
+        $this->userModel->addCompany($user_id, $location, $about);
+      }
+
+      $this->sessionManager->login($email, $name, $currType, $user_id);
+    } catch (Exception $e) {
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'User already exists']);
     }
-
-    $this->sessionManager->login($email, $name, $currType, $user_id);
   }
 
-  public function logout() {
+  public function logout()
+  {
     $this->sessionManager->logout();
     Application::$app->response->redirect('/login');
   }
