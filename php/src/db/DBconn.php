@@ -3,6 +3,7 @@ namespace app\db;
 
 use PDO;
 use PDOException;
+use Exception;
 
 class DBconn {
   private static $instance = null;
@@ -20,7 +21,7 @@ class DBconn {
           PDO::ATTR_EMULATE_PREPARES => false, 
       ]);
     } catch (PDOException $e) {
-      die("Connection failed: " . $e->getMessage());
+      throw new Exception("Connection failed: " . $e->getMessage());
     }
   }
 
@@ -35,7 +36,7 @@ class DBconn {
     try {
       return $this->pdo->query($sql);
     } catch (PDOException $e) {
-      die("Query failed: " . $e->getMessage());
+      throw new Exception("Query failed: " . $e->getMessage());
     }
   }
 
@@ -43,7 +44,7 @@ class DBconn {
     try {
       return $this->pdo->prepare($sql);
     } catch (PDOException $e) {
-      die("Prepare failed: " . $e->getMessage());
+      throw new Exception("Prepare failed: " . $e->getMessage());
     }
   }
   public function bind(&$statement, $param, $value, $type = null) {
@@ -70,7 +71,7 @@ class DBconn {
     try {
       return $statement->execute();
     } catch (PDOException $e) {
-      die("Execution failed: " . $e->getMessage());
+      throw new Exception("Execution failed: " . $e->getMessage());
     }
   }
 
@@ -78,14 +79,14 @@ class DBconn {
     try {
       return $statement->fetchAll();
     } catch (PDOException $e) {
-      die("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage());
     }
 }
   public function fetch($statement) {
     try {
       return $statement->fetch();
     } catch (PDOException $e) {
-      die("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage());
     }
   }
 
@@ -93,7 +94,7 @@ class DBconn {
     try {
       return $statement->fetchColumn($columnNumber);
     } catch (PDOException $e) {
-      die("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage());
     }
   }
 

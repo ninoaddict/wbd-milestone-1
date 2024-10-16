@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 105;
+  z-index: 100;
   border-bottom: 1px solid rgb(140 140 140/.2);
 	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
@@ -111,4 +111,71 @@
   min-height: 52px;
   display: flex;
   align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.profile-card {
+  min-width: 250px;
+  z-index: 105;
+  position: absolute;
+  top: 60px;
+  right: 19px;
+  margin: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: 0.3s ease-out;
+}
+
+.info-section {
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-direction: column;
+  gap: 4px;
+  color: black;
+  border-bottom: 1px solid #bbb;
+}
+
+.info-section span {
+  /* text-align: justify; */
+}
+
+.info-section-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.info-section-email {
+  font-size: 14px;
+  color: #585656;
+}
+
+.sign-out {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  /* text-align: left; */
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .profile-card {
+    right: 8px;
+  }
+}
+
+.profile-card-view {
+  margin-top: 8px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #0a66c2;
+  color: #0a66c2;
 }

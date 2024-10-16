@@ -45,7 +45,7 @@ function validateConfirmPassword(password, confirmPassword) {
   return '';
 }
 
-async function onSubmit(e) {
+function onSubmit(e) {
   e.preventDefault();
   const submitButton = document.getElementById('submit-button');
   submitButton.disabled = true;
@@ -83,6 +83,30 @@ async function onSubmit(e) {
 
   let registerType = formData.get('reg-type') ?? 'jobseeker';
   formData.set('reg-type', registerType);
+
+  if (!isValid) {
+    submitButton.disabled = false;
+    submitButton.classList.toggle('loading');
+    return;
+  }
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '/register', true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      window.location.replace('/');
+    } else {
+      // handle gagal
+      console.log(xhr.status)
+    }
+  }
+
+  xhr.onerror = function() {
+    // handle gagal
+    console.log('Something wrong');
+  };
+
+  xhr.send(formData);
 
   submitButton.disabled = false;
   submitButton.classList.toggle('loading');

@@ -53,8 +53,8 @@ $currRole = $_SESSION['role'] ?? 'guest';
                 </a>
               </li>
           <?php endif; ?>
-          <li>
-            <a href="/" class="global-nav-nav-link">
+          <li id="profile-toggle">
+            <div class="global-nav-nav-link">
               <div>
                 <img src="/public/images/user.png" alt="" width="24" height="24">
               </div>
@@ -65,7 +65,27 @@ $currRole = $_SESSION['role'] ?? 'guest';
                     d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z" />
                 </svg>
               </span>
-            </a>
+              <div class="profile-card hidden" id="profile-card">
+                <div class="info-section">
+                  <span class="info-section-name">
+                    <?php echo $_SESSION['nama'] ?>
+                  </span>
+                  <span class="info-section-email">
+                    <?php echo $_SESSION['email'] ?>
+                  </span>
+                  <?php if ($currRole === 'company'):?>
+                    <a class="profile-card-view" href="/profile">
+                    View Profile
+                    </a>
+                  <?php endif; ?>
+                </div>
+                <div class = "sign-out">
+                  <form action="/logout" method="post">
+                    <button type="submit">Sign Out</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </li>
         <?php else: ?>
           <li>
@@ -87,3 +107,4 @@ $currRole = $_SESSION['role'] ?? 'guest';
     </nav>
   </div>
 </header>
+<script src="/public/js/navbar.js"></script>
