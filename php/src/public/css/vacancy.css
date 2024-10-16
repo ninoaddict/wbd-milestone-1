@@ -1,0 +1,132 @@
+.content-separator {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-or-close {
+    display: flex;
+    flex-direction: row;
+}
+
+.close-button {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: darkblue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.close-button:hover {
+    background-color: rgb(235, 235, 235);
+    color: darkblue;
+}
+
+.delete-button {
+    margin-bottom: 10px;
+    background-color: darkred;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: rgb(235, 235, 235);
+    color: darkred;
+}
+
+.container-job {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 15px;
+}
+
+.container-taker {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 53%;
+    margin-left: 20px;
+    padding: 15px;
+}
+
+.job-title {
+    font-size: 25px;
+}
+
+.descript-title {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.job-requirement {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.job-description {
+    text-align: justify;
+}
+
+main {
+    padding-top: 90px;
+}
+
+ol.req-num {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.actual-container {
+    display: flex;
+}
+
+.scrollable-div {
+    overflow-y: scroll;
+    border: 1px solid rgb(200,200,200);
+    padding: 10px;
+    border-radius: 5px;
+    height: 300px;
+}
+
+.container-person {
+    background-color: rgb(220, 220, 220);
+    border: 1px solid rgb(200,200,200);
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status-and-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-status {
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.details-link {
+    background-color: darkblue;
+    color: white;
+    border-radius: 5px;
+    font-size: 80%;
+    padding: 8px;
+}
+
+.person-name {
+    font-weight: 600;
+}
