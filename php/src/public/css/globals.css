@@ -22,7 +22,8 @@
   --light-yellow: #fce2ba; /* Subtle highlights */
   --light-red: #fadfd8; /* Backgrounds for error messages */
   --off-white: #e9e5df; /* Background or card background */
-  --pure-white: #fdfaf5; /* Pure white, for text or elements or background */
+  --other-white: #fdfaf5; /* Pure white, for text or elements or background */
+  --pure-white: #f3f2f0;
 
   --sm: 640px;
   --md: 768px;

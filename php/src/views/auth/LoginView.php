@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/login.css">
 
-  <title>Login</title>
+  <title>Login - Verlinkt</title>
 </head>
 
 <body>
@@ -38,7 +38,7 @@
                 d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
             </svg>
           </div>
-          <input type="email" id="email" name="email" class="login-input" placeholder="user@email.com">
+          <input type="email" id="email" name="email" class="login-input" placeholder="user@email.com" required>
         </div>
 
         <label for="password" class="input-label">Your Password</label>
@@ -50,7 +50,7 @@
                 d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
             </svg>
           </div>
-          <input type="password" id="password" name="password" class="login-input" placeholder="Password">
+          <input type="password" id="password" name="password" class="login-input" placeholder="Password" required>
         </div>
         <button class="login-button">
           Sign In

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
+  <link rel="stylesheet" href="/public/css/home.css">
 
   <title>Home</title>
 </head>
