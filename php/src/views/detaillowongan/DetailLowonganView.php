@@ -22,6 +22,9 @@
         <div class="delete-button">
           <button type="input">Delete Job</button>
         </div>
+        <div class="add-button">
+          <a href="../tambahlowongan">Add Job</a>
+        </div>
       </div>
       <div class="actual-container">
         <section class="container-job">
@@ -38,6 +41,10 @@
             <li>Bersedia bekerja secara gratis</li>
             <li>Kayanya itu aja</li>
           </ol>
+          <h2 class="job-requirement">Location:</h2>
+          <h3>Lisbon, Portugal</h3>
+          <h2 class="job-requirement">Job Type:</h2>
+          <h3>Full-Time</h3>
         </section>
         <section class="container-taker">
           <h1><b class="job-title">Job Takers</b></h1>
