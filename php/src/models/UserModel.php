@@ -64,7 +64,7 @@ class UserModel {
     $this->db->bind($statement, ':nama', $nama);
     $ok = $this->db->execute($statement);
     if (!$ok) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Unable to add users");
     }
 
     return $this->db->lastInsertId();

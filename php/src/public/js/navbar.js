@@ -3,4 +3,6 @@ function handleToggle() {
 }
 
 const profileToggle = document.getElementById('profile-toggle');
-profileToggle.addEventListener('click', handleToggle);
+if (profileToggle) {
+  profileToggle.addEventListener('click', handleToggle);
+}

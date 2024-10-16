@@ -97,7 +97,8 @@ function onSubmit(e) {
       window.location.replace('/');
     } else {
       // handle gagal
-      console.log(xhr.status)
+      const res = JSON.parse(xhr.responseText);
+      console.log(res.message);
     }
   }
 
