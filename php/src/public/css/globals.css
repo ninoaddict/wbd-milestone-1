@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root {
   /* Primary Colors */
   --primary-blue: #0a66c2; /* Main brand color */
@@ -20,7 +22,8 @@
   --light-yellow: #fce2ba; /* Subtle highlights */
   --light-red: #fadfd8; /* Backgrounds for error messages */
   --off-white: #e9e5df; /* Background or card background */
-  --pure-white: #fdfaf5; /* Pure white, for text or elements or background */
+  --other-white: #fdfaf5; /* Pure white, for text or elements or background */
+  --pure-white: #f3f2f0;
 
   --sm: 640px;
   --md: 768px;
@@ -30,8 +33,7 @@
 }
 
 body {
-  background: var(--pure-white);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .text-xs {

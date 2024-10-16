@@ -70,6 +70,24 @@ class UserModel {
     return $this->db->lastInsertId();
   }
 
+  public function addCompany(string $user_id, string $lokasi, string $about) {
+    if (empty($user_id) || empty($lokasi) || empty($about)) {
+      throw new Exception("Database error: Unable to execute query.");
+    }
+    $sql = 'INSERT INTO company_detail(user_id, lokasi, about) VALUES (:user_id, :lokasi, :about)';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':user_id', $user_id);
+    $this->db->bind($statement, ':lokasi', $lokasi);
+    $this->db->bind($statement, ':about', $about);
+
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to execute query.");
+    }
+
+    return $this->db->lastInsertId();
+  }
+
   public function authenticate(string $email, string $password) {
     $sql = "SELECT * FROM users WHERE email = :email";
     $statement = $this->db->prepare($sql);

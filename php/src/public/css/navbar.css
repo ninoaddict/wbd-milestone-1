@@ -1,79 +1,181 @@
-header {
-  width: 100%;
-  position: fixed;
-}
-
-.profile-pic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.profile-pic img {
-  height: 32px;
-}
-
-.navbar {
+.global-nav {
   background-color: white;
-  padding: 8px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  left: 0;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+  border-bottom: 1px solid rgb(140 140 140/.2);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
-.navbar-container {
+.global-nav-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  min-height: 100%;
+  max-width: 1128px;
   width: 100%;
-  max-width: 1280px;
 }
 
-.logo img {
-  height: 45px; /* Adjust based on your logo size */
+.global-nav-branding-container {
+  color: #0a66c2;
+  margin: 0 4px 0 -4px;
 }
 
-.nav-links {
+.global-nav-nav {
+  margin-left: auto;
+  min-height: 52px;
+}
+
+.global-nav-nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  color: rgb(0 0 0 /.6);
+}
+
+.global-nav-nav li {
   display: flex;
   align-items: center;
-  gap: 52px; /* Space between icons */
 }
 
-.nav-item {
+.global-nav-nav-link {
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: var(--dark-gray);
   font-size: 12px;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
+  min-height: 52px;
+  min-width: 80px;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s ease;
 }
 
-.nav-item:hover {
+.global-nav-nav-link:hover {
+  color: rgb(0 0 0 /.9);
+}
+
+.selected {
+  color: rgb(0 0 0 /.9);
+  border-bottom: 2px solid black;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.profile-span {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  color: rgb(0 0 0 /.6);
+}
+
+.profile-span:hover {
+  color: rgb(0 0 0 /.9);
+}
+
+@media (max-width: 640px) {
+  .global-nav-nav-link {
+    min-width: 60px;
+  }
+}
+
+.btn {
+  background: #0a66c2;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #4b85be;
+}
+
+.btn-container {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.profile-card {
+  min-width: 250px;
+  z-index: 105;
+  position: absolute;
+  top: 60px;
+  right: 19px;
+  margin: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: 0.3s ease-out;
+}
+
+.info-section {
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-direction: column;
+  gap: 4px;
   color: black;
+  border-bottom: 1px solid #bbb;
 }
 
-.nav-item img {
-  height: 24px;
-  margin-bottom: 5px;
+.info-section span {
+  /* text-align: justify; */
 }
 
-.nav-item span {
+.info-section-name {
+  font-size: 16px;
   font-weight: 500;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .search-container {
-      display: none; /* Hide search bar on smaller screens */
-  }
+.info-section-email {
+  font-size: 14px;
+  color: #585656;
+}
 
-  .nav-links {
-      gap: 10px;
-  }
+.sign-out {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  /* text-align: left; */
+  font-size: 12px;
+}
 
-  .navbar-container {
-      justify-content: space-around;
+@media (max-width: 640px) {
+  .profile-card {
+    right: 8px;
   }
+}
+
+.profile-card-view {
+  margin-top: 8px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #0a66c2;
+  color: #0a66c2;
 }
