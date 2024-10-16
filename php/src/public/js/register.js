@@ -70,8 +70,6 @@ async function onSubmit(e) {
 
   for (let i = 0; i < arrayCheck.length; i++) {
     const currElmt = document.getElementById(arrayCheck[i][0]);
-    console.log(arrayCheck[i][0]);
-    console.log(arrayCheck[i][1]);
     document.getElementById(`${arrayCheck[i][0]}-error`).innerHTML = arrayCheck[i][1];
     if (arrayCheck[i][1]) {
       isValid = false;

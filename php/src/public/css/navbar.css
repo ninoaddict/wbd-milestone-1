@@ -1,79 +1,68 @@
-header {
-  width: 100%;
-  position: fixed;
-}
-
-.profile-pic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.profile-pic img {
-  height: 32px;
-}
-
-.navbar {
+.global-nav {
   background-color: white;
-  padding: 8px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  left: 0;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 105;
+  border-bottom: 1px solid rgb(140 140 140/.2);
 }
 
-.navbar-container {
+.global-nav-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  min-height: 100%;
+  max-width: 1128px;
   width: 100%;
-  max-width: 1280px;
 }
 
-.logo img {
-  height: 45px; /* Adjust based on your logo size */
+.global-nav-branding-container {
+  color: #0a66c2;
+  margin: 0 4px 0 -4px;
 }
 
-.nav-links {
+.global-nav-nav {
+  margin-left: auto;
+  min-height: 52px;
+}
+
+.global-nav-nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+}
+
+.global-nav-nav li {
   display: flex;
   align-items: center;
-  gap: 52px; /* Space between icons */
 }
 
-.nav-item {
+.global-nav-nav-link {
+  align-items: center;
+  background: transparent;
+  color: rgb(0 0 0 /.6);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: var(--dark-gray);
   font-size: 12px;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
+  min-height: 52px;
+  min-width: 80px;
+  position: relative;
+  text-decoration: none;
 }
 
-.nav-item:hover {
-  color: black;
+.inline-block {
+  display: inline-block;
 }
 
-.nav-item img {
-  height: 24px;
-  margin-bottom: 5px;
-}
-
-.nav-item span {
-  font-weight: 500;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .search-container {
-      display: none; /* Hide search bar on smaller screens */
-  }
-
-  .nav-links {
-      gap: 10px;
-  }
-
-  .navbar-container {
-      justify-content: space-around;
-  }
+.profile-span {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  color: rgb(0 0 0 /.6);
 }

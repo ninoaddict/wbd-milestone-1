@@ -1,16 +1,19 @@
-header {
+/* header {
   padding-left: 22px;
   padding-top: 30px;
 }
 
 header a img {
   height: 48px;
+} */
+
+.linkedin-logo {
+  display: block;
+  margin: 32px 0 0 56px;
 }
 
 body {
   background: #f3f2f0;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 main {
@@ -19,11 +22,13 @@ main {
   align-items: center;
   margin-top: 28px;
   margin-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .card-layout {
   width: 100%;
-  max-width: 352px;
+  max-width: 400px;
   border-radius: 8px;
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -110,7 +115,7 @@ main {
 }
 
 .mb-4 {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .mb-6 {
@@ -209,19 +214,27 @@ main {
 }
 
 @media (max-width: 640px) {
-  header {
-    padding-left: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  main {
+    margin: 0;
   }
 
-  main {
-    margin-top: 20px;
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .linkedin-logo {
+    width: min-content;
+    margin: 0 auto;
   }
 
   .register-title {
-    font-size: 24px;
+    font-size: 16px;
     margin-bottom: 8px;
   }
 }
