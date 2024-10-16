@@ -7,6 +7,7 @@
   width: 100vw;
   z-index: 105;
   border-bottom: 1px solid rgb(140 140 140/.2);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
 .global-nav-content {
@@ -32,6 +33,7 @@
   display: flex;
   flex-wrap: nowrap;
   list-style-type: none;
+  color: rgb(0 0 0 /.6);
 }
 
 .global-nav-nav li {
@@ -42,7 +44,6 @@
 .global-nav-nav-link {
   align-items: center;
   background: transparent;
-  color: rgb(0 0 0 /.6);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,16 @@
   min-width: 80px;
   position: relative;
   text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.global-nav-nav-link:hover {
+  color: rgb(0 0 0 /.9);
+}
+
+.selected {
+  color: rgb(0 0 0 /.9);
+  border-bottom: 2px solid black;
 }
 
 .inline-block {
@@ -65,4 +76,39 @@
   align-items: center;
   gap: 1px;
   color: rgb(0 0 0 /.6);
+}
+
+.profile-span:hover {
+  color: rgb(0 0 0 /.9);
+}
+
+@media (max-width: 640px) {
+  .global-nav-nav-link {
+    min-width: 60px;
+  }
+}
+
+.btn {
+  background: #0a66c2;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #4b85be;
+}
+
+.btn-container {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
 }
