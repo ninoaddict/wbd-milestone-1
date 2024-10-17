@@ -70,7 +70,7 @@ class UserModel {
     return $this->db->lastInsertId();
   }
 
-  public function addCompany(string $user_id, string $lokasi, string $about) {
+  public function addCompany(int $user_id, string $lokasi, string $about) {
     if (empty($user_id) || empty($lokasi) || empty($about)) {
       throw new Exception("Database error: Unable to execute query.");
     }

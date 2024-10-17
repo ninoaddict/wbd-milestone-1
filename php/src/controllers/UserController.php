@@ -29,6 +29,16 @@ class UserController extends Controller
     $this->render($path);
   }
 
+  public function loginPageWithError($data)
+  {
+    if ($this->sessionManager->isLoggedIn()) {
+      Application::$app->response->redirect("/");
+      return;
+    }
+    $path = __DIR__ . '/../views/auth/LoginView.php';
+    $this->render($path, $data);
+  }
+
   public function registerPage()
   {
     if ($this->sessionManager->isLoggedIn()) {
@@ -53,7 +63,8 @@ class UserController extends Controller
       $this->sessionManager->login($valid['email'], $valid['nama'], $valid['role'], $valid['user_id']);
       Application::$app->response->redirect('/');
     } else {
-      Application::$app->response->redirect('/');
+      // Application::$app->response->redirect('/login');
+      $this->loginPageWithError(['message'=>'User not found']);
     }
   }
 
