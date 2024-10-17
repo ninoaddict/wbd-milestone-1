@@ -34,4 +34,28 @@ class SessionManager {
   public function isLoggedIn() {
     return isset($_SESSION['user_id']);
   }
+
+  public function getRole() {
+    return $_SESSION['role'];
+  }
+
+  public function getUserId() {
+    return $_SESSION['user_id'];
+  }
+
+  public function getName() {
+    return $_SESSION['nama'];
+  }
+
+  public function getEmail() {
+    return $_SESSION['email'];
+  }
+
+  public function isCompany() {
+    return $this->getRole() == 'company';
+  }
+
+  public function isJobSeeker() {
+    return $this->getRole() == 'jobseeker';
+  }
 }

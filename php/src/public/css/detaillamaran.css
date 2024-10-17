@@ -124,6 +124,10 @@ main {
   background-color: #4b85be;
 }
 
+.save-btn:disabled {
+  background-color: #4b85be;
+}
+
 .save-btn-container {
   display: flex;
   justify-content: center;

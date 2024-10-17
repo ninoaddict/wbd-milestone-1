@@ -56,6 +56,37 @@ class LamaranModel {
     $this->db->bind($statement, ':status_reason', $status_reason);
     $this->db->bind($statement, ':lamaran_id', $lamaran_id);
     $this->db->execute($statement);
-    return $this->db->lastInsertId();
+    return 0;
+  }
+
+  public function isCompanyAuthorized(int $lamaran_id, int $company_id) {
+    $sql = 'SELECT * 
+    FROM lamaran lam 
+    INNER JOIN lowongan low ON lam.lowongan_id = low.lowongan_id 
+    WHERE lamaran_id = :lamaran_id 
+    AND company_id = :company_id';
+
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':lamaran_id', $lamaran_id);
+    $this->db->bind($statement, ':company_id', $company_id);
+    $this->db->execute($statement);
+    $res = $this->db->fetch($statement);
+    if ($res) return true;
+    return false;
+  }
+
+  public function getLamaranData(int $lamaran_id, int $company_id) {
+    $sql = 'SELECT lamaran_id, users.user_id, lam.lowongan_id, email, nama, cv_path, video_path, status, status_reason
+    FROM lamaran lam 
+    INNER JOIN lowongan low ON lam.lowongan_id = low.lowongan_id
+    INNER JOIN users ON lam.user_id = users.user_id
+    WHERE lamaran_id = :lamaran_id 
+    AND company_id = :company_id';
+
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':lamaran_id', $lamaran_id);
+    $this->db->bind($statement, ':company_id', $company_id);
+    $this->db->execute($statement);
+    return $this->db->fetch($statement);
   }
 }

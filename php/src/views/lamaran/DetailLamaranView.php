@@ -20,62 +20,124 @@
       <div class="card-container">
         <div class="card-detail">
           <h1 class="card-detail-name">
-            Adril Putra Merin
+            <?php echo $this->data['nama'] ?>
           </h1>
         </div>
         <div class="card-detail-info">
           <h2 class="card-detail-email">
-            Email: adrilbless37@gmail.com
+            Email: <?php echo $this->data['email'] ?>
           </h2>
           <h2 class="card-detail-email">
-            ID Lamaran: 129889
+            ID Lamaran: <?php echo $this->data['lamaran_id'] ?>
           </h2>
         </div>
         <form id="update-status-form">
           <div class="card-status">
             <label for="status" class="status-label">Status</label>
-            <select name="status" id="status" class="option-select">
-              <option value="accepted">Waiting</option>
-              <option value="accepted">Accepted</option>
-              <option value="accepted">Rejected</option>
-            </select>
-          </div>
-          <div class="editor-container">
-            <div class="status-reason">
-              <h3 class="status-reason-text">Reason</h3>
+            <select name="status" id="status" class="option-select" <?php if ($this->data['status'] !== 'waiting')
+              echo 'disabled' ?>>
+                <option value="waiting" <?php if ($this->data['status'] == 'waiting')
+              echo 'selected="selected"' ?>>Waiting
+                </option>
+                <option value="accepted" <?php if ($this->data['status'] == 'accepted')
+              echo 'selected="selected"' ?>>
+                  Accepted</option>
+                <option value="rejected" <?php if ($this->data['status'] == 'rejected')
+              echo 'selected="selected"' ?>>
+                  Rejected</option>
+              </select>
             </div>
-            <div id="editor">
+            <div class="editor-container">
+              <div class="status-reason">
+                <h3 class="status-reason-text">Reason</h3>
+              </div>
+              <div id="editor">
+                <?php
+                if (!empty($this->data['status_reason'])) {
+                  echo html_entity_decode($this->data['status_reason']);
+                }
+                ?>
             </div>
           </div>
           <div class="save-btn-container">
-            <button class="save-btn" type="submit" id="save-btn">
-              Save
-            </button>
-          </div>
-        </form>
+            <button class="save-btn" type="submit" id="save-btn" <?php if ($this->data['status'] !== 'waiting')
+              echo 'disabled' ?>>
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div class="card info-card resume-card">
-      <div class="resume-container">
-        <h1 class="resume-title">Resume</h1>
+      <div class="card info-card resume-card">
+        <div class="resume-container">
+          <h1 class="resume-title">Resume</h1>
+        </div>
+        <embed src="/storage/resume/spesifikasi.pdf" type="application/pdf" width="100%" class="pdf-viewer" />
       </div>
-      <embed src="/storage/resume/spesifikasi.pdf" type="application/pdf" width="100%" class="pdf-viewer" />
-    </div>
 
-    <div class="card info-card resume-card">
-      <div class="resume-container">
-        <h1 class="resume-title">Video Perkenalan</h1>
+      <div class="card info-card resume-card">
+        <div class="resume-container">
+          <h1 class="resume-title">Video Perkenalan</h1>
+        </div>
+        <video controls>
+          <source src="/storage/video/temp.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
-      <video controls>
-      <source src="/storage/video/temp.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </main>
+    </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="/public/js/detaillamaran.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script>
+      const quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline'],
+            ['link', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'indent': '-1' }, { 'indent': '+1' }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+          ]
+        }
+      });
+
+    <?php if ($this->data['status'] !== 'waiting')
+              echo 'quill.enable(false)' ?>
+
+      const updateStatusForm = document.getElementById('update-status-form');
+
+      function onSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(updateStatusForm);
+        if (formData.get('status') === 'waiting') return;
+
+        const statusReason = quill.root.innerHTML == "<p><br></p>" ? '' : quill.root.innerHTML;
+
+        formData.append('status_reason', statusReason);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/lamaran/<?php echo $this->data['lamaran_id'] ?>', true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          window.location.replace('/lamaran/<?php echo $this->data['lamaran_id'] ?>');
+        } else {
+          const res = JSON.parse(xhr.responseText);
+          console.log(res.msg);
+        }
+      }
+
+      xhr.onerror = function () {
+        console.log('Something wrong');
+      };
+
+      xhr.send(formData);
+    }
+
+    updateStatusForm.addEventListener('submit', onSubmit);
+  </script>
 </body>
 
 </html>
