@@ -6,13 +6,13 @@ use app\core\Request;
 class LamaranController extends Controller {
   public function __construct() {}
 
-  public function addLamaranPage() {
+  public function applyLowonganPage() {
     $path = __DIR__ . '/../views/lamaran/LamaranView.php';
     $this->render($path);
   }
 
-  public function addLamaran() {
-
+  public function applyLowongan() {
+    
   }
 
   public function detailLamaranPage() {

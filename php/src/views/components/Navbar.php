@@ -3,7 +3,6 @@ $currPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $currRole = $_SESSION['role'] ?? 'guest';
 ?>
 
-
 <header id="global-nav" class="global-nav">
   <div class="global-nav-content">
     <a href="/">

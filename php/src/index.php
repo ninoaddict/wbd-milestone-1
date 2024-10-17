@@ -23,8 +23,8 @@ $app->router->post('/register', handler: [UserController::class, 'register']);
 
 $app->router->post('/logout', handler: [UserController::class, 'logout']);
 
-$app->router->get('/lamaran', handler: [LamaranController::class,'addLamaranPage']);
-$app->router->post('/lamaran', handler: [LamaranController::class,'addLamaran']);
+$app->router->get('/lowongan/:id/apply', handler: [LamaranController::class,'applyLowonganPage']);
+$app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'applyLowongan']);
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
