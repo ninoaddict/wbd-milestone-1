@@ -20,7 +20,11 @@ $app = new Application();
 $app->router->get('/', handler: [HomeController::class, 'homePage']);
 $app->router->get('/login', handler: [UserController::class, 'loginPage']);
 $app->router->get('/register', handler: [UserController::class, 'registerPage']);
-$app->router->get('/detaillowongan',handler: [DetailLowonganController::class, 'detailLowonganPage']);
+
+$app->router->get('/detaillowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganPage']);
+$app->router->post('/detaillowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
+$app->router->post('/detaillowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
+
 $app->router->get('/editlowongan',handler: [EditLowonganController::class, 'editLowonganPage']);
 $app->router->get('/tambahlowongan',handler: [TambahLowonganController::class, 'tambahLowonganPage']);
 $app->router->post('/tambahlowongan', handler:[TambahLowonganController::class, 'tambahLowongan']);

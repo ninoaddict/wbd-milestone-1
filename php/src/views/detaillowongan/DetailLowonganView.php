@@ -17,10 +17,10 @@
     <div class="content-separator">
       <div class="delete-or-close">
         <div class="close-button">
-          <button type="input">Close Job</button>
+          <button type="input" id="close-or-opener"><?= $data['is_open']?></button>
         </div>
         <div class="delete-button">
-          <button type="input">Delete Job</button>
+          <button type="input" id="deleter">Delete Job</button>
         </div>
         <div class="add-button">
           <a href="../tambahlowongan">Add Job</a>
@@ -28,23 +28,17 @@
       </div>
       <div class="actual-container">
         <section class="container-job">
-          <h1><b class="job-title">Infrastructure Engineer</b></h1>
+          <h1><b class="job-title"><?= $data['posisi']?></b></h1>
           <h2 class="descript-title">Description:</h2>
           <h3 class="job-description">
-            Infrastructure Engineer adalah pekerjaan yang blah-blah-blah. 
-            Ini adalah pekerjaan yang sangat bagus ya. Jadi saya mohon
-            anda untuk kerja disini. Plis
+            <?= htmlspecialchars_decode($data['deskripsi'])?>
           </h3>
-          <h2 class="job-requirement">Job Requirement:</h2>
-          <ol class="req-num">
-            <li>Usia 22 tahun ke-atas</li>
-            <li>Bersedia bekerja secara gratis</li>
-            <li>Kayanya itu aja</li>
-          </ol>
+          <h2 class="job-requirement">Company:</h2>
+          <h3><?= $data['company_name']?></h3>
           <h2 class="job-requirement">Location:</h2>
-          <h3>Lisbon, Portugal</h3>
+          <h3><?= $data['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
-          <h3>Full-Time</h3>
+          <h3><h3><?= $data['jenis_pekerjaan']?></h3></h3>
         </section>
         <section class="container-taker">
           <h1><b class="job-title">Job Takers</b></h1>
@@ -68,6 +62,7 @@
       </div>
     </div>
   </main>
+  <script src="../../public/js/DetailLowonganVacancy.js"></script>
 </body>
 
 </html>

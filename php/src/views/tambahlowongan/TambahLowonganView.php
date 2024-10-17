@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="button-add-style">
-                    <button type="button" id="form-submit" class="button-style">Submit</button>
+                    <button type="submit" id="form-submit" class="button-style">Submit</button>
                 </div>
             </form>
         </div>

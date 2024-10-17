@@ -3,6 +3,7 @@ namespace app\models;
 
 use app\db\DBconn;
 use Exception;
+use app\core\Application;
 
 class LowonganModel {
   private $db;
@@ -36,6 +37,66 @@ class LowonganModel {
     $ok = $this->db->execute($statement);
     if (!$ok) {
     throw new Exception("Database error: Unable to execute query.");
+    }
+  }
+
+  public function queryDetailsById(int $id) {
+    $sql = "SELECT lowongan_id, company_id, posisi, deskripsi, jenis_pekerjaan, jenis_lokasi, is_open FROM lowongan WHERE lowongan_id = :id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id",$id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+        throw new Exception("Database error: Unable to execute query.");
+    }
+    $res = $this->db->fetch($statement);
+    $lowongan_id = $res['lowongan_id'];
+    $company_id = $res['company_id'];
+    $posisi = $res['posisi'];
+    $deskripsi = $res['deskripsi'];
+    $jenis_pekerjaan = $res['jenis_pekerjaan'];
+    $jenis_lokasi = $res['jenis_lokasi'];
+    $is_open = $res['is_open'];
+
+    $sql = "SELECT nama FROM users WHERE user_id = :company_id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":company_id", $company_id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+        throw new Exception("Database error: Unable to execute query.");
+    }
+    $res = $this->db->fetch($statement);
+    $company_name = $res['nama'];
+
+    $data = [
+        'lowongan_id' => $lowongan_id,
+        'company_name' => $company_name,
+        'posisi' => $posisi,
+        'deskripsi' => $deskripsi,
+        'jenis_pekerjaan' => $jenis_pekerjaan,
+        'jenis_lokasi' => $jenis_lokasi,
+        'is_open' => $is_open
+    ];
+
+    return $data;
+  }
+
+  public function queryCloseById(int $id) {
+    $sql = 'UPDATE lowongan SET is_open = NOT is_open WHERE lowongan_id = :id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", "$id");
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+        throw new Exception("Database error: Unable to execute query.");
+    }
+  }
+
+  public function queryDeleteById(int $id) {
+    $sql = 'DELETE FROM lowongan WHERE lowongan_id = :id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", "$id");
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+        throw new Exception("Database error: Unable to delete query.");
     }
   }
 }
