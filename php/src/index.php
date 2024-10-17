@@ -23,5 +23,6 @@ $app->router->get('/register', handler: [UserController::class, 'registerPage'])
 $app->router->get('/detaillowongan',handler: [DetailLowonganController::class, 'detailLowonganPage']);
 $app->router->get('/editlowongan',handler: [EditLowonganController::class, 'editLowonganPage']);
 $app->router->get('/tambahlowongan',handler: [TambahLowonganController::class, 'tambahLowonganPage']);
+$app->router->post('/tambahlowongan', handler:[TambahLowonganController::class, 'tambahLowongan']);
 
 $app->run();

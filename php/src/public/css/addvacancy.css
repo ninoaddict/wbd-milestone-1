@@ -2,14 +2,30 @@ main {
     padding-top: 90px;
 }
 
+.add-actual-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.content-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-add-job {
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(200, 200, 200);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     padding: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-job-title {
@@ -21,12 +37,20 @@ main {
 .form-flex-structure {
     display: flex;
     margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-flex-quill {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .form-structure {
     display: flex;
     flex-direction: column;
-    margin-right: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
     width: 100%;
 }
 
@@ -38,13 +62,15 @@ main {
     padding: 5px;
     border: 2px solid black;
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .button-add-style {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 .button-style {
@@ -52,4 +78,10 @@ main {
     padding: 10px;
     color: white;
     border-radius: 5px;
+}
+
+#editor {
+    height: 150px;
+    box-sizing: border-box;
+    width: 100%;
 }
