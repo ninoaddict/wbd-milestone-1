@@ -23,7 +23,7 @@
           <button type="input" id="deleter">Delete Job</button>
         </div>
         <div class="add-button">
-          <a href="../tambahlowongan">Add Job</a>
+          <a href="../editlowongan" id="editer">Edit Job</a>
         </div>
       </div>
       <div class="actual-container">

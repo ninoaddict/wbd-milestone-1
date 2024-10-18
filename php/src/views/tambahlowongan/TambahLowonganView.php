@@ -45,7 +45,7 @@
                         <select id="job-type" class="input-style">
                             <option value="full-time">Full-Time</option>
                             <option value="part-time">Part-Time</option>
-                            <option value="internship">nternship</option>
+                            <option value="internship">Internship</option>
                         </select>
                     </div>
                 </div>
