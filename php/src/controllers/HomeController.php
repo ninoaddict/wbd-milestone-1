@@ -13,4 +13,9 @@ class HomeController extends Controller {
     
     $this->render($path);
   }
+
+  public function notFoundPage() {
+    $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+    $this->render($path);
+  }
 }
