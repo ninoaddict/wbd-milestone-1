@@ -111,3 +111,7 @@ main {
   display: flex;
   justify-content: flex-end;
 }
+
+.red-star {
+  color: red;
+}

@@ -56,7 +56,7 @@ class UserModel {
     if (empty($email) || empty($hashedPassword) || empty($role) || empty($nama)) {
       throw new Exception("Database error: Unable to execute query.");
     }
-    $sql = 'INSERT INTO users(email, password, role, nama) VALUES (:email, :password, :role, :nama)';
+    $sql = 'INSERT INTO users(email, password, role, nama) VALUES (:email, :password, :role, :nama) RETURNING user_id';
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ':email', $email);
     $this->db->bind($statement, ':password', $hashedPassword);
@@ -67,14 +67,14 @@ class UserModel {
       throw new Exception("Unable to add users");
     }
 
-    return $this->db->lastInsertId();
+    return $this->db->fetchColumn($statement);
   }
 
   public function addCompany(int $user_id, string $lokasi, string $about) {
     if (empty($user_id) || empty($lokasi) || empty($about)) {
       throw new Exception("Database error: Unable to execute query.");
     }
-    $sql = 'INSERT INTO company_detail(user_id, lokasi, about) VALUES (:user_id, :lokasi, :about)';
+    $sql = 'INSERT INTO company_detail(user_id, lokasi, about) VALUES (:user_id, :lokasi, :about) RETURNING user_id';
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ':user_id', $user_id);
     $this->db->bind($statement, ':lokasi', $lokasi);
@@ -85,7 +85,7 @@ class UserModel {
       throw new Exception("Database error: Unable to execute query.");
     }
 
-    return $this->db->lastInsertId();
+    return $this->db->fetchColumn($statement);
   }
 
   public function authenticate(string $email, string $password) {

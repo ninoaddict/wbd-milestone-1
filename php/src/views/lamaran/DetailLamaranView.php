@@ -53,10 +53,10 @@
               </div>
               <div id="editor">
                 <?php
-                if (!empty($this->data['status_reason'])) {
-                  echo html_entity_decode($this->data['status_reason']);
-                }
-                ?>
+            if (!empty($this->data['status_reason'])) {
+              echo html_entity_decode($this->data['status_reason']);
+            }
+            ?>
             </div>
           </div>
           <div class="save-btn-container">
@@ -73,9 +73,10 @@
         <div class="resume-container">
           <h1 class="resume-title">Resume</h1>
         </div>
-        <embed src="/storage/resume/spesifikasi.pdf" type="application/pdf" width="100%" class="pdf-viewer" />
-      </div>
+        <embed src="<?php echo $this->data['cv_path'] ?>" type="application/pdf" width="100%" class="pdf-viewer" />
+    </div>
 
+    <?php if (!empty($this->data['video_path'])): ?>
       <div class="card info-card resume-card">
         <div class="resume-container">
           <h1 class="resume-title">Video Perkenalan</h1>
@@ -85,27 +86,28 @@
           Your browser does not support the video tag.
         </video>
       </div>
-    </main>
+    <?php endif; ?>
+  </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    <script>
-      const quill = new Quill('#editor', {
-        theme: 'snow',
-        modules: {
-          toolbar: [
-            [{ 'header': [1, 2, false] }],
-            ['bold', 'italic', 'underline'],
-            ['link', 'blockquote', 'code-block'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'indent': '-1' }, { 'indent': '+1' }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-          ]
-        }
-      });
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <script>
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          ['link', 'blockquote', 'code-block'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          [{ 'indent': '-1' }, { 'indent': '+1' }],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'align': [] }],
+        ]
+      }
+    });
 
     <?php if ($this->data['status'] !== 'waiting')
-              echo 'quill.enable(false)' ?>
+      echo 'quill.enable(false)' ?>
 
       const updateStatusForm = document.getElementById('update-status-form');
 
@@ -120,21 +122,22 @@
 
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/lamaran/<?php echo $this->data['lamaran_id'] ?>', true);
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          window.location.replace('/lamaran/<?php echo $this->data['lamaran_id'] ?>');
-        } else {
-          const res = JSON.parse(xhr.responseText);
-          console.log(res.msg);
+        xhr.onload = function () {
+          console.log('masuk sini');
+          if (xhr.status === 200) {
+            location.reload();
+          } else {
+            const res = JSON.parse(xhr.responseText);
+            console.log(res.msg);
+          }
         }
+
+        xhr.onerror = function () {
+          console.log('Something wrong');
+        };
+
+        xhr.send(formData);
       }
-
-      xhr.onerror = function () {
-        console.log('Something wrong');
-      };
-
-      xhr.send(formData);
-    }
 
     updateStatusForm.addEventListener('submit', onSubmit);
   </script>

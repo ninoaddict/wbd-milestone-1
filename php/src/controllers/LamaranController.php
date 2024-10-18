@@ -3,31 +3,90 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\FileManager;
 use app\core\Request;
 use app\core\SessionManager;
 use app\models\LamaranModel;
-use Error;
+use Exception;
 
 class LamaranController extends Controller
 {
   private SessionManager $sessionManager;
+
+  private FileManager $fileManager;
   private LamaranModel $lamaranModel;
 
   public function __construct()
   {
     $this->lamaranModel = new LamaranModel();
     $this->sessionManager = SessionManager::getInstance();
+    $this->fileManager = FileManager::getInstance();
   }
 
-  public function applyLowonganPage()
+  public function applyLowonganPage(Request $request)
   {
+    if (!$this->sessionManager->isLoggedIn() || !$this->sessionManager->isJobSeeker()) {
+      Application::$app->response->redirect("/");
+      return;
+    }
+
+    $lowongan_id = $request->getParams()[0];
+    $user_id = $this->sessionManager->getUserId();
+
+    if (empty($this->lamaranModel->getLowonganById($lowongan_id)['lowongan_id'])) {
+      Application::$app->response->redirect("/not-found");
+      return;
+    }
+
+
+    if (!empty($this->lamaranModel->getLamaranDataUser($lowongan_id, $user_id)['lamaran_id'])) {
+      Application::$app->response->redirect("/");
+      return;
+    }
+
+    $company_name = $this->lamaranModel->getCompanyName($lowongan_id);
+    $name = $this->sessionManager->getName();
+    $email = $this->sessionManager->getEmail();
+
+    $data = ['company_name' => $company_name, 'name' => $name, 'email' => $email, 'lowongan_id' => $lowongan_id];
+
     $path = __DIR__ . '/../views/lamaran/LamaranView.php';
-    $this->render($path);
+    $this->render($path, $data);
   }
 
-  public function applyLowongan()
+  public function applyLowongan(Request $request)
   {
+    $lowongan_id = $request->getParams()[0];
+    $user_id = $this->sessionManager->getUserId();
 
+    try {
+      $pdfFile = $_FILES['pdf_input']['tmp_name'];
+      $videoFile = $_FILES['video_input']['tmp_name'];
+
+      $uploadedPdf = $this->fileManager->savePdf($pdfFile);
+      $pdfPath = '/' . substr($uploadedPdf, 22);
+
+      $uploadedVideo = '';
+      $videoPath = '';
+      if (!empty($videoFile)) {
+        $uploadedVideo = $this->fileManager->saveVideo($videoFile);
+        $videoPath = '/' . substr($uploadedVideo,22);
+      }
+      
+      $res = $this->lamaranModel->addLamaran($user_id, $lowongan_id, $pdfPath, $videoPath);
+      if (empty($res)) {
+        if (!empty($uploadedVideo)) {
+          $this->fileManager->delete($uploadedVideo);
+        }
+        if (!empty($uploadedPdf)) {
+          $this->fileManager->delete($uploadedPdf);
+        }
+        throw new Exception('Fail to add lamaran');
+      }
+      Application::$app->response->redirect('/lowongan' . '/' . $lowongan_id);
+    } catch (Exception $e) {
+      Application::$app->response->redirect('/lowongan' . '/' . $lowongan_id .'/apply');
+    }
   }
 
   public function detailLamaranPage(Request $request)
@@ -71,8 +130,8 @@ class LamaranController extends Controller
 
       $this->lamaranModel->updateStatusLamaran($lamaran_id, $new_status, $status_reason);
       echo Application::$app->response->jsonEncodes(200, ['msg' => 'Status updated successfully']);
-    } catch (Error $e) {
-      echo Application::$app->response->jsonEncodes(500, ['msg' => 'Failed to update status']);
+    } catch (Exception $e) {
+      echo Application::$app->response->jsonEncodes(500, ['msg' => $e->getMessage()]);
     }
   }
 }

@@ -16,26 +16,26 @@
   <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
   <main>
     <div class="card-title-container">
-      <h1 class="card-title">Apply to Tokopedia</h1>
+      <h1 class="card-title">Apply to <?php echo $this->data['company_name'] ?></h1>
     </div>
     <div class="card">
-      <form action="/" method="post">
+      <form action="/lowongan/<?php echo $this->data['lowongan_id'] ?>/apply" method="post" enctype="multipart/form-data">
         <div class="input-container">
-          <label for="name" class="input-label">Name*</label>
-          <input type="text" id="name" name="name" disabled value="Adril Putra Merin" class="text-input">
+          <label for="name" class="input-label">Name <span class="red-star">*</span></label>
+          <input type="text" id="name" name="name" disabled value="<?php echo $this->data['name'] ?>" class="text-input">
         </div>
         <div class="input-container">
-          <label for="email" class="input-label">Email*</label>
-          <input type="text" id="email" name="email" disabled value="adrilbless37@gmail.com" class="text-input">
+          <label for="email" class="input-label">Email <span class="red-star">*</span></label>
+          <input type="text" id="email" name="email" disabled value="<?php echo $this->data['email'] ?>" class="text-input">
         </div>
         <div class="file-input-container">
-          <label class="upload-label" for="pdf_input">Curriculum Vitae (CV)*</label>
-          <input class="file-input" aria-describedby="pdf_input_help" id="pdf_input" type="file" accept=".pdf">
+          <label class="upload-label" for="pdf_input">Curriculum Vitae (CV) <span class="red-star">*</span></label>
+          <input class="file-input" aria-describedby="pdf_input_help" id="pdf_input" name="pdf_input" type="file" accept=".pdf" required>
           <p class="file-input-help" id="pdf_input_help">PDF only</p>
         </div>
         <div class="file-input-container">
           <label class="upload-label" for="video_input">Introduction Video</label>
-          <input class="file-input" aria-describedby="video_input_help" id="video_input" type="file" accept=".mp4">
+          <input class="file-input" aria-describedby="video_input_help" id="video_input" name="video_input" type="file" accept=".mp4">
           <p class="file-input-help" id="file_input_help">MP4 only</p>
         </div>
         <div class="btn-container">
