@@ -88,7 +88,7 @@
   }
 }
 
-.btn {
+.navbar-btn {
   background: #0a66c2;
   color: white;
   font-size: 14px;
@@ -103,11 +103,11 @@
   transition: 0.3s ease;
 }
 
-.btn:hover {
+.navbar-btn:hover {
   background: #4b85be;
 }
 
-.btn-container {
+.navbar-btn-container {
   min-height: 52px;
   display: flex;
   align-items: center;
@@ -164,6 +164,11 @@
   padding-right: 12px;
   /* text-align: left; */
   font-size: 12px;
+  transition: 0.2s ease-in-out;
+}
+
+.sign-out:hover {
+  color: black;
 }
 
 @media (max-width: 640px) {
@@ -178,4 +183,15 @@
   border-radius: 999px;
   border: 1px solid #0a66c2;
   color: #0a66c2;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.profile-card-view:hover {
+  border: 1px solid #063564;
+  color: #063564;
+}
+
+#profile-toggle {
+  position: relative;
 }

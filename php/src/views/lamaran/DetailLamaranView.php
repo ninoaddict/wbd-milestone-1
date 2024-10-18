@@ -20,29 +20,29 @@
       <div class="card-container">
         <div class="card-detail">
           <h1 class="card-detail-name">
-            <?php echo $this->data['nama'] ?>
+            <?php echo $data['nama'] ?>
           </h1>
         </div>
         <div class="card-detail-info">
           <h2 class="card-detail-email">
-            Email: <?php echo $this->data['email'] ?>
+            Email: <?php echo $data['email'] ?>
           </h2>
           <h2 class="card-detail-email">
-            ID Lamaran: <?php echo $this->data['lamaran_id'] ?>
+            ID Lamaran: <?php echo $data['lamaran_id'] ?>
           </h2>
         </div>
         <form id="update-status-form">
           <div class="card-status">
             <label for="status" class="status-label">Status</label>
-            <select name="status" id="status" class="option-select" <?php if ($this->data['status'] !== 'waiting')
+            <select name="status" id="status" class="option-select" <?php if ($data['status'] !== 'waiting')
               echo 'disabled' ?>>
-                <option value="waiting" <?php if ($this->data['status'] == 'waiting')
+                <option value="waiting" <?php if ($data['status'] == 'waiting')
               echo 'selected="selected"' ?>>Waiting
                 </option>
-                <option value="accepted" <?php if ($this->data['status'] == 'accepted')
+                <option value="accepted" <?php if ($data['status'] == 'accepted')
               echo 'selected="selected"' ?>>
                   Accepted</option>
-                <option value="rejected" <?php if ($this->data['status'] == 'rejected')
+                <option value="rejected" <?php if ($data['status'] == 'rejected')
               echo 'selected="selected"' ?>>
                   Rejected</option>
               </select>
@@ -53,14 +53,14 @@
               </div>
               <div id="editor">
                 <?php
-            if (!empty($this->data['status_reason'])) {
-              echo html_entity_decode($this->data['status_reason']);
+            if (!empty($data['status_reason'])) {
+              echo html_entity_decode($data['status_reason']);
             }
             ?>
             </div>
           </div>
           <div class="save-btn-container">
-            <button class="save-btn" type="submit" id="save-btn" <?php if ($this->data['status'] !== 'waiting')
+            <button class="save-btn" type="submit" id="save-btn" <?php if ($data['status'] !== 'waiting')
               echo 'disabled' ?>>
                 Save
               </button>
@@ -73,10 +73,10 @@
         <div class="resume-container">
           <h1 class="resume-title">Resume</h1>
         </div>
-        <embed src="<?php echo $this->data['cv_path'] ?>" type="application/pdf" width="100%" class="pdf-viewer" />
+        <embed src="<?php echo $data['cv_path'] ?>" type="application/pdf" width="100%" class="pdf-viewer" />
     </div>
 
-    <?php if (!empty($this->data['video_path'])): ?>
+    <?php if (!empty($data['video_path'])): ?>
       <div class="card info-card resume-card">
         <div class="resume-container">
           <h1 class="resume-title">Video Perkenalan</h1>
@@ -106,7 +106,7 @@
       }
     });
 
-    <?php if ($this->data['status'] !== 'waiting')
+    <?php if ($data['status'] !== 'waiting')
       echo 'quill.enable(false)' ?>
 
       const updateStatusForm = document.getElementById('update-status-form');
@@ -121,14 +121,14 @@
         formData.append('status_reason', statusReason);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/lamaran/<?php echo $this->data['lamaran_id'] ?>', true);
+        xhr.open('POST', '/lamaran/<?php echo $data['lamaran_id'] ?>', true);
         xhr.onload = function () {
           console.log('masuk sini');
           if (xhr.status === 200) {
             location.reload();
           } else {
             const res = JSON.parse(xhr.responseText);
-            console.log(res.msg);
+            console.log(res.error_msg);
           }
         }
 

@@ -17,6 +17,7 @@ class UserController extends Controller
   {
     $this->userModel = new UserModel();
     $this->sessionManager = SessionManager::getInstance();
+    $this->extractMessage();
   }
 
   public function loginPage()
@@ -27,16 +28,6 @@ class UserController extends Controller
     }
     $path = __DIR__ . '/../views/auth/LoginView.php';
     $this->render($path);
-  }
-
-  public function loginPageWithError($data)
-  {
-    if ($this->sessionManager->isLoggedIn()) {
-      Application::$app->response->redirect("/");
-      return;
-    }
-    $path = __DIR__ . '/../views/auth/LoginView.php';
-    $this->render($path, $data);
   }
 
   public function registerPage()
@@ -52,7 +43,7 @@ class UserController extends Controller
   public function login(Request $request)
   {
     if ($this->sessionManager->isLoggedIn()) {
-      echo Application::$app->response->jsonEncodes(500, ['msg' => 'User has logged in']);
+      echo Application::$app->response->jsonEncodes(400, ['error_msg' => 'User has logged in']);
       return;
     }
     $body = $request->getBody();
@@ -61,10 +52,11 @@ class UserController extends Controller
     $valid = $this->userModel->authenticate($email, $password);
     if ($valid) {
       $this->sessionManager->login($valid['email'], $valid['nama'], $valid['role'], $valid['user_id']);
+      $this->setSuccessMessage('Successfully sign in!');
       Application::$app->response->redirect('/');
     } else {
-      // Application::$app->response->redirect('/login');
-      $this->loginPageWithError(['message'=>'User not found']);
+      $this->setErrorMessage('Wrong email or password!');
+      Application::$app->response->redirect('/login');
     }
   }
 
@@ -92,6 +84,7 @@ class UserController extends Controller
       }
 
       $this->sessionManager->login($email, $name, $currType, $user_id);
+      $this->setSuccessMessage('Successfully sign in!');
     } catch (Exception $e) {
       echo Application::$app->response->jsonEncodes(400, ['message' => 'User already exists']);
     }

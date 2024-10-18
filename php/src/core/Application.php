@@ -21,7 +21,7 @@ class Application {
     try {
       $this->router->resolve();
     } catch (Exception $e) {
-      echo $this->response->jsonEncodes(500, ['message' => $e->getMessage()]);  
+      echo $this->response->jsonEncodes($e->getCode() === 0 ? 500 : $e->getCode(), ['message' => $e->getMessage()]);  
     }
   }
 }

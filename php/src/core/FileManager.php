@@ -41,7 +41,7 @@ class FileManager {
 
     $success = move_uploaded_file($img, $file_path);
     if (!$success) {
-      throw new Exception('Internal Server Error : Failed to Upload Image');
+      throw new Exception('Failed to Upload Image', 500);
     }
     return $file_path;
   }
@@ -70,7 +70,7 @@ class FileManager {
 
     $success = move_uploaded_file($pdf, $file_path);
     if (!$success) {
-      throw new Exception('Internal Server Error : Failed to Upload Image');
+      throw new Exception('Failed to Upload Image', 500);
     }
     return $file_path;
   }

@@ -19,7 +19,7 @@ class LamaranModel {
 
   public function getLamaranById(int $lamaran_id) {
     if (empty($lamaran_id)) {
-      throw new Exception("Lamaran id can't be empty");
+      throw new Exception("Lamaran id can't be empty", 400);
     }
     $sql = 'SELECT * FROM lamaran WHERE lamaran_id = :lamaran_id';
     $stmt = $this->db->prepare($sql);
@@ -30,7 +30,7 @@ class LamaranModel {
 
   public function getLowonganById(int $lowongan_id) {
     if (empty($lowongan_id)) {
-      throw new Exception("Lowongan ID can't be empty");
+      throw new Exception("Lowongan ID can't be empty", 400);
     }
     $sql = 'SELECT * FROM lowongan WHERE lowongan_id = :lowongan_id';
     $stmt = $this->db->prepare($sql);
@@ -41,7 +41,7 @@ class LamaranModel {
  
   public function addLamaran(int $user_id, int $lowongan_id, string $cv_path, $video_path) {
     if (empty($user_id) || empty($lowongan_id) || empty($cv_path)) {
-      throw new Exception("Required fields can't be empty");
+      throw new Exception("Required fields can't be empty", 400);
     }
     $sql = 'INSERT INTO lamaran(user_id, lowongan_id, cv_path, video_path) VALUES (:user_id, :lowongan_id, :cv_path, :video_path) RETURNING lamaran_id';
     $statement = $this->db->prepare($sql);
@@ -53,13 +53,13 @@ class LamaranModel {
       $this->db->execute($statement);
       return $this->db->fetchColumn($statement);
     } catch (Exception $e) {
-      throw new Exception('Failed to add lamaran');
+      throw new Exception('Failed to add lamaran', 500);
     }
   }
 
   public function updateStatusLamaran(int $lamaran_id, string $new_status, $status_reason) {
     if (empty($lamaran_id) || empty($new_status)) {
-      throw new Exception("Required fields can't be empty");
+      throw new Exception("Required fields can't be empty", 400);
     }
     $sql = "UPDATE lamaran SET status = :new_status, status_reason = :status_reason WHERE lamaran_id = :lamaran_id RETURNING lamaran_id";
     $statement = $this->db->prepare($sql);
@@ -88,7 +88,7 @@ class LamaranModel {
 
   public function getLamaranDataUser(int $lowongan_id, int $user_id) {
     if (empty($lowongan_id) || empty($user_id)) {
-      throw new Exception("Required fields can't be empty");
+      throw new Exception("Required fields can't be empty", 400);
     }
 
     $sql = 'SELECT * FROM lamaran 
@@ -103,7 +103,7 @@ class LamaranModel {
 
   public function getLamaranData(int $lamaran_id, int $company_id) {
     if (empty($lamaran_id) || empty($company_id)) {
-      throw new Exception("Required fields can't be empty");
+      throw new Exception("Required fields can't be empty", 400);
     }
     
     $sql = 'SELECT lamaran_id, users.user_id, lam.lowongan_id, email, nama, cv_path, video_path, status, status_reason
@@ -122,7 +122,7 @@ class LamaranModel {
 
   public function getCompanyName(int $lowongan_id) {
     if (empty($lowongan_id)) {
-      throw new Exception("Required fields can't be empty");
+      throw new Exception("Required fields can't be empty", 400);
     }
 
     $sql = 'SELECT company_id FROM lowongan WHERE lowongan_id = :lowongan_id';

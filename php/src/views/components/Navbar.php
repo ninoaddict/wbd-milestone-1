@@ -53,7 +53,7 @@ $currRole = $_SESSION['role'] ?? 'guest';
               </li>
           <?php endif; ?>
           <li id="profile-toggle">
-            <div class="global-nav-nav-link">
+            <div class="global-nav-nav-link" id="profile-toggle-icon">
               <div>
                 <img src="/public/images/user.png" alt="" width="24" height="24">
               </div>
@@ -64,39 +64,39 @@ $currRole = $_SESSION['role'] ?? 'guest';
                     d="M81.8457,25.3876a6.0239,6.0239,0,0,0-8.45.7676L48,56.6257l-25.396-30.47a5.999,5.999,0,1,0-9.2114,7.6879L43.3943,69.8452a5.9969,5.9969,0,0,0,9.2114,0L82.6074,33.8431A6.0076,6.0076,0,0,0,81.8457,25.3876Z" />
                 </svg>
               </span>
-              <div class="profile-card hidden" id="profile-card">
-                <div class="info-section">
-                  <span class="info-section-name">
-                    <?php echo $_SESSION['nama'] ?>
-                  </span>
-                  <span class="info-section-email">
-                    <?php echo $_SESSION['email'] ?>
-                  </span>
-                  <?php if ($currRole === 'company'):?>
-                    <a class="profile-card-view" href="/profile">
+            </div>
+            <div class="profile-card hidden" id="profile-card">
+              <div class="info-section">
+                <span class="info-section-name">
+                  <?php echo $_SESSION['nama'] ?>
+                </span>
+                <span class="info-section-email">
+                  <?php echo $_SESSION['email'] ?>
+                </span>
+                <?php if ($currRole === 'company'): ?>
+                  <a class="profile-card-view" href="/profile">
                     View Profile
-                    </a>
-                  <?php endif; ?>
-                </div>
-                <div class = "sign-out">
-                  <form action="/logout" method="post">
-                    <button type="submit">Sign Out</button>
-                  </form>
-                </div>
+                  </a>
+                <?php endif; ?>
+              </div>
+              <div class="sign-out">
+                <form action="/logout" method="post">
+                  <button type="submit">Sign Out</button>
+                </form>
               </div>
             </div>
           </li>
         <?php else: ?>
           <li>
-            <div class="btn-container">
-              <div class="btn">
+            <div class="navbar-btn-container">
+              <div class="navbar-btn">
                 <a href="/login">Sign in</a>
               </div>
             </div>
           </li>
           <li>
-            <div class="btn-container">
-              <div class="btn">
+            <div class="navbar-btn-container">
+              <div class="navbar-btn">
                 <a href="/register">Register</a>
               </div>
             </div>

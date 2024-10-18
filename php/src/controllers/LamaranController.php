@@ -112,7 +112,7 @@ class LamaranController extends Controller
   {
     try {
       if (!$this->sessionManager->isLoggedIn() || !$this->sessionManager->isCompany()) {
-        echo Application::$app->response->jsonEncodes(500, ['msg' => 'User is not authorized']);
+        echo Application::$app->response->jsonEncodes(500, ['error_msg' => 'User is not authorized']);
         return;
       }
       $lamaran_id = $request->getParams()[0];
@@ -120,7 +120,7 @@ class LamaranController extends Controller
       $authorized = $this->lamaranModel->isCompanyAuthorized($lamaran_id, $company_id);
 
       if (!$authorized) {
-        echo Application::$app->response->jsonEncodes(500, ['msg' => 'User is not authorized']);
+        echo Application::$app->response->jsonEncodes(500, ['error_msg' => 'User is not authorized']);
         return;
       }
 
@@ -129,9 +129,9 @@ class LamaranController extends Controller
       $status_reason = $body['status_reason'];
 
       $this->lamaranModel->updateStatusLamaran($lamaran_id, $new_status, $status_reason);
-      echo Application::$app->response->jsonEncodes(200, ['msg' => 'Status updated successfully']);
+      echo Application::$app->response->jsonEncodes(200, ['error_msg' => 'Status updated successfully']);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(500, ['msg' => $e->getMessage()]);
+      echo Application::$app->response->jsonEncodes(500, ['error_msg' => $e->getMessage()]);
     }
   }
 }

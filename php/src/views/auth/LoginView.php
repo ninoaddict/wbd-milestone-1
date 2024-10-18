@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/login.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
 
   <title>Login - Verlinkt</title>
 </head>
@@ -89,6 +90,16 @@
       <a href="/register" class="link">Join now</a>
     </div>
   </main>
+  <ul class="notifications"></ul>
 </body>
+
+<script src="/public/js/toast.js" defer></script>
+<?php if (isset($errorMessage)): ?>
+  <script defer>
+    window.addEventListener('load', (event) => {
+      createToast('error', '<?php echo $errorMessage ?>')
+    });
+  </script>
+<?php endif; ?>
 
 </html>

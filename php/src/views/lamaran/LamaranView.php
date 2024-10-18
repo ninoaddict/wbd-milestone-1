@@ -16,17 +16,17 @@
   <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
   <main>
     <div class="card-title-container">
-      <h1 class="card-title">Apply to <?php echo $this->data['company_name'] ?></h1>
+      <h1 class="card-title">Apply to <?php echo $data['company_name'] ?></h1>
     </div>
     <div class="card">
-      <form action="/lowongan/<?php echo $this->data['lowongan_id'] ?>/apply" method="post" enctype="multipart/form-data">
+      <form action="/lowongan/<?php echo $data['lowongan_id'] ?>/apply" method="post" enctype="multipart/form-data">
         <div class="input-container">
           <label for="name" class="input-label">Name <span class="red-star">*</span></label>
-          <input type="text" id="name" name="name" disabled value="<?php echo $this->data['name'] ?>" class="text-input">
+          <input type="text" id="name" name="name" disabled value="<?php echo $data['name'] ?>" class="text-input">
         </div>
         <div class="input-container">
           <label for="email" class="input-label">Email <span class="red-star">*</span></label>
-          <input type="text" id="email" name="email" disabled value="<?php echo $this->data['email'] ?>" class="text-input">
+          <input type="text" id="email" name="email" disabled value="<?php echo $data['email'] ?>" class="text-input">
         </div>
         <div class="file-input-container">
           <label class="upload-label" for="pdf_input">Curriculum Vitae (CV) <span class="red-star">*</span></label>
