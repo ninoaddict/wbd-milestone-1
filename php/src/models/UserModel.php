@@ -20,7 +20,7 @@ class UserModel {
 
   public function getUserById(int $id) {
     if (!isset($id)) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("ID can't be empty", 400);
     }
 
     $sql = 'SELECT * FROM users WHERE user_id = :user_id';
@@ -28,7 +28,7 @@ class UserModel {
     $this->db->bind($stmt, ':user_id', $id);  
     $ok = $this->db->execute($stmt);
     if (!$ok) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Internal server error", 500);
     }
 
     $user = $this->db->fetch($stmt);
@@ -37,7 +37,7 @@ class UserModel {
 
   public function getUserByEmail(string $email) {
     if (!isset($email)) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Email can't be empty", 400);
     }
 
     $sql = 'SELECT * FROM users WHERE email = :email';
@@ -45,7 +45,7 @@ class UserModel {
     $this->db->bind($stmt, ':email', $email);  
     $ok = $this->db->execute($stmt);
     if (!$ok) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Internal server error", 500);
     }
 
     $user = $this->db->fetch($stmt);
@@ -54,9 +54,9 @@ class UserModel {
 
   public function addUser(string $email, string $hashedPassword, string $role, string $nama) {
     if (empty($email) || empty($hashedPassword) || empty($role) || empty($nama)) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Required fields can't be empty", 400);
     }
-    $sql = 'INSERT INTO users(email, password, role, nama) VALUES (:email, :password, :role, :nama)';
+    $sql = 'INSERT INTO users(email, password, role, nama) VALUES (:email, :password, :role, :nama) RETURNING user_id';
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ':email', $email);
     $this->db->bind($statement, ':password', $hashedPassword);
@@ -64,10 +64,28 @@ class UserModel {
     $this->db->bind($statement, ':nama', $nama);
     $ok = $this->db->execute($statement);
     if (!$ok) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Internal server error", 500);
     }
 
-    return $this->db->lastInsertId();
+    return $this->db->fetchColumn($statement);
+  }
+
+  public function addCompany(int $user_id, string $lokasi, string $about) {
+    if (empty($user_id) || empty($lokasi) || empty($about)) {
+      throw new Exception("Required fields can't be empty", 400);
+    }
+    $sql = 'INSERT INTO company_detail(user_id, lokasi, about) VALUES (:user_id, :lokasi, :about) RETURNING user_id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':user_id', $user_id);
+    $this->db->bind($statement, ':lokasi', $lokasi);
+    $this->db->bind($statement, ':about', $about);
+
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Internal server error", 500);
+    }
+
+    return $this->db->fetchColumn($statement);
   }
 
   public function authenticate(string $email, string $password) {
@@ -76,7 +94,7 @@ class UserModel {
     $this->db->bind($statement, ':email', $email);
     $ok = $this->db->execute($statement);
     if (!$ok) {
-      throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Internal server error", 500);
     } 
     $user = $statement->fetch();
     if ($user && password_verify($password, $user['password'])) {
