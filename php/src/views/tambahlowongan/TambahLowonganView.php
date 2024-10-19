@@ -28,7 +28,15 @@
                     </div>
                     <div class="form-structure">
                         <label for="requirements" class="input-name-style">Company Name</label>
-                        <input type="text" class="input-style" id="requirements"/>
+                        <select id="requirements" class="input-style">
+                            <?php 
+                                foreach($data as $name) {
+                                    echo <<<HTML
+                                        <option value={$name["nama"]}>{$name["nama"]}</option>
+                                    HTML;
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-flex-structure">

@@ -156,4 +156,15 @@ class LowonganModel {
     }
     return $data;
   }
+
+  public function queryCompanies() {
+    $sql = "SELECT nama FROM users WHERE role = 'company'";
+    $statement = $this->db->prepare($sql);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to delete query.");
+    }
+    $res = $this->db->fetchAll($statement);
+    return $res;
+  }
 }

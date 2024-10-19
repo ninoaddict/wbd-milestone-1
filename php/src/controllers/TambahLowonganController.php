@@ -18,7 +18,7 @@ class TambahLowonganController extends Controller {
 
   public function tambahLowonganPage(Request $request) {
     $path = __DIR__ . '/../views/tambahlowongan/TambahLowonganView.php';
-    $data = ["Volvo", "BMW", "Toyota"];
+    $data = $this->getCompanies();
     $this->render($path, $data);
   }
 
@@ -44,6 +44,15 @@ class TambahLowonganController extends Controller {
         $jobType, $status, $htmlContent
       );
       echo Application::$app->response->jsonEncodes(200, ['message' => 'Job posted successfully']);
+    } catch (Exception $e) {
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
+    }
+  }
+
+  public function getCompanies() {
+    try {
+      $data = $this->lowonganModel->queryCompanies();
+      return $data;
     } catch (Exception $e) {
       echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
     }
