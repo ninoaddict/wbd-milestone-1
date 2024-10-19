@@ -5,7 +5,7 @@ $currRole = $_SESSION['role'] ?? 'guest';
 
 <header id="global-nav" class="global-nav">
   <div class="global-nav-content">
-    <a href="/">
+    <a href="/" aria-label="Linkedin logo">
       <div class="global-nav-branding-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor"
           class="mercado-match" width="41" height="41" focusable="false">

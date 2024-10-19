@@ -26,7 +26,8 @@ class LamaranController extends Controller
   public function applyLowonganPage(Request $request)
   {
     if (!$this->sessionManager->isLoggedIn() || !$this->sessionManager->isJobSeeker()) {
-      Application::$app->response->redirect("/page-not-found");
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
       return;
     }
 
@@ -34,7 +35,8 @@ class LamaranController extends Controller
     $user_id = $this->sessionManager->getUserId();
 
     if (empty($this->lamaranModel->getLowonganById($lowongan_id)['lowongan_id'])) {
-      Application::$app->response->redirect("/page-not-found");
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
       return;
     }
 
@@ -91,7 +93,8 @@ class LamaranController extends Controller
   public function detailLamaranPage(Request $request)
   {
     if (!$this->sessionManager->isLoggedIn() || !$this->sessionManager->isCompany()) {
-      Application::$app->response->redirect("/page-not-found");
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
       return;
     }
 
@@ -100,7 +103,8 @@ class LamaranController extends Controller
     $lamaran = $this->lamaranModel->getLamaranData($lamaran_id, $company_id);
 
     if (!$lamaran) {
-      Application::$app->response->redirect("/page-not-found");
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
       return;
     }
 
