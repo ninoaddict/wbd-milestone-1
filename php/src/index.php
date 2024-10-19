@@ -25,6 +25,8 @@ $app->router->get('/detaillowongan/:id',handler: [DetailLowonganController::clas
 $app->router->post('/detaillowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
 $app->router->post('/detaillowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
 
+$app->router->get('/detaillowonganjs/:id',handler: [DetailLowonganController::class, 'detailLowonganJSeekerPage']);
+
 $app->router->get('/editlowongan/:id',handler: [EditLowonganController::class, 'editLowonganPage']);
 $app->router->post('/editlowongan',handler: [EditLowonganController::class, 'editLowongan']);
 

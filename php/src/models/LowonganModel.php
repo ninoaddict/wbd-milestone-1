@@ -40,7 +40,7 @@ class LowonganModel {
     }
   }
 
-  public function updateJob(string $position, string $company, string $loc_type, string $job_type, string $status, string $deskripsi) {
+  public function updateJob(string $position, string $company, string $loc_type, string $job_type, string $status, string $deskripsi, int $lowongan_id) {
     if (empty($position) || empty($loc_type) || empty($job_type) || empty($status)) {
         throw new Exception("Database error: Unable to execute query.");
       }
@@ -60,7 +60,8 @@ class LowonganModel {
                                 deskripsi = :deskripsi, 
                                 jenis_pekerjaan = :job_type, 
                                 jenis_lokasi = :loc_type, 
-                                is_open = :opened';
+                                is_open = :opened
+                            WHERE lowongan_id = :lowongan_id';
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ':company_id', $userId);
     $this->db->bind($statement, ':position', $position);
@@ -68,6 +69,7 @@ class LowonganModel {
     $this->db->bind($statement, ':job_type', $job_type);
     $this->db->bind($statement, ':loc_type', $loc_type);
     $this->db->bind($statement, ':opened', $opened);
+    $this->db->bind($statement, ':lowongan_id', $lowongan_id);
     $ok = $this->db->execute($statement);
     if (!$ok) {
     throw new Exception("Database error: Unable to execute query.");
@@ -132,5 +134,26 @@ class LowonganModel {
     if (!$ok) {
         throw new Exception("Database error: Unable to delete query.");
     }
+  }
+
+  public function queryLamaranById(int $id) {
+    $sql = 'SELECT lamaran_id, nama, status FROM lamaran JOIN users ON lamaran.user_id = users.user_id WHERE lowongan_id = :id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", $id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to delete query.");
+    }
+    $res = $this->db->fetchAll($statement);
+    $data = [];
+    foreach ($res as $row) {
+      $singular = [
+        'lamaran_id' => $row['lamaran_id'],
+        'nama' => $row['nama'],
+        'status' => $row['status']
+      ];
+      array_push($data, $singular);
+    }
+    return $data;
   }
 }

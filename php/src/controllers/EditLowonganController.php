@@ -43,13 +43,14 @@ class EditLowonganController extends Controller {
     $jobType = $body['jobType'];
     $status = $body['status'];
     $htmlContent = $body['htmlContent'];
+    $lowongan_id = $body['lowongan_id'];
 
     echo Application::$app->response->jsonEncodes(200, ['message' => html_entity_decode($htmlContent)]);
 
     try {
       $this->lowonganModel->updateJob(
         $position, $companyName, $location,
-        $jobType, $status, $htmlContent
+        $jobType, $status, $htmlContent, $lowongan_id
       );
       echo Application::$app->response->jsonEncodes(200, ['message' => 'Job posted successfully']);
     } catch (Exception $e) {

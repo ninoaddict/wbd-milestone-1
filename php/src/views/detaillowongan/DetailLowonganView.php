@@ -44,19 +44,25 @@
           <h1><b class="job-title">Job Takers</b></h1>
           <div class="scrollable-div">
             <!-- Add content here -->
-            <div class="container-person">
-              <div class="person-name">
-                Name: Patricio Estrello
-              </div>
-              <div class="status-and-details">
-                <div class="container-status">
-                  Status: Gay
-                </div>
-                <div class="details-link">
-                  <a href="../detaillamaran">See Details</a>
-                </div>
-              </div>
-            </div>
+            <?php 
+              foreach ($data['lamaran'] as $lamarans) {
+                echo <<<HTML
+                  <div class='container-person'>
+                    <div class='person-name'>
+                      Name: {$lamarans['nama']}
+                    </div>
+                    <div class='status-and-details'>
+                      <div class='container-status'>
+                        Status: {$lamarans['status']}
+                      </div>
+                      <div class='details-link'>
+                        <a href='../detaillamaran/{$lamarans["lamaran_id"]}'>See Details</a>
+                      </div>
+                    </div>
+                  </div>
+                HTML;
+              }
+            ?>
           </div>
         </section>
       </div>

@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append("jobType", jobType);
         formData.append("status", status);
         formData.append("htmlContent", htmlContent);
+        formData.append("lowongan_id", id);
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);

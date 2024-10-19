@@ -62,6 +62,17 @@
     padding: 15px;
 }
 
+.container-job-jsversion {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 50%;
+    padding: 15px;
+}
+
 .container-taker {
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(200, 200, 200);
@@ -73,8 +84,55 @@
     padding: 15px;
 }
 
+.container-attach {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 53%;
+    margin-left: 20px;
+    padding: 15px;
+    padding-bottom: 60px;
+    margin-bottom: 20px;
+}
+
 .job-title {
     font-size: 25px;
+}
+
+.attachment {
+    font-size: 25px;
+}
+
+#view-cv, #view-vid {
+    padding: 10px;
+    background-color: darkblue;
+    border-radius: 5px;
+    color: white;
+}
+
+#pdf-embed, #video-embed {
+    display: none;
+}
+
+#pdf-vid-show {
+    margin-top: 20px;
+}
+
+#pdf-styling {
+    border: 1px solid black;
+}
+
+#vid-styling {
+    border: 1px solid black;
+}
+
+#download {
+    color: white;
+    background-color: darkgreen;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .descript-title {
@@ -95,9 +153,13 @@ main {
     padding-top: 90px;
 }
 
-ol.req-num {
+ol {
     list-style-type: decimal;
     list-style-position: inside;
+}
+
+[data-list="bullet"] {
+    list-style-type: disc;
 }
 
 .actual-container {
