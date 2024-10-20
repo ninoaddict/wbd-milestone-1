@@ -96,15 +96,14 @@ function onSubmit(e) {
     if (xhr.status === 200) {
       window.location.replace('/');
     } else {
-      // handle gagal
+      // TODO: handle gagal
       const res = JSON.parse(xhr.responseText);
-      console.log(res.message);
+      createToast('error', res.message);
     }
   }
 
   xhr.onerror = function() {
-    // handle gagal
-    console.log('Something wrong');
+    createToast('error', 'Unexpected error occured');
   };
 
   xhr.send(formData);

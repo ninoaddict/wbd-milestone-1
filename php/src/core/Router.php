@@ -1,6 +1,7 @@
 <?php
 namespace app\core;
 
+use app\controllers\HomeController;
 use Exception;
 
 class Router {
@@ -56,6 +57,11 @@ class Router {
       $controller = new $handler[0];
       $handler[0] = $controller;
     }
+    return call_user_func($handler, $this->request);
+  }
+
+  public function handleNotFound() {
+    $handler = [new HomeController(), 'notFoundPage'];
     return call_user_func($handler, $this->request);
   }
 }
