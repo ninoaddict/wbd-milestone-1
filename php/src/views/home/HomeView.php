@@ -21,7 +21,7 @@
       <div class="home-container">
         <div class="home-layout">
           <div class="sidebar">
-            <form>
+            <form id="search-form">
               <div class="search-container">
                 <label class="icon-wrapper" for="query">
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -37,16 +37,16 @@
                     </g>
                   </svg>
                 </label>
-                <input type="text" class="search-input" name="query" id="query" placeholder="Title or Company">
+                <input type="text" class="search-input" name="query" id="query" placeholder="Title or Company" <?php if (!empty($data['query'])) echo 'value=' . $data['query'] ?>>
               </div>
               <div class="filter-container">
                 <div class="card mt">
                   <div class="filter-container">
                     <label class="filter-label">Job type</label>
                     <select name="job-type" id="job-type" data-placeholder="Select job type" multiple data-multi-select>
-                      <option value="full-time">Full-time</option>
-                      <option value="part-time">Part-time</option>
-                      <option value="internship">Internship</option>
+                      <option value="full-time" <?php if (!empty($data['jobType']) && in_array('full-time', $data['jobType'])) echo 'selected' ?>>Full-time</option>
+                      <option value="part-time" <?php if (!empty($data['jobType']) && in_array('part-time', $data['jobType'])) echo 'selected' ?>>Part-time</option>
+                      <option value="internship" <?php if (!empty($data['jobType']) && in_array('internship', $data['jobType'])) echo 'selected' ?>>Internship</option>
                     </select>
                   </div>
 
@@ -54,9 +54,9 @@
                     <p class="filter-label">Location type</p>
                     <select name="location-type" id="location-type" data-placeholder="Select location type" multiple
                       data-multi-select>
-                      <option value="on-site">On-site</option>
-                      <option value="hybrid">Hybrid</option>
-                      <option value="remote">Remote</option>
+                      <option value="on-site" <?php if (!empty($data['locType']) && in_array('on-site', $data['locType'])) echo 'selected' ?>>On-site</option>
+                      <option value="hybrid" <?php if (!empty($data['locType']) && in_array('hybrid', $data['locType'])) echo 'selected' ?>>Hybrid</option>
+                      <option value="remote" <?php if (!empty($data['locType']) && in_array('remote', $data['locType'])) echo 'selected' ?>>Remote</option>
                     </select>
                   </div>
 
@@ -70,32 +70,33 @@
                     </div>
                   </div>
 
-                  <div class="btn-container">
+                  <!-- <div class="btn-container">
                     <button class="filter-btn">
                       Filter
                     </button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </form>
           </div>
           <main class="main">
-            <div class="card job-card">
-              <a href="/lowongan/123" class="job-title-link">
-                <h3 class="job-title">Software Engineer</h3>
-              </a>
-              <div class="locntype">
-                <p class="job-location">Google ─ Mountain View, CA (On-site)</p>
+            <?php foreach($data['jobs'] as $job):?>
+              <div class="card job-card">
+                <a href="/lowongan/<?php echo $job['lowongan_id'] ?>" class="job-title-link">
+                  <h3 class="job-title"><?php echo $job['posisi'] ?></h3>
+                </a>
+                <div class="locntype">
+                  <p class="job-location"><?php echo $job['nama'] ?> ─ <?php echo ucfirst($job['jenis_lokasi']) ?></p>
+                </div>
+                <div class="datentype">
+                  <p class="post-time"><?php echo ucfirst($job['jenis_pekerjaan']) ?> | <?php echo $job['days_before'] ?> days ago</p>
+                </div>
               </div>
-              <div class="datentype">
-                <p class="post-time">Full-time | 2 days ago</p>
-              </div>
-            </div>
-
+            <?php endforeach; ?>
             <nav class="pagination-nav">
               <ul class="pagination">
                 <li>
-                  <a href="#" class="page-link prev">
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev">
                     <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                       viewBox="0 0 6 10">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -103,13 +104,13 @@
                     </svg>
                   </a>
                 </li>
-                <li><a href="#" class="page-link">1</a></li>
-                <li><a href="#" class="page-link">2</a></li>
-                <li><a href="#" class="page-link active" aria-current="page">3</a></li>
-                <li><a href="#" class="page-link">4</a></li>
-                <li><a href="#" class="page-link">5</a></li>
+                <?php for ($x = $data['lowerPage']; $x <= $data['upperPage']; $x++) : ?>
+                  <li>
+                    <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo $x ?>" class="page-link<?php if($x == $data['page']) echo ' active'; ?>"><?php echo $x ?></a>
+                  </li>
+                <?php endfor; ?>
                 <li>
-                  <a href="#" class="page-link next">
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo min($data['maxPage'], $data['page'] + 1) ?>"class="page-link next">
                     <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                       viewBox="0 0 6 10">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -137,50 +138,6 @@
   </script>
 <?php endif; ?>
 <script src="/public/js/multiselect.js"></script>
-<script>
-  const jobType = document.getElementById('job-type');
-  const locationType = document.getElementById('location-type');
-
-  function debounce(func, delay) {
-    let debounceTimer;
-    return function (...args) {
-      const context = this;
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => func.apply(context, args), delay);
-    };
-  }
-
-  function performSearch(event) {
-    const query = event.target.value;
-    console.log(query);
-  }
-
-  function performFilter(event) {
-    console.log(multiSelectJob.selectedValues);
-    // console.log(multiSelectLocation.selectedValues);
-  }
-
-  const debouncedSearch = debounce(performSearch, 500);
-  const debounceFilter = debounce(performFilter, 1000);
-
-  options = {
-    onChange: debounceFilter,
-  };
-
-  const multiSelectJob = new MultiSelect(jobType, options);
-  const multiSelectLocation = new MultiSelect(locationType, options);
-
-  const searchInput = document.getElementById('query');
-  searchInput.addEventListener('input', debouncedSearch);
-
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', function () {
-      const link = card.querySelector('a.job-title-link');
-      if (link) {
-        window.location.href = link.href;
-      }
-    });
-  });
-</script>
+<script src="/public/js/home.js"></script>
 
 </html>

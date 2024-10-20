@@ -18,3 +18,4 @@ require_once __DIR__ . '/controllers/LamaranController.php';
 
 require_once __DIR__ . '/models/UserModel.php';
 require_once __DIR__ . '/models/LamaranModel.php';
+require_once __DIR__ . '/models/LowonganModel.php';
