@@ -64,8 +64,8 @@
                     <p for="sort" class="sort-label">Sort by</p>
                     <div class="sort-input-container">
                       <select name="sort" id="sort" class="sort-select">
-                        <option value="asc" class="sort-option">Oldest upload</option>
-                        <option value="desc" class="sort-option" selected="selected">Latest upload</option>
+                        <option value="asc" class="sort-option" <?php if (!empty($data['order']) && $data['order'] == 'asc') echo 'selected' ?>>Oldest upload</option>
+                        <option value="desc" class="sort-option" <?php if (empty($data['order']) || $data['order'] == 'desc') echo 'selected' ?>>Latest upload</option>
                       </select>
                     </div>
                   </div>

@@ -69,6 +69,9 @@ class DBconn {
 
   public function execute($statement, $params = []) {
     try {
+      if (empty($params)) {
+        return $statement->execute();
+      }
       return $statement->execute($params);
     } catch (PDOException $e) {
       throw new Exception("Execution failed: " . $e->getMessage(), 500);
