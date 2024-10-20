@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Homepage for job seeker">
+  <meta name="keywords" content="job, apply, vacancy, linkedin, verlinkt">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
@@ -61,7 +63,7 @@
                   </div>
 
                   <div class="sort-container">
-                    <p for="sort" class="sort-label">Sort by</p>
+                    <label for="sort" class="sort-label">Sort by</label>
                     <div class="sort-input-container">
                       <select name="sort" id="sort" class="sort-select">
                         <option value="asc" class="sort-option" <?php if (!empty($data['order']) && $data['order'] == 'asc') echo 'selected' ?>>Oldest upload</option>
@@ -69,12 +71,6 @@
                       </select>
                     </div>
                   </div>
-
-                  <!-- <div class="btn-container">
-                    <button class="filter-btn">
-                      Filter
-                    </button>
-                  </div> -->
                 </div>
               </div>
             </form>
@@ -96,7 +92,7 @@
             <nav class="pagination-nav">
               <ul class="pagination">
                 <li>
-                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev">
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev" aria-label="Previous page button">
                     <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                       viewBox="0 0 6 10">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -106,11 +102,11 @@
                 </li>
                 <?php for ($x = $data['lowerPage']; $x <= $data['upperPage']; $x++) : ?>
                   <li>
-                    <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo $x ?>" class="page-link<?php if($x == $data['page']) echo ' active'; ?>"><?php echo $x ?></a>
+                    <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo $x ?>" class="page-link<?php if($x == $data['page']) echo ' active'; ?>" aria-label="Numbered page button"><?php echo $x ?></a>
                   </li>
                 <?php endfor; ?>
                 <li>
-                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo min($data['maxPage'], $data['page'] + 1) ?>"class="page-link next">
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo min($data['maxPage'], $data['page'] + 1) ?>" class="page-link next" aria-label="Next page button">
                     <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                       viewBox="0 0 6 10">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
