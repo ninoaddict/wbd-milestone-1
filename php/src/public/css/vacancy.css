@@ -208,3 +208,19 @@ ol {
 .person-name {
     font-weight: 600;
 }
+
+.attachment-placement {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.embed-file-style {
+    background-color: rgb(94, 94, 94);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    width: 50%;
+    margin-bottom: 10px;
+}

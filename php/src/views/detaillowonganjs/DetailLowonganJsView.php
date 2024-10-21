@@ -17,19 +17,19 @@
     <div class="content-separator">
       <div class="actual-container">
         <section class="container-job-jsversion">
-          <h1><b class="job-title"><?= $data['posisi']?></b></h1>
+          <h1><b class="job-title"><?= $data['0']['posisi']?></b></h1>
           <h2 class="descript-title">Description:</h2>
           <h3 class="job-description">
-            <?= htmlspecialchars_decode($data['deskripsi'])?>
+            <?= htmlspecialchars_decode($data['0']['deskripsi'])?>
           </h3>
           <h2 class="job-requirement">Company:</h2>
-          <h3><?= $data['company_name']?></h3>
+          <h3><?= $data['0']['company_name']?></h3>
           <h2 class="job-requirement">Location:</h2>
-          <h3><?= $data['jenis_lokasi']?></h3>
+          <h3><?= $data['0']['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
-          <h3><h3><?= $data['jenis_pekerjaan']?></h3></h3>
+          <h3><h3><?= $data['0']['jenis_pekerjaan']?></h3></h3>
           <h2 class="job-requirement">Status:</h2>
-          <h3>Gay</h3>
+          <h3><?= $data['status']?></h3>
         </section>
         <section class="container-attach">
           <h1><b class="attachment">Attachments</b></h1>
@@ -55,10 +55,10 @@
       </div>
     </div>
     <div id="pdf-embed">
-      ../../storage/resume/RSA_13522110.pdf
+      <?= $data['cv_path']?>
     </div>
     <div id="video-embed">
-      ../../storage/video/vid_soviet.mp4
+    <?= $data['video_path']?>
     </div>
   </main>
   <script src="../../public/js/DetailLowonganJsVacancy.js"></script>

@@ -17,7 +17,7 @@
   <main>
     <div class="content-center">
         <div class="add-actual-container">
-            <form class="container-add-job">
+            <form class="container-add-job" id="uploadForm" enctype="multipart/form-data">
                 <div class="add-job-title">
                     Add Job
                 </div>
@@ -28,15 +28,7 @@
                     </div>
                     <div class="form-structure">
                         <label for="requirements" class="input-name-style">Company Name</label>
-                        <select id="requirements" class="input-style">
-                            <?php 
-                                foreach($data as $name) {
-                                    echo <<<HTML
-                                        <option value={$name["nama"]}>{$name["nama"]}</option>
-                                    HTML;
-                                }
-                            ?>
-                        </select>
+                        <div id="requirements" class="input-style"><?php echo $data?></div>
                     </div>
                 </div>
                 <div class="form-flex-structure">
@@ -66,13 +58,19 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-flex-structure">
+                    <div class="form-structure">
+                        <label for="attachment-upload" class="input-name-style">Attachments</label>
+                        <input type="file" accept="image/jpeg, image/jpg, image/png" multiple id="attachment-upload" name="files[]"/>
+                    </div>
+                </div>
                 <div class="form-flex-quill">
                     <label class="input-name-style">Description</label>
                     <div id="editor">
                     </div>
                 </div>
                 <div class="button-add-style">
-                    <button type="submit" id="form-submit" class="button-style">Submit</button>
+                    <button type="button" id="form-submit" class="button-style">Submit</button>
                 </div>
             </form>
         </div>

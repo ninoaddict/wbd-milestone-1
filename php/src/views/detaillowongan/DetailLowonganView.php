@@ -39,6 +39,24 @@
           <h3><?= $data['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
           <h3><h3><?= $data['jenis_pekerjaan']?></h3></h3>
+          <h2 class="job-requirement">Attachments:</h2>
+          <div class="attachment-placement">
+            <?php 
+              if (count($data['file_path']) > 0) {
+                $file_name = [];
+                $file_path = [];
+                foreach ($data['file_path'] as $files) {
+                  array_push($file_path, $files);
+                  array_push($file_name, substr($files,15));
+                }
+                for ($i = 0; $i < count($file_name); $i++) {
+                  echo <<<HTML
+                    <a class="embed-file-style" href="$file_path[$i]">{$file_name[$i]}</a>
+                  HTML;
+                }
+              }
+            ?>
+          </div>
         </section>
         <section class="container-taker">
           <h1><b class="job-title">Job Takers</b></h1>
@@ -56,7 +74,7 @@
                         Status: {$lamarans['status']}
                       </div>
                       <div class='details-link'>
-                        <a href='../detaillamaran/{$lamarans["lamaran_id"]}'>See Details</a>
+                        <a href='../lamaran/{$lamarans["lamaran_id"]}'>See Details</a>
                       </div>
                     </div>
                   </div>

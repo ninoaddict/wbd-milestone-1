@@ -6,28 +6,35 @@ use app\models\LowonganModel;
 use app\core\Controller;
 use app\core\Request;
 use app\core\SessionManager;
+use app\core\FileManager;
 use Exception;
 
 class TambahLowonganController extends Controller {
   private LowonganModel $lowonganModel;
   private SessionManager $sessionManager;
+  private FileManager $fileManager;
   public function __construct() {
     $this->sessionManager = SessionManager::getInstance();
     $this->lowonganModel = new LowonganModel();
+    $this->fileManager = FileManager::getInstance();
   }
 
   public function tambahLowonganPage(Request $request) {
+    if (!$this->sessionManager->isLoggedIn()) {
+      Application::$app->response->redirect("/login");
+      return;
+    }
+    if ($this->sessionManager->isJobSeeker()) {
+      Application::$app->response->redirect("/");
+      return;
+    }
     $path = __DIR__ . '/../views/tambahlowongan/TambahLowonganView.php';
-    $data = $this->getCompanies();
+    $params = $this->sessionManager->getUserId();
+    $data = $this->getCompanies($params);
     $this->render($path, $data);
   }
 
   public function tambahLowongan(Request $request) : void {
-    echo Application::$app->response->jsonEncodes(200, ['message' => 'Berhasil']);
-    if ($this->sessionManager->isLoggedIn()) {
-      echo Application::$app->response->jsonEncodes(500, ['message' => 'User has logged in']);
-      return;
-    }
     $body = $request->getBody();
     $position = $body['position'];
     $companyName = $body['companyName'];
@@ -35,23 +42,32 @@ class TambahLowonganController extends Controller {
     $jobType = $body['jobType'];
     $status = $body['status'];
     $htmlContent = $body['htmlContent'];
+    $files = $_FILES['files']['tmp_name'];
+    // $fileCount = count($_FILES['files']['name']);
+    // print_r($_FILES['files']['name']);
 
-    echo Application::$app->response->jsonEncodes(200, ['message' => html_entity_decode($htmlContent)]);
+    $file_names = [];
+    if (isset($_FILES['files'])) {
+      foreach ($_FILES['files']['tmp_name'] as $key => $tmpName) {
+          array_push($file_names, substr($this->fileManager->saveImage($tmpName),21));
+      }
+    }
 
     try {
-      $this->lowonganModel->insertJob(
+      $lastId = $this->lowonganModel->insertJob(
         $position, $companyName, $location,
         $jobType, $status, $htmlContent
       );
-      echo Application::$app->response->jsonEncodes(200, ['message' => 'Job posted successfully']);
+      $this->lowonganModel->insertAttachment($lastId, $file_names);
+      echo Application::$app->response->jsonEncodes(200, ['message' => "/detaillowongan/$lastId"]);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
+      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getTrace()]);
     }
   }
 
-  public function getCompanies() {
+  public function getCompanies($params) {
     try {
-      $data = $this->lowonganModel->queryCompanies();
+      $data = $this->lowonganModel->queryCompanies($params);
       return $data;
     } catch (Exception $e) {
       echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);

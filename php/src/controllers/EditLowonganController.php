@@ -4,15 +4,25 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Application;
 use app\models\LowonganModel;
+use app\core\SessionManager;
+use app\core\FileManager;
 use Exception;
 
 class EditLowonganController extends Controller {
   private LowonganModel $lowonganModel;
+  private SessionManager $sessionManager;
+  private FileManager $fileManager;
   public function __construct() {
     $this->lowonganModel = new LowonganModel();
+    $this->sessionManager = SessionManager::getInstance();
+    $this->fileManager = FileManager::getInstance();
   }
 
   public function editLowonganPage(Request $request) {
+    if (!$this->sessionManager->isLoggedIn()) {
+      Application::$app->response->redirect("/login");
+      return;
+    }
     $params = $request->getParams()[0];
     $data = $this->getDetailsbyId($params);
     if ($data['is_open']) {
@@ -34,8 +44,6 @@ class EditLowonganController extends Controller {
   }
 
   public function editLowongan(Request $request) : void {
-    echo Application::$app->response->jsonEncodes(200, ['message' => 'Berhasil']);
-
     $body = $request->getBody();
     $position = $body['position'];
     $companyName = $body['companyName'];
@@ -45,16 +53,34 @@ class EditLowonganController extends Controller {
     $htmlContent = $body['htmlContent'];
     $lowongan_id = $body['lowongan_id'];
 
-    echo Application::$app->response->jsonEncodes(200, ['message' => html_entity_decode($htmlContent)]);
+    $files = $_FILES['files']['tmp_name'];
+    // $fileCount = count($_FILES['files']['name']);
+    // print_r($_FILES['files']['name']);
+
+    $files_delete = $this->lowonganModel->queryFilePathByLowonganId($lowongan_id);
+    $this->lowonganModel->queryDeleteAttachmentById($lowongan_id);
+    for ($i = 0; $i < count($files_delete); $i++) {
+      $files_delete[$i] = "/var/www/html/storage/..".$files_delete[$i];
+      print_r($files_delete[$i]);
+      $this->fileManager->delete($files_delete[$i]);
+    }
+
+    $file_names = [];
+    if (isset($_FILES['files'])) {
+      foreach ($_FILES['files']['tmp_name'] as $key => $tmpName) {
+          array_push($file_names, substr($this->fileManager->saveImage($tmpName),21));
+      }
+    }
 
     try {
       $this->lowonganModel->updateJob(
         $position, $companyName, $location,
         $jobType, $status, $htmlContent, $lowongan_id
       );
-      echo Application::$app->response->jsonEncodes(200, ['message' => 'Job posted successfully']);
+      $this->lowonganModel->insertAttachment($lowongan_id, $file_names);
+      echo Application::$app->response->jsonEncodes(200, ['message' => "/detaillowongan/$lowongan_id"]);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
+      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getTrace()]);
     }
   }
 }

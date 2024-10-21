@@ -7,13 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
     buttone.addEventListener('click', function() {
         buttone.disabled = true;
         const jobName = document.getElementById('job-name').value;
-        const companyName = document.getElementById('requirements').value;
+        const companyName = document.getElementById('requirements').textContent;
         const locationEl = document.getElementById('location');
         const location = locationEl.options[locationEl.selectedIndex].value;
         const jobTypeEl = document.getElementById('job-type');
         const statusEl = document.getElementById('status');
         const status = statusEl.options[statusEl.selectedIndex].value;
         const jobType = jobTypeEl.options[jobTypeEl.selectedIndex].value;
+        const files = document.getElementById('attachment-upload');
         var htmlContent = quill.root.innerHTML;
 
         if (!(jobName && location && status && jobType && htmlContent)) {
@@ -21,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
             buttone.disabled = false;
             return;
         }
+
+        console.log(files);
+
+        const selectedFiles = files.files;
 
         var formData = new FormData();
         formData.append("position", jobName);
@@ -31,9 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append("htmlContent", htmlContent);
         formData.append("lowongan_id", id);
 
+        if (selectedFiles.length > 0) {
+            for (let i = 0; i < selectedFiles.length; i++) {
+                console.log(selectedFiles[i]);
+                formData.append("files[]", selectedFiles[i]);
+            }
+        }
+
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
+
+        console.log(formData.getAll('files[]'));
 
         let xhr = new XMLHttpRequest();
         xhr.open('POST','/editlowongan', true);

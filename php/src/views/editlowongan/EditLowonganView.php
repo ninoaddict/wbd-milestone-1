@@ -17,7 +17,7 @@
   <main>
     <div class="content-separator">
         <div class="add-actual-container">
-            <form class="container-add-job">
+            <form class="container-add-job" id="uploadForm" enctype="multipart/form-data">
                 <div class="add-job-title">
                     Edit Job
                 </div>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-structure">
                         <label for="requirements" class="input-name-style">Company Name</label>
-                        <input type="text" class="input-style" id="requirements" value="<?= $data['company_name']?>"/>
+                        <div class="input-style" id="requirements"><?= $data['company_name']?></div>
                     </div>
                 </div>
                 <div class="form-flex-structure">
@@ -56,6 +56,12 @@
                             <option value="Open" <?php if ($data['is_open'] == "Open") echo "selected"?>>Open</option>
                             <option value="Closed" <?php if ($data['is_open'] == "Close") echo "selected"?>>Closed</option>
                         </select>
+                    </div>
+                </div>
+                <div class="form-flex-structure">
+                    <div class="form-structure">
+                        <label for="attachment-upload" class="input-name-style">Attachments</label>
+                        <input type="file" accept="image/jpg, image/jpeg, image/png" multiple id="attachment-upload" name="files[]"/>
                     </div>
                 </div>
                 <div class="form-flex-quill">

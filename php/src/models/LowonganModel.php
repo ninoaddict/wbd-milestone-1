@@ -38,6 +38,7 @@ class LowonganModel {
     if (!$ok) {
     throw new Exception("Database error: Unable to execute query.");
     }
+    return $this->db->lastInsertId();
   }
 
   public function updateJob(string $position, string $company, string $loc_type, string $job_type, string $status, string $deskripsi, int $lowongan_id) {
@@ -74,6 +75,38 @@ class LowonganModel {
     if (!$ok) {
     throw new Exception("Database error: Unable to execute query.");
     }
+  }
+
+  public function insertAttachment(int $lowongan_id, $file) {
+    foreach($file as $file_name) {
+      $sql = "INSERT INTO lowongan_attachment(lowongan_id, file_path) VALUES(:lowongan_id, :files)";
+      $statement = $this->db->prepare($sql);
+      $this->db->bind($statement, ':lowongan_id', $lowongan_id);
+      $this->db->bind($statement, ':files', $file_name);
+      $ok = $this->db->execute($statement);
+      if (!$ok) {
+          throw new Exception("Database error: Unable to execute query.");
+      }
+    }
+  } 
+
+  public function queryUsersIdFromLowonganId(int $id) {
+    $sql = "SELECT company_id FROM lowongan WHERE lowongan_id = :id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", $id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to execute query.");
+    }
+    $res = $this->db->fetchAll($statement);
+    $data = [];
+    foreach ($res as $row) {
+      $singular = [
+        'company_id' => $row['company_id'],
+      ];
+      array_push($data, $singular);
+    }
+    return $data;
   }
 
   public function queryDetailsById(int $id) {
@@ -136,6 +169,16 @@ class LowonganModel {
     }
   }
 
+  public function queryDeleteAttachmentById(int $id) {
+    $sql = 'DELETE FROM lowongan_attachment WHERE lowongan_id = :id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", "$id");
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+        throw new Exception("Database error: Unable to delete query.");
+    }
+  }
+
   public function queryLamaranById(int $id) {
     $sql = 'SELECT lamaran_id, nama, status FROM lamaran JOIN users ON lamaran.user_id = users.user_id WHERE lowongan_id = :id';
     $statement = $this->db->prepare($sql);
@@ -157,14 +200,58 @@ class LowonganModel {
     return $data;
   }
 
-  public function queryCompanies() {
-    $sql = "SELECT nama FROM users WHERE role = 'company'";
+  public function queryCompanies(int $id) {
+    $sql = "SELECT nama FROM users WHERE user_id = $id";
     $statement = $this->db->prepare($sql);
     $ok = $this->db->execute($statement);
     if (!$ok) {
       throw new Exception("Database error: Unable to delete query.");
     }
+    $res = $this->db->fetch($statement);
+    $company = $res['nama'];
+    return $company;
+  }
+
+  public function queryAppliedById(int $lowongan_id, int $user_id) {
+    $sql = "SELECT cv_path, video_path, status FROM lamaran WHERE lowongan_id = :lowongan_id AND user_id = :user_id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":lowongan_id", $lowongan_id);
+    $this->db->bind($statement, ":user_id", $user_id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to delete query.");
+    }
+    $res = $this->db->fetch($statement);
+    if (!$res) {
+      return;
+    }
+    $cv_path = $res['cv_path'];
+    $video_path = $res['video_path'];
+    $status = $res['status'];
+    $data = [
+      'cv_path' => $cv_path,
+      'video_path' => $video_path,
+      'status' => $status
+    ];
+    return $data;
+  }
+
+  public function queryFilePathByLowonganId(int $lowongan_id) {
+    $sql = "SELECT file_path FROM lowongan_attachment WHERE lowongan_id = :lowongan_id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":lowongan_id", $lowongan_id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to delete query.");
+    }
     $res = $this->db->fetchAll($statement);
-    return $res;
+    if (!$res) {
+      return;
+    }
+    $data = [];
+    foreach ($res as $row) {
+      array_push($data, $row['file_path']);
+    }
+    return $data;
   }
 }
