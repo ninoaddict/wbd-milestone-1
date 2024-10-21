@@ -14,6 +14,8 @@ require_once __DIR__ . '/db/DBconn.php';
 require_once __DIR__ . '/controllers/HomeController.php';
 require_once __DIR__ . '/controllers/UserController.php';
 require_once __DIR__ . '/controllers/LamaranController.php';
+require_once __DIR__ . '/controllers/CompProfileController.php';
 
 require_once __DIR__ . '/models/UserModel.php';
 require_once __DIR__ . '/models/LamaranModel.php';
+require_once __DIR__ . '/models/CompanyProfileModel.php';
