@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
-  <link rel="stylesheet" href="/public/css/home.css">
+  <link rel="stylesheet" href="/public/css/companyhome.css">
   <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/multiselect.css">
 
@@ -86,6 +86,13 @@
       </div>
     </section>
   </main>
+  <div class="add-btn-container">
+    <div class="add-btn">
+      <a href="/lowongan/add">
+        <span class="plus-icon">&#43;</span>
+      </a>
+    </div>
+  </div>
   <ul class="notifications"></ul>
 </body>
 
@@ -98,6 +105,6 @@
   </script>
 <?php endif; ?>
 <script src="/public/js/multiselect.js"></script>
-<script src="/public/js/home.js"></script>
+<script src="/public/js/companyhome.js"></script>
 
 </html>
