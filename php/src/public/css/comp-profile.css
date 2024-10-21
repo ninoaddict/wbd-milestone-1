@@ -1,0 +1,35 @@
+body {
+    background-color: #f3f2f0;
+}
+
+.space {
+    margin: 10vw;
+}
+.box {
+    background-color: white;
+    margin-top: 3cap;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    border: 1px solid #e9e5df;
+    padding: 3.5vw;
+    border-radius: 15px;
+}
+
+h1 {
+    font-size: 3.3vw;
+    font: bold;
+}
+
+h2 {
+    font: bold;
+    font-size: 1.8vw;
+}
+
+.location {
+    font-size: 1.4vw;
+}
+
+p {
+    text-align: justify;
+    font-size: 1.2vw;
+}
