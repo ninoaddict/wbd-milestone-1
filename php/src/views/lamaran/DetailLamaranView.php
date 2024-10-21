@@ -125,7 +125,6 @@
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/lamaran/<?php echo $data['lamaran_id'] ?>', true);
         xhr.onload = function () {
-          console.log('masuk sini');
           if (xhr.status === 200) {
             location.reload();
           } else {

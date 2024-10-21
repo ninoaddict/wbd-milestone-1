@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\core\SessionManager;
@@ -31,6 +32,43 @@ class HomeController extends Controller
     $query = $request->getQuery()['query'] ?? '';
     $sort = $request->getQuery()['sort'] ?? 'desc';
     $page = $request->getQuery()['page'] ?? 1;
+
+    $rawJobType = $request->getQuery()['jobtype'] ?? '';
+    $rawLocType = $request->getQuery()['loctype'] ?? '';
+
+    $jobType = [];
+    $locType = [];
+
+    if (!empty($rawJobType)) {
+      $jobType = explode(',', $rawJobType);
+    }
+
+    if (!empty($rawLocType)) {
+      $locType = explode(',', $rawLocType);
+    }
+
+    $data['query'] = $query;
+    $data['order'] = $sort;
+    $data['page'] = $page;
+    $data['jobType'] = $jobType;
+    $data['locType'] = $locType;
+
+    $path = __DIR__ . '/../views/home/HomeView.php';
+    $this->render($path, $data);
+  }
+
+  public function getLowonganData(Request $request) {
+    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->getRole() == "jobseeker") {
+      $this->getLowonganJobSeeker($request);
+    } else {
+      $this->getLowonganCompany($request);
+    }
+  }
+
+  private function getLowonganJobSeeker(Request $request) {
+    $query = $request->getQuery()['query'] ?? '';
+    $sort = $request->getQuery()['sort'] ?? 'desc';
+    $page = $request->getQuery()['page'] ?? 1;
     $limit = $request->getQuery()['limit'] ?? 10;
 
     $rawJobType = $request->getQuery()['jobtype'] ?? '';
@@ -49,7 +87,6 @@ class HomeController extends Controller
 
     $data = $this->lowonganModel->getFilterLowongan(query: $query, page: $page, limit: $limit, order: $sort, jobType: $jobType, locationType: $locType);
 
-    // get upper and lower page number for pagination
     $maxPage = $data['maxPage'];
     $lowerPage = max(1, $page - 2);
     $upperPage = min($maxPage, $page + 2);
@@ -70,12 +107,40 @@ class HomeController extends Controller
     $data['upperPage'] = $upperPage;
     $data['lowerPage'] = $lowerPage;
 
-    $path = __DIR__ . '/../views/home/HomeView.php';
-    $this->render($path, $data);
+    echo Application::$app->response->jsonEncodes(200, $data);
   }
 
   private function companyHomePage(Request $request)
   {
+    $query = $request->getQuery()['query'] ?? '';
+    $sort = $request->getQuery()['sort'] ?? 'desc';
+    $page = $request->getQuery()['page'] ?? 1;
+
+    $rawJobType = $request->getQuery()['jobtype'] ?? '';
+    $rawLocType = $request->getQuery()['loctype'] ?? '';
+
+    $jobType = [];
+    $locType = [];
+
+    if (!empty($rawJobType)) {
+      $jobType = explode(',', $rawJobType);
+    }
+
+    if (!empty($rawLocType)) {
+      $locType = explode(',', $rawLocType);
+    }
+
+    $data['query'] = $query;
+    $data['order'] = $sort;
+    $data['page'] = $page;
+    $data['jobType'] = $jobType;
+    $data['locType'] = $locType;
+
+    $path = __DIR__ . '/../views/home/CompanyHomeView.php';
+    $this->render($path, $data);
+  }
+
+  private function getLowonganCompany(Request $request) {
     $query = $request->getQuery()['query'] ?? '';
     $sort = $request->getQuery()['sort'] ?? 'desc';
     $page = $request->getQuery()['page'] ?? 1;
@@ -96,10 +161,8 @@ class HomeController extends Controller
     }
 
     $companyId = $this->sessionManager->getUserId();
-
     $data = $this->lowonganModel->getFilterLowonganCompany($companyId, query: $query, page: $page, limit: $limit, order: $sort, jobType: $jobType, locationType: $locType);
 
-    // get upper and lower page number for pagination
     $maxPage = $data['maxPage'];
     $lowerPage = max(1, $page - 2);
     $upperPage = min($maxPage, $page + 2);
@@ -120,8 +183,7 @@ class HomeController extends Controller
     $data['upperPage'] = $upperPage;
     $data['lowerPage'] = $lowerPage;
 
-    $path = __DIR__ . '/../views/home/HomeView.php';
-    $this->render($path, $data);
+    echo Application::$app->response->jsonEncodes(200, $data);
   }
 
   public function notFoundPage()

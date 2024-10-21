@@ -248,6 +248,4 @@ class MultiSelect {
   get height() {
     return this.options.height;
   }
-
 }
-// document.querySelectorAll('[data-multi-select]').forEach(select => new MultiSelect(select));
