@@ -11,7 +11,7 @@ class HistoryModel {
     }
 
     public function getAllLamaranHistory(int $user_id){
-        $sql = "SELECT lam.lamaran_id, u.nama, low.posisi, lam.created_at, lam.status
+        $sql = "SELECT low.lowongan_id, u.nama, low.posisi, lam.created_at, lam.status
                 FROM lamaran lam JOIN lowongan low 
                     ON lam.lowongan_id=low.lowongan_id 
                     JOIN users u 
@@ -27,7 +27,7 @@ class HistoryModel {
     }
 
     public function getSelectedLamaranHistory(int $user_id, string $status){
-        $sql = "SELECT lam.lamaran_id, u.nama, low.posisi, lam.created_at, lam.status
+        $sql = "SELECT low.lowongan_id, u.nama, low.posisi, lam.created_at, lam.status
                 FROM lamaran lam JOIN lowongan low 
                     ON lam.lowongan_id=low.lowongan_id 
                     JOIN users u 

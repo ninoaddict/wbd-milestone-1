@@ -29,9 +29,9 @@
         <div id="application-list">
             <?php if (!empty($historyList)) {?>
                 <?php foreach ($historyList as $historyItem){ ?>
-                    <div class="history-card">
+                    <div class="history-card" href="/lamaran/ <?= $historyItem['lowongan_id']?>">
                         <div class="history-content">
-                            <p class="application-id">ID: <?= htmlspecialchars($historyItem['lamaran_id']); ?></p>
+                            <p class="vacancy-id">ID: <?= htmlspecialchars($historyItem['lowongan_id']); ?></p>
                             <h2 class="company-name"><?= htmlspecialchars($historyItem['nama']); ?></h2>
                             <p class="position"><?= htmlspecialchars($historyItem['posisi']); ?></p>
                         </div>
@@ -44,76 +44,6 @@
             <?php } else {?>
                 <p class="empty-message">No application history available at the moment.</p>
             <?php } ?>
-
-
-            <!-- <div class='background-list'>
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #1</p>
-                        <h2 class="company-name">Warja</h2>
-                        <p class="position">Software Engineer</p>
-                    </div>
-                    <div class="date-status">
-                        <p>08 - 06 - 2018</p>
-                        <p class="status">Accepted</p>
-                    </div>
-                </div>
-            
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #2</p>
-                        <h2 class="company-name">Sadikin</h2>
-                        <p class="position">Data Analyst</p>
-                    </div>
-                    <div class="date-status">
-                        <p>21 - 04 - 2018</p>
-                    </div>
-                </div>
-            
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #3</p>
-                        <h2 class="company-name">Efzet Laundry</h2>
-                        <p class="position">Machine Learning Engineer</p>
-                    </div>
-                    <div class="date-status">
-                        <p>01 - 01 - 2018</p>
-                    </div>
-                </div>
-            
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #4</p>
-                        <h2 class="company-name">Warbir</h2>
-                        <p class="position">Reservoir Engineer</p>
-                    </div>
-                    <div class="date-status">
-                        <p>05 - 12 - 2017</p>
-                    </div>
-                </div>
-            
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #5</p>
-                        <h2 class="company-name">Ayam-Ayaman</h2>
-                        <p class="position">Airport Researcher</p>
-                    </div>
-                    <div class="date-status">
-                        <p>12 - 09 - 2017</p>
-                    </div>
-                </div>
-            
-                <div class="history-card">
-                    <div class="history-content">
-                        <p class="application-id">ID: #6</p>
-                        <h2 class="company-name">Borma</h2>
-                        <p class="position">Cloud Architect</p>
-                    </div>
-                    <div class="date-status">
-                        <p>05 - 02 - 2016</p>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
