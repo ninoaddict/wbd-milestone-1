@@ -219,5 +219,5 @@ document.querySelectorAll('.card').forEach(card => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', getInitialContent);
+// window.addEventListener('DOMContentLoaded', getInitialContent);
 window.addEventListener('popstate', getPopContent);

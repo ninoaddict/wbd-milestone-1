@@ -78,8 +78,46 @@
           </div>
           <main class="main" id="main">
             <div class="job-card-container" id="job-card-container">
+            <?php foreach($data['jobs'] as $job):?>
+              <div class="card job-card">
+                <a href="/lowongan/<?php echo $job['lowongan_id'] ?>" class="job-title-link">
+                  <h3 class="job-title"><?php echo $job['posisi'] ?></h3>
+                </a>
+                <div class="locntype">
+                  <p class="job-location"><?php echo $job['nama'] ?> ─ <?php echo ucfirst($job['jenis_lokasi']) ?></p>
+                </div>
+                <div class="datentype">
+                  <p class="post-time"><?php echo ucfirst($job['jenis_pekerjaan']) ?> • Posted <?php echo $job['days_before'] ?> days ago</p>
+                </div>
+              </div>
+            <?php endforeach; ?>
             </div>
             <nav class="pagination-nav" id="pagination-nav">
+              <ul class="pagination">
+                <li>
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev" aria-label="Previous page button">
+                    <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 1 1 5l4 4" />
+                    </svg>
+                  </a>
+                </li>
+                <?php for ($x = $data['lowerPage']; $x <= $data['upperPage']; $x++) : ?>
+                  <li>
+                    <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo $x ?>" class="page-link<?php if($x == $data['page']) echo ' active'; ?>" aria-label="Numbered page button"><?php echo $x ?></a>
+                  </li>
+                <?php endfor; ?>
+                <li>
+                  <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo min($data['maxPage'], $data['page'] + 1) ?>" class="page-link next" aria-label="Next page button">
+                    <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 6 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 9 4-4-4-4" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
             </nav>
           </main>
           <div class="pseudo"></div>

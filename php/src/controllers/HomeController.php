@@ -29,43 +29,31 @@ class HomeController extends Controller
 
   private function jobSeekerHomePage(Request $request)
   {
-    $query = $request->getQuery()['query'] ?? '';
-    $sort = $request->getQuery()['sort'] ?? 'desc';
-    $page = $request->getQuery()['page'] ?? 1;
-
-    $rawJobType = $request->getQuery()['jobtype'] ?? '';
-    $rawLocType = $request->getQuery()['loctype'] ?? '';
-
-    $jobType = [];
-    $locType = [];
-
-    if (!empty($rawJobType)) {
-      $jobType = explode(',', $rawJobType);
-    }
-
-    if (!empty($rawLocType)) {
-      $locType = explode(',', $rawLocType);
-    }
-
-    $data['query'] = $query;
-    $data['order'] = $sort;
-    $data['page'] = $page;
-    $data['jobType'] = $jobType;
-    $data['locType'] = $locType;
-
+    $data = $this->getLowonganJobSeeker($request);
     $path = __DIR__ . '/../views/home/HomeView.php';
     $this->render($path, $data);
   }
 
-  public function getLowonganData(Request $request) {
-    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->getRole() == "jobseeker") {
-      $this->getLowonganJobSeeker($request);
-    } else {
-      $this->getLowonganCompany($request);
-    }
+  private function companyHomePage(Request $request)
+  {
+    $data = $this->getLowonganCompany($request);
+    $path = __DIR__ . '/../views/home/CompanyHomeView.php';
+    $this->render($path, $data);
   }
 
-  private function getLowonganJobSeeker(Request $request) {
+  public function getLowonganData(Request $request)
+  {
+    $data = [];
+    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->getRole() == "jobseeker") {
+      $data = $this->getLowonganJobSeeker($request);
+    } else {
+      $data = $this->getLowonganCompany($request);
+    }
+    echo Application::$app->response->jsonEncodes(200, $data);
+  }
+
+  private function getLowonganJobSeeker(Request $request)
+  {
     $query = $request->getQuery()['query'] ?? '';
     $sort = $request->getQuery()['sort'] ?? 'desc';
     $page = $request->getQuery()['page'] ?? 1;
@@ -107,40 +95,11 @@ class HomeController extends Controller
     $data['upperPage'] = $upperPage;
     $data['lowerPage'] = $lowerPage;
 
-    echo Application::$app->response->jsonEncodes(200, $data);
+    return $data;
   }
 
-  private function companyHomePage(Request $request)
+  private function getLowonganCompany(Request $request)
   {
-    $query = $request->getQuery()['query'] ?? '';
-    $sort = $request->getQuery()['sort'] ?? 'desc';
-    $page = $request->getQuery()['page'] ?? 1;
-
-    $rawJobType = $request->getQuery()['jobtype'] ?? '';
-    $rawLocType = $request->getQuery()['loctype'] ?? '';
-
-    $jobType = [];
-    $locType = [];
-
-    if (!empty($rawJobType)) {
-      $jobType = explode(',', $rawJobType);
-    }
-
-    if (!empty($rawLocType)) {
-      $locType = explode(',', $rawLocType);
-    }
-
-    $data['query'] = $query;
-    $data['order'] = $sort;
-    $data['page'] = $page;
-    $data['jobType'] = $jobType;
-    $data['locType'] = $locType;
-
-    $path = __DIR__ . '/../views/home/CompanyHomeView.php';
-    $this->render($path, $data);
-  }
-
-  private function getLowonganCompany(Request $request) {
     $query = $request->getQuery()['query'] ?? '';
     $sort = $request->getQuery()['sort'] ?? 'desc';
     $page = $request->getQuery()['page'] ?? 1;
@@ -183,7 +142,7 @@ class HomeController extends Controller
     $data['upperPage'] = $upperPage;
     $data['lowerPage'] = $lowerPage;
 
-    echo Application::$app->response->jsonEncodes(200, $data);
+    return $data;
   }
 
   public function notFoundPage()
