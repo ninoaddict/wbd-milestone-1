@@ -12,6 +12,7 @@ session_start();
 $app = new Application();
 
 $app->router->get('/', handler: [HomeController::class, 'homePage']);
+$app->router->get('/jobs', handler: [HomeController::class, 'getLowonganData']);
 $app->router->get('/page-not-found', handler: [HomeController::class, 'notFoundPage']);
 
 $app->router->get('/login', handler: [UserController::class, 'loginPage']);

@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Homepage for job seeker">
+  <meta name="description" content="Homepage for company">
   <meta name="keywords" content="job, apply, vacancy, linkedin, verlinkt">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
-  <link rel="stylesheet" href="/public/css/home.css">
+  <link rel="stylesheet" href="/public/css/companyhome.css">
   <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/multiselect.css">
   <link rel="stylesheet" href="/public/css/footer.css">
@@ -87,6 +87,13 @@
       </div>
     </section>
   </main>
+  <div class="add-btn-container">
+    <div class="add-btn">
+      <a href="/lowongan/add">
+        <span class="plus-icon">&#43;</span>
+      </a>
+    </div>
+  </div>
   <?php include dirname(__DIR__) . '/components/Footer.php' ?>
   <ul class="notifications"></ul>
 </body>
@@ -100,6 +107,6 @@
   </script>
 <?php endif; ?>
 <script src="/public/js/multiselect.js"></script>
-<script src="/public/js/home.js"></script>
+<script src="/public/js/companyhome.js"></script>
 
 </html>

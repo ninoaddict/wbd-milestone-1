@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/register.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
 
   <title>Register - Verlinkt</title>
 </head>
@@ -164,7 +165,9 @@
       <a href="/login" class="link">Sign in</a>
     </div>
   </main>
-  <script src="/public/js/register.js"></script>
+  <ul class="notifications"></ul>
+  <script src="/public/js/toast.js" defer></script>
+  <script src="/public/js/register.js" defer></script>
 </body>
 
 </html>

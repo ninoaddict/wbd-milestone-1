@@ -12,7 +12,6 @@ use Exception;
 class LamaranController extends Controller
 {
   private SessionManager $sessionManager;
-
   private FileManager $fileManager;
   private LamaranModel $lamaranModel;
 

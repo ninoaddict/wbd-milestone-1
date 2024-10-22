@@ -11,18 +11,17 @@ body {
 
 @media screen and (max-width: 768px) {
   .home-section {
-    min-height: calc(100vh - 76px - 129px);
+    min-height: calc(100vh - 76px - 225px);
   }
 }
 
+
 .home-layout {
-  /* column-gap: 24px; */
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto;
   row-gap: 24px;
   grid-template-areas: "sidebar" "main";
-  /* min-height: 100px; */
 }
 
 .home-container {
@@ -227,10 +226,10 @@ svg[data-supported-dps="16x16"] {
 
 .job-card {
   margin-bottom: 10px;
-  cursor: pointer;
+  position: relative;
 }
 
-.job-card:hover .job-title-link {
+.job-title-link:hover {
   color: #0a66c2;
   text-decoration: underline;
 }
@@ -330,4 +329,57 @@ svg[data-supported-dps="16x16"] {
   bottom: 0px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.add-btn {
+  background-color: #0a66c2;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  font-size: 38px;
+  height: 50px;
+  width: 50px;
+  border-radius: 999px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.plus-icon {
+  bottom: 1px;
+  left: 12px;
+  position: absolute;
+}
+
+.add-btn:hover {
+  background-color: #0a539c;
+}
+
+.add-btn-container {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+}
+
+.delete-btn-container {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.delete-btn {
+  color: #d34a4a;
+  transition: 0.3s ease;
+}
+
+.delete-btn:hover {
+  color: #D11A2A;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .add-btn-container {
+    bottom: 36px;
+    right: 36px;
+  }
 }
