@@ -3,6 +3,7 @@ const locationType = document.getElementById('location-type');
 const jobCardContainer = document.getElementById('job-card-container');
 const paginationNav = document.getElementById('pagination-nav');
 const searchInput = document.getElementById('query');
+const sortByInput = document.getElementById('sort');
 
 // function for debouncing
 function debounce(func, delay) {
@@ -74,14 +75,15 @@ function updateContent(res, rawUrl) {
           <p class="job-location">${job.nama} ─ ${capitalize(job.jenis_lokasi)}</p>
         </div>
         <div class="datentype">
-          <p class="post-time">${capitalize(job.jenis_pekerjaan)} | ${job.days_before} days ago</p>
+          <p class="post-time">${capitalize(job.jenis_pekerjaan)} • Posted ${job.days_before} days ago</p>
         </div>
       </div>
     `;
   }
   jobCardContainer.innerHTML = newMainContent;
+
+  let newContent =  '';
   if (res.maxPage > 0) {
-    let newContent =  '';
     newContent += `
       <ul class="pagination">
         <li>
@@ -103,7 +105,7 @@ function updateContent(res, rawUrl) {
     }
     newContent += `
         <li>
-          <a href="${url}${rawUrl === '' ? '' : '&'}page=${Math.min(res.page + 1, res.maxPage)}" class="page-link next" aria-label="Next page button">
+          <a href="${url}${rawUrl === '' ? '' : '&'}page=${Math.min(+res.page + 1, res.maxPage)}" class="page-link next" aria-label="Next page button">
             <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -112,8 +114,8 @@ function updateContent(res, rawUrl) {
           </a>
         </li>
       </ul>`;
-    paginationNav.innerHTML = newContent;
   }
+  paginationNav.innerHTML = newContent;
 }
 
 function fetchContent(rawUrl, isPageExist) {
@@ -173,7 +175,29 @@ function getPopContent() {
   const urlParams = new URLSearchParams(currUrl);
 
   document.getElementById('query').value = urlParams.get('query');
-  document.getElementById('sort').value = urlParams.get('sort');
+  document.getElementById('sort').value = urlParams.get('sort') ?? 'desc';
+  const rawJobType = urlParams.get('jobtype');
+  const rawLocType = urlParams.get('loctype');
+
+  const jobType = rawJobType ? rawJobType.split(',') : [];
+  const locType = rawLocType ? rawLocType.split(',') : [];
+
+  let newJobVal = {};
+  let newLocVal = {};
+
+  const jobs = ['full-time', 'part-time', 'internship'];
+  const locs = ['on-site', 'hybrid', 'remote'];
+
+  for (const job of jobs) {
+    newJobVal[job] = jobType.includes(job);
+  }
+
+  for (const loc of locs) {
+    newLocVal[loc] = locType.includes(loc);
+  }
+
+  multiSelectJob.selectedValues = newJobVal;
+  multiSelectLocation.selectedValues = newLocVal;
 }
 
 searchInput.addEventListener('input', debouncedSearch);
@@ -181,7 +205,9 @@ searchInput.addEventListener('keypress', (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
   }
-})
+});
+
+sortByInput.addEventListener('change', performSearch);
 
 // add link for card
 document.querySelectorAll('.card').forEach(card => {
@@ -194,3 +220,4 @@ document.querySelectorAll('.card').forEach(card => {
 });
 
 window.addEventListener('DOMContentLoaded', getInitialContent);
+window.addEventListener('popstate', getPopContent);

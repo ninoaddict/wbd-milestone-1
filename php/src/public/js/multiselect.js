@@ -5,7 +5,7 @@ class MultiSelect {
       max: null,
       search: false,
       selectAll: false,
-      listAll: false,
+      listAll: true,
       closeListOnItemSelect: false,
       name: '',
       width: '',
@@ -191,6 +191,47 @@ class MultiSelect {
 
   get selectedItems() {
     return this.data.filter(data => data.selected);
+  }
+
+  set selectedValues(newValue) {
+    let headerElement = this.element.querySelector('.multi-select-header');
+    this.element.querySelectorAll('.multi-select-option').forEach(option => {
+      const selected = newValue[option.dataset.value];
+      if (!option.classList.contains('multi-select-selected') && selected) {
+        option.classList.add('multi-select-selected');
+        if (this.options.listAll === true || this.options.listAll === 'true') {
+          if (this.element.querySelector('.multi-select-header-option')) {
+            let opt = Array.from(this.element.querySelectorAll('.multi-select-header-option')).pop();
+            opt.insertAdjacentHTML('afterend', `<span class="multi-select-header-option" data-value="${option.dataset.value}">${option.querySelector('.multi-select-option-text').innerHTML}</span>`);
+          } else {
+            headerElement.insertAdjacentHTML('afterbegin', `<span class="multi-select-header-option" data-value="${option.dataset.value}">${option.querySelector('.multi-select-option-text').innerHTML}</span>`);
+          }
+        }
+        this.element.querySelector('.multi-select').insertAdjacentHTML('afterbegin', `<input type="hidden" name="${this.name}[]" value="${option.dataset.value}">`);
+        this.data.filter(data => data.value == option.dataset.value)[0].selected = true;
+      } else if (option.classList.contains('multi-select-selected') && !selected) {
+        option.classList.remove('multi-select-selected');
+        this.element.querySelectorAll('.multi-select-header-option').forEach(headerOption => headerOption.dataset.value == option.dataset.value ? headerOption.remove() : '');
+        this.element.querySelector(`input[value="${option.dataset.value}"]`).remove();
+        this.data.filter(data => data.value == option.dataset.value)[0].selected = false;
+      }
+      if (this.options.listAll === false || this.options.listAll === 'false') {
+        if (this.element.querySelector('.multi-select-header-option')) {
+          this.element.querySelector('.multi-select-header-option').remove();
+        }
+        headerElement.insertAdjacentHTML('afterbegin', `<span class="multi-select-header-option">${this.selectedValues.length} selected</span>`);
+      }
+      if (!this.element.querySelector('.multi-select-header-option')) {
+        if (!this.element.querySelector('.multi-select-header-placeholder'))
+          headerElement.insertAdjacentHTML('afterbegin', `<span class="multi-select-header-placeholder">${this.placeholder}</span>`);
+      } else if (this.element.querySelector('.multi-select-header-placeholder')) {
+        this.element.querySelector('.multi-select-header-placeholder').remove();
+      }
+      option.style.display = 'flex'
+      if (this.options.closeListOnItemSelect === true || this.options.closeListOnItemSelect === 'true') {
+        headerElement.classList.remove('multi-select-header-active');
+      }
+    });
   }
 
   set data(value) {

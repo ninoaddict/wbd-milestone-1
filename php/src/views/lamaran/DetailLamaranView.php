@@ -84,7 +84,7 @@
           <h1 class="resume-title">Video Perkenalan</h1>
         </div>
         <video controls>
-          <source src="/storage/video/temp.mp4" type="video/mp4">
+          <source src="<?php echo $data['video_path'] ?>" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>

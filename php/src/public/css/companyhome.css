@@ -4,18 +4,24 @@ body {
 
 .home-section {
   width: 100%;
-  margin-top: calc(52px + 24px);
-  margin-bottom: 36px;
+  margin-top: 76px;
+  min-height: calc(100vh - 76px - 129px);
+  /* margin-bottom: 36px; */
 }
 
+@media screen and (max-width: 768px) {
+  .home-section {
+    min-height: calc(100vh - 76px - 225px);
+  }
+}
+
+
 .home-layout {
-  /* column-gap: 24px; */
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto;
   row-gap: 24px;
   grid-template-areas: "sidebar" "main";
-  /* min-height: 100px; */
 }
 
 .home-container {

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/public/css/home.css">
   <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/multiselect.css">
+  <link rel="stylesheet" href="/public/css/footer.css">
 
   <title>Home</title>
 </head>
@@ -86,6 +87,7 @@
       </div>
     </section>
   </main>
+  <?php include dirname(__DIR__) . '/components/Footer.php' ?>
   <ul class="notifications"></ul>
 </body>
 
