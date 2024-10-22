@@ -30,28 +30,33 @@
           <h3><h3><?= $data['0']['jenis_pekerjaan']?></h3></h3>
           <h2 class="job-requirement">Status:</h2>
           <h3><?= $data['status']?></h3>
+          <div class="flexing-apply">
+            <?php 
+              if ($data["status"] == "Available") {
+                echo <<<HTML
+                      <a href='/lowongan/{$data["0"]["lowongan_id"]}/apply' id="apply-job-style">Apply Job</a>
+                    HTML;
+              }
+            ?>
+          </div>
         </section>
         <section class="container-attach">
-          <h1><b class="attachment">Attachments</b></h1>
-          <div class="cv-or-vid">
-            <button type="button" id="view-cv">View CV</button>
-            <button type="button" id="view-vid">View Video</button>
-            <a id="download">Download</a>
-            <a id="see">New Tab</a>
-          </div>
-          <div id="pdf-vid-show">
-            <!-- <object 
-              type="application/pdf"
-              data="../../storage/resume/RSA_13522110.pdf"
-              width="100%"
-              height="400"
-            >
-            </object> -->
-            <!-- <video width="100%" height="400" controls>
-              <source src="../../storage/video/vid_soviet.mp4" type="video/mp4">
-            </video> -->
-          </div>
-          </div>
+        <h1><b class="attachment">Attachments</b></h1>
+        <?php 
+          if ($data["status"] == "Accepted" || $data["status"] == "Rejected" || $data["status"] == "Waiting") {
+            echo '<div class="cv-or-vid">
+                <button type="button" id="view-cv">View CV</button>
+                <button type="button" id="view-vid">View Video</button>
+                <a id="download">Download</a>
+                <a id="see">New Tab</a>
+              </div>
+              <div id="pdf-vid-show">
+              </div>
+              </div>';
+          } else {
+            echo '<div class="cv-or-vid"><h3>You can only see the attachments after applying for this job!</h3></div>';
+          }
+        ?>
         </section>
       </div>
     </div>

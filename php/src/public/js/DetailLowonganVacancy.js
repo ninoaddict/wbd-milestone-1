@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const editor = document.getElementById('editer');
 
     if (editor) {
-        console.log(editor);
-        editor.href = "../editlowongan/" + id;
+        console.log(editor, id);
+        editor.href = "../lowongan/" + id + "/edit";
     }
 
     closer.addEventListener('click', function() {
         let dummy = new FormData();
         dummy.append('id', id);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST','/detaillowongan/closeopen', true);
+        xhr.open('POST','/lowongan/closeopen', true);
         xhr.onload = function () {
             if (xhr.status === 200) {
                 location.reload();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let dummy = new FormData();
         dummy.append('id', id);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST','/detaillowongan/delete', true);
+        xhr.open('POST','/lowongan/delete', true);
         xhr.onload = function () {
             if (xhr.status === 200) {
                 window.location.replace('/');

@@ -31,16 +31,14 @@ $app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'ap
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
-$app->router->get('/detaillowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganPage']);
-$app->router->post('/detaillowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
-$app->router->post('/detaillowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
+$app->router->get('/lowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganChoose']);
+$app->router->post('/lowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
+$app->router->post('/lowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
 
-$app->router->get('/detaillowonganjs/:id',handler: [DetailLowonganController::class, 'detailLowonganJSeekerPage']);
+$app->router->get('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowonganPage']);
+$app->router->post('/lowongan/edit',handler: [EditLowonganController::class, 'editLowongan']);
 
-$app->router->get('/editlowongan/:id',handler: [EditLowonganController::class, 'editLowonganPage']);
-$app->router->post('/editlowongan',handler: [EditLowonganController::class, 'editLowongan']);
-
-$app->router->get('/tambahlowongan',handler: [TambahLowonganController::class, 'tambahLowonganPage']);
-$app->router->post('/tambahlowongan', handler:[TambahLowonganController::class, 'tambahLowongan']);
+$app->router->get('/lowongan/add',handler: [TambahLowonganController::class, 'tambahLowonganPage']);
+$app->router->post('/lowongan/add', handler:[TambahLowonganController::class, 'tambahLowongan']);
 
 $app->run();

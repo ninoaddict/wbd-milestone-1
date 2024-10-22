@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(formData.getAll('files[]'));
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST','/editlowongan', true);
+        xhr.open('POST','/lowongan/edit', true);
         xhr.onload = function () {
             if (xhr.status === 200) {
-                window.location.replace('/detaillowongan/'+id);
+                window.location.replace('/lowongan/'+id);
                 console.log('Success:', xhr.responseText);
             } else {
                 // fail ajax

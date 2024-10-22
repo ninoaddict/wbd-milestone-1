@@ -20,6 +20,14 @@ class DetailLowonganController extends Controller {
     $this->fileManager = FileManager::getInstance();
   }
 
+  public function detailLowonganChoose(Request $request) {
+    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->getRole() == "jobseeker") {
+      $this->detailLowonganJSeekerPage($request);
+    } else {
+      $this->detailLowonganPage($request);
+    }
+  }
+
   public function detailLowonganPage(Request $request) {
     if (!$this->sessionManager->isLoggedIn()) {
       Application::$app->response->redirect("/login");
@@ -27,10 +35,6 @@ class DetailLowonganController extends Controller {
     }
     $params = $request->getParams()[0];
     $this->params = $params;
-    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->isJobSeeker()) {
-      Application::$app->response->redirect("/detaillowonganjs"."/".$params);
-      return;
-    }
     $lamarans = $this->getLamaranById($params);
     for ($i = 0; $i < count($lamarans); $i++) {
       $lamarans[$i]['status'] = ucfirst($lamarans[$i]['status']);
@@ -71,17 +75,11 @@ class DetailLowonganController extends Controller {
     $user_id = $this->sessionManager->getUserId();
     $params = $request->getParams()[0];
     $this->params = $params;
-    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->isCompany()) {
-      Application::$app->response->redirect("/detaillowongan"."/".$params);
-      return;
-    }
     $data = $this->getLamaranInfosById($params, $user_id);
-    if (!$data) {
-      Application::$app->response->redirect("/");
-      return;
+    
+    if ($data) {
+      $data['status'] = ucfirst($data['status']);
     }
-
-    $data['status'] = ucfirst($data['status']);
     $new_data = $this->getDetailsbyId($params);
     $new_data['jenis_pekerjaan'] = str_replace(' ','-',ucwords(str_replace('-',' ', $new_data['jenis_pekerjaan'])));
     $new_data['jenis_lokasi'] = str_replace(' ','-',ucwords(str_replace('-',' ', $new_data['jenis_lokasi'])));
@@ -89,6 +87,14 @@ class DetailLowonganController extends Controller {
       $new_data['is_open'] = "Close Job";
     } else {
       $new_data['is_open'] = "Open Job";
+    }
+
+    if (!$data) {
+      if ($new_data['is_open']) {
+        $data['status'] = 'Available';
+      } else {
+        $data['status'] = 'Unavailable';
+      }
     }
     array_push($data, $new_data);
     $path = __DIR__ . '/../views/detaillowonganjs/DetailLowonganJsView.php';

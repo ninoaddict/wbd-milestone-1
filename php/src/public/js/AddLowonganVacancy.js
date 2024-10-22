@@ -45,7 +45,7 @@ buttone.addEventListener('click', function() {
     console.log(formData.getAll('files[]'));
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST','/tambahlowongan', true);
+    xhr.open('POST','/lowongan/add', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             const res = JSON.parse(xhr.responseText);

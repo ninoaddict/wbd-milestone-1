@@ -42,7 +42,7 @@
           <h2 class="job-requirement">Attachments:</h2>
           <div class="attachment-placement">
             <?php 
-              if (count($data['file_path']) > 0) {
+              if ($data['file_path']) {
                 $file_name = [];
                 $file_path = [];
                 foreach ($data['file_path'] as $files) {

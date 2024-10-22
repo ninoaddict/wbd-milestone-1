@@ -59,7 +59,7 @@ class TambahLowonganController extends Controller {
         $jobType, $status, $htmlContent
       );
       $this->lowonganModel->insertAttachment($lastId, $file_names);
-      echo Application::$app->response->jsonEncodes(200, ['message' => "/detaillowongan/$lastId"]);
+      echo Application::$app->response->jsonEncodes(200, ['message' => "/lowongan/$lastId"]);
     } catch (Exception $e) {
       echo Application::$app->response->jsonEncodes(400, ['message' => $e->getTrace()]);
     }

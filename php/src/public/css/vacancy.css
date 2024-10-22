@@ -240,6 +240,24 @@ ol {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#apply-job-style {
+    background-color: darkblue;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
+.flexing-apply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+h3 {
+    font-weight: 400;
+}
+
 @media (max-width: 768px) {
     .content-separator {
         display: flex;
