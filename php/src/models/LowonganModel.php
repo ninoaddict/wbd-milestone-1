@@ -212,7 +212,7 @@ class LowonganModel {
   }
 
   public function queryAppliedById(int $lowongan_id, int $user_id) {
-    $sql = "SELECT cv_path, video_path, status FROM lamaran WHERE lowongan_id = :lowongan_id AND user_id = :user_id";
+    $sql = "SELECT cv_path, video_path, status, status_reason FROM lamaran WHERE lowongan_id = :lowongan_id AND user_id = :user_id";
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ":lowongan_id", $lowongan_id);
     $this->db->bind($statement, ":user_id", $user_id);
@@ -227,10 +227,12 @@ class LowonganModel {
     $cv_path = $res['cv_path'];
     $video_path = $res['video_path'];
     $status = $res['status'];
+    $status_reason = $res['status_reason'];
     $data = [
       'cv_path' => $cv_path,
       'video_path' => $video_path,
-      'status' => $status
+      'status' => $status,
+      'status_reason' => $status_reason
     ];
     return $data;
   }

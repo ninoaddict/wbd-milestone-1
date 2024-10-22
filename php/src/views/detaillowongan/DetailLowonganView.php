@@ -38,7 +38,7 @@
           <h2 class="job-requirement">Location:</h2>
           <h3><?= $data['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
-          <h3><h3><?= $data['jenis_pekerjaan']?></h3></h3>
+          <><?= $data['jenis_pekerjaan']?></h3>
           <h2 class="job-requirement">Attachments:</h2>
           <div class="attachment-placement">
             <?php 

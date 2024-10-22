@@ -30,6 +30,29 @@
           <h3><h3><?= $data['0']['jenis_pekerjaan']?></h3></h3>
           <h2 class="job-requirement">Status:</h2>
           <h3><?= $data['status']?></h3>
+          <h4><?= html_entity_decode($data['status_reason'])?></h4>
+          <?php 
+            if ($data['file_path']) {
+            echo '<h2 class="job-requirement">Attachments:</h2>';
+            }
+          ?>
+          <div class="attachment-placement">
+            <?php 
+              if ($data['file_path']) {
+                $file_name = [];
+                $file_path = [];
+                foreach ($data['file_path'] as $files) {
+                  array_push($file_path, $files);
+                  array_push($file_name, substr($files,15));
+                }
+                for ($i = 0; $i < count($file_name); $i++) {
+                  echo <<<HTML
+                    <a class="embed-file-style" href="$file_path[$i]">{$file_name[$i]}</a>
+                  HTML;
+                }
+              }
+            ?>
+          </div>
           <div class="flexing-apply">
             <?php 
               if ($data["status"] == "Available") {
@@ -41,7 +64,7 @@
           </div>
         </section>
         <section class="container-attach">
-        <h1><b class="attachment">Attachments</b></h1>
+        <h1><b class="attachment">My Attachments</b></h1>
         <?php 
           if ($data["status"] == "Accepted" || $data["status"] == "Rejected" || $data["status"] == "Waiting") {
             echo '<div class="cv-or-vid">

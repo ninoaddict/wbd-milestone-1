@@ -90,12 +90,14 @@ class DetailLowonganController extends Controller {
     }
 
     if (!$data) {
+      $data['status_reason'] = "Click the button below to apply for this job";
       if ($new_data['is_open']) {
         $data['status'] = 'Available';
       } else {
         $data['status'] = 'Unavailable';
       }
     }
+    $data['file_path'] = $this->getAttachmentsById($params);
     array_push($data, $new_data);
     $path = __DIR__ . '/../views/detaillowonganjs/DetailLowonganJsView.php';
     $this->render($path, $data);
