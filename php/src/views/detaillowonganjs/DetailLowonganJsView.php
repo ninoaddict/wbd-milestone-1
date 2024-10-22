@@ -37,6 +37,7 @@
             <button type="button" id="view-cv">View CV</button>
             <button type="button" id="view-vid">View Video</button>
             <a id="download">Download</a>
+            <a id="see">New Tab</a>
           </div>
           <div id="pdf-vid-show">
             <!-- <object 

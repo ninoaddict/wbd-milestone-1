@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const pdfEmbed = document.getElementById('pdf-embed');
     const vidEmbed = document.getElementById('video-embed');
     const downloader = document.getElementById('download');
+    const seer = document.getElementById('see');
 
     pdfButtone.addEventListener('click', function() {
         console.log(pdfEmbed.innerText.split('/')[4]);
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         object.height = "400";
         pdfVidContent.appendChild(object);
         downloader.href = pdfEmbed.innerText;
+        seer.href = pdfEmbed.innerText;
         downloader.download = pdfEmbed.innerText.split('/')[4].trim();
     });
 
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         video.appendChild(source);
         pdfVidContent.appendChild(video);
         downloader.href = vidEmbed.innerText;
+        seer.href = vidEmbed.innerText;
         downloader.download = vidEmbed.innerText.split('/')[4].trim();
     });
 });
