@@ -93,6 +93,7 @@
             <?php endforeach; ?>
             </div>
             <nav class="pagination-nav" id="pagination-nav">
+            <?php if ($data['maxPage'] > 0): ?>
               <ul class="pagination">
                 <li>
                   <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev" aria-label="Previous page button">
@@ -118,6 +119,7 @@
                   </a>
                 </li>
               </ul>
+            <?php endif; ?>
             </nav>
           </main>
           <div class="pseudo"></div>

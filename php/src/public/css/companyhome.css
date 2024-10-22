@@ -5,13 +5,12 @@ body {
 .home-section {
   width: 100%;
   margin-top: 76px;
-  min-height: calc(100vh - 76px - 129px);
-  /* margin-bottom: 36px; */
+  min-height: calc(100vh - 76px - 129px - 32px);
 }
 
 @media screen and (max-width: 768px) {
   .home-section {
-    min-height: calc(100vh - 76px - 225px);
+    min-height: calc(100vh - 76px - 225px - 32px);
   }
 }
 

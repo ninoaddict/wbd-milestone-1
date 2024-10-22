@@ -78,7 +78,7 @@ function updateContent(res, rawUrl) {
           <p class="post-time">${capitalize(job.jenis_pekerjaan)} • Posted ${job.days_before} days ago</p>
         </div>
         <div class="delete-btn-container">
-          <button class="delete-btn" onclick="handleDelete(${job.lowongan_id})">
+          <button class="delete-btn" onclick="handleDelete(${job.lowongan_id})" aria-label="Delete button">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="24px" height="24px" fill="currentColor">    
             <path d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 
             0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 
@@ -167,12 +167,6 @@ function performSearch() {
   fetchContent(rawUrl, false);
 }
 
-function getInitialContent() {
-  const currUrl = window.location.search;
-  const params = currUrl.substring(1);
-  fetchContent(params, true);
-}
-
 const debouncedSearch = debounce(performSearch, 800);
 
 const options = {
@@ -223,6 +217,4 @@ searchInput.addEventListener('keypress', (event) => {
 });
 
 sortByInput.addEventListener('change', performSearch);
-
-window.addEventListener('DOMContentLoaded', getInitialContent);
 window.addEventListener('popstate', getPopContent);

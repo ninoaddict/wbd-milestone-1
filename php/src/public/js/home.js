@@ -152,12 +152,6 @@ function performSearch() {
   fetchContent(rawUrl, false);
 }
 
-function getInitialContent() {
-  const currUrl = window.location.search;
-  const params = currUrl.substring(1);
-  fetchContent(params, true);
-}
-
 const debouncedSearch = debounce(performSearch, 800);
 
 const options = {
@@ -219,5 +213,4 @@ document.querySelectorAll('.card').forEach(card => {
   });
 });
 
-// window.addEventListener('DOMContentLoaded', getInitialContent);
 window.addEventListener('popstate', getPopContent);

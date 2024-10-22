@@ -90,7 +90,7 @@
                   <p class="post-time"><?php echo ucfirst($job['jenis_pekerjaan']) ?> • Posted <?php echo $job['days_before'] ?> days ago</p>
                 </div>
                 <div class="delete-btn-container">
-                  <button class="delete-btn" onclick="handleDelete(<?php echo $job['lowongan_id'] ?>)">
+                  <button class="delete-btn" onclick="handleDelete(<?php echo $job['lowongan_id'] ?>)" aria-label="Delete button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="24px" height="24px" fill="currentColor">    
                     <path d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 
                     0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 
@@ -103,6 +103,7 @@
             <?php endforeach; ?>
             </div>
             <nav class="pagination-nav" id="pagination-nav">
+              <?php if ($data['maxPage'] > 0): ?>
               <ul class="pagination">
                 <li>
                   <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev" aria-label="Previous page button">
@@ -128,6 +129,7 @@
                   </a>
                 </li>
               </ul>
+              <?php endif; ?>
             </nav>
           </main>
           <div class="pseudo"></div>
