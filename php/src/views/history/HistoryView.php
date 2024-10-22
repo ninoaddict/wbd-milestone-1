@@ -29,14 +29,14 @@
         <div id="application-list">
             <?php if (!empty($historyList)) {?>
                 <?php foreach ($historyList as $historyItem){ ?>
-                    <div class="history-card" href="/lamaran/ <?= $historyItem['lowongan_id']?>">
+                    <div class="history-card" data-id="<?= $historyItem['lowongan_id'] ?>">
                         <div class="history-content">
                             <p class="vacancy-id">ID: <?= htmlspecialchars($historyItem['lowongan_id']); ?></p>
                             <h2 class="company-name"><?= htmlspecialchars($historyItem['nama']); ?></h2>
                             <p class="position"><?= htmlspecialchars($historyItem['posisi']); ?></p>
                         </div>
                         <div class="date-status">
-                            <?= htmlspecialchars($historyItem['created_at']); ?>
+                            <?= htmlspecialchars($historyItem['created_time']); ?>
                             <p class="status"> <?= htmlspecialchars($historyItem['status']); ?> </p>
                         </div>
                     </div>

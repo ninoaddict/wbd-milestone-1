@@ -4,3 +4,10 @@ document.querySelectorAll('.filter-button').forEach(button => {
         window.location.href = window.location.pathname + "?status="+ status;
     });
 });
+
+document.querySelectorAll('.history-card').forEach(button => {
+    button.addEventListener('click', function(){
+        const vacancyID = this.getAttribute('data-id');
+        window.location.href = "/lowongan/"+ vacancyID;
+    });
+});
