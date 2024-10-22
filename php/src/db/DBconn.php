@@ -67,9 +67,12 @@ class DBconn {
     $statement->bindValue($param, $value, $type);
 }
 
-  public function execute($statement) {
+  public function execute($statement, $params = []) {
     try {
-      return $statement->execute();
+      if (empty($params)) {
+        return $statement->execute();
+      }
+      return $statement->execute($params);
     } catch (PDOException $e) {
       throw new Exception("Execution failed: " . $e->getMessage(), 500);
     }

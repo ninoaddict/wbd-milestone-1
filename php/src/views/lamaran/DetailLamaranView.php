@@ -84,7 +84,7 @@
           <h1 class="resume-title">Video Perkenalan</h1>
         </div>
         <video controls>
-          <source src="/storage/video/temp.mp4" type="video/mp4">
+          <source src="<?php echo $data['video_path'] ?>" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -125,7 +125,6 @@
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/lamaran/<?php echo $data['lamaran_id'] ?>', true);
         xhr.onload = function () {
-          console.log('masuk sini');
           if (xhr.status === 200) {
             location.reload();
           } else {
