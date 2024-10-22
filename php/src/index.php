@@ -4,6 +4,7 @@ require_once __DIR__ . "/init.php";
 use app\core\Application;
 
 use app\controllers\CompProfileController;
+use app\controllers\HistoryController;
 use app\controllers\HomeController;
 use app\controllers\UserController;
 use app\controllers\LamaranController;
@@ -30,5 +31,6 @@ $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLam
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
 $app->router->get('/comp-profile/:id', handler: [CompProfileController::class,'companyProfilePage']);
+$app->router->get('/history', handler: [HistoryController::class, 'historyPage']);
 
 $app->run();

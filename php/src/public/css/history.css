@@ -1,0 +1,110 @@
+body {
+    background-color: #F4F2EE;
+}
+
+.space {
+    padding: 60px;
+    /* border : 2px solid; */
+}
+
+h1 {
+    font-size: 60px;
+    font: bold;
+    padding-left: 172px;
+    margin-bottom: 37px;
+    /* border: 2px solid; */
+}
+
+.history-card {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: white;
+    margin-left: 140px;
+    border: 1px solid #e9e5df;
+    padding: 3.5px;
+    border-radius: 15px;
+    /* border: 2px solid; */
+    gap: 240px;
+}
+
+.history-content {
+    margin-top: 22px;
+    margin-bottom: 22px;
+    margin-right: 35px;
+    margin-left: 35px;
+    /* border: 2px solid; */
+}
+
+
+.application-id {
+    font-size: 15px;
+}
+
+.company-name {
+    font-size: 40px;
+    color: #0A66C2;
+}
+
+.position {
+    font-size: 22px;
+}
+
+.date-status {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin-right: 35px;
+    margin-left: 35px;
+    justify-content: center;
+    /* border: 2px solid; */
+}
+
+.status {
+    text-align: right;
+    font-weight: bold;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 172px;
+    /* border: 2px solid; */
+}
+
+.button-and-list {
+    display: flex;
+    /* border: 2px solid; */
+}
+
+.filter-button {
+    background-color: white;
+    margin-bottom: 12px;;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 15px;
+    border: 1px solid #DCE6F1;
+}
+
+/* .background-list {
+    background-color: #E9E5DF;
+} */
+
+.filter-button:active {
+    background-color: #0A66C2;
+    color: white;
+}
+
+.filter-button.active {
+    background-color: #0A66C2;
+    color: white;
+}
+
+.empty-message {
+    justify-content: center;
+    margin-left: 340px;
+}
