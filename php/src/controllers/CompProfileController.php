@@ -25,9 +25,10 @@ class CompProfileController extends Controller {
 
     public function updateProfile(Request $request){
         $user_id = $_SESSION['user_id'];
-        $data = $request->getBody();
+        $body = $request->getBody();
 
-        if ($this->companyProfileModel->updateCompanyProfile($user_id, $data['nama'], $data['lokasi'], $data['about'])){
+        if ($this->companyProfileModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
+            $_SESSION['nama'] = $body['nama'];
             header('Location: /profile');
             exit();
         } else {
