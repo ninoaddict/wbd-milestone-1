@@ -1,12 +1,16 @@
 body {
-  background: #f3f2f0;
+  background: #f4f2ee;
 }
 
 main {
   padding-left: 32px;
   padding-right: 32px;
-  padding-top: 52px;
+  /* padding-top: 52px; */
   padding-bottom: 32px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card {
@@ -27,7 +31,7 @@ main {
   margin-left: auto;
   width: 100%;
   max-width: 560px;
-  margin-top: 64px;
+  /* margin-top: 64px; */
   margin-bottom: 6px;
 }
 

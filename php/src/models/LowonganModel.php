@@ -285,6 +285,19 @@ class LowonganModel {
     return $this->db->fetchAll($stmt);
   }
 
+  public function getTopLowongan() {
+    $sql = "SELECT lowongan_id, nama, lokasi, posisi, jenis_pekerjaan, jenis_lokasi, is_open, EXTRACT(DAY FROM (NOW() - created_at)) as days_before, created_at
+    FROM lowongan l
+    INNER JOIN users u ON l.company_id = u.user_id
+    INNER JOIN company_detail cd ON cd.user_id = u.user_id
+    WHERE is_open = TRUE
+    ORDER BY applicant DESC
+    LIMIT 5";
+    $stmt = $this->db->prepare($sql);
+    $this->db->execute($stmt);
+    return $this->db->fetchAll($stmt);
+  }
+
   public function getFilterLowongan($query = '', $page = 1, $limit = 10, $order = "desc", $jobType = [], $locationType = []) {
     if ($page < 1 || $limit < 1 ) {
       throw new Exception("Bad request exception", 400);
@@ -356,6 +369,19 @@ class LowonganModel {
     $res['jobs'] = $jobs;
     $res['maxPage'] = $numPage;
     return $res;
+  }
+
+  public function getTopLowonganCompany($company_id) {
+    $sql = "SELECT lowongan_id, nama, lokasi, posisi, jenis_pekerjaan, jenis_lokasi, is_open, EXTRACT(DAY FROM (NOW() - created_at)) as days_before, created_at
+    FROM lowongan l
+    INNER JOIN users u ON l.company_id = u.user_id AND u.user_id = :company_id
+    INNER JOIN company_detail cd ON cd.user_id = u.user_id
+    ORDER BY applicant DESC
+    LIMIT 5";
+    $stmt = $this->db->prepare($sql);
+    $this->db->bind($stmt, ":company_id", $company_id);
+    $this->db->execute($stmt);
+    return $this->db->fetchAll($stmt);
   }
 
   public function getFilterLowonganCompany(int $company_id, $query = '', $page = 1, $limit = 10, $order = "desc", $jobType = [], $locationType = []) {

@@ -30,6 +30,8 @@ class HomeController extends Controller
   private function jobSeekerHomePage(Request $request)
   {
     $data = $this->getLowonganJobSeeker($request);
+    $topLowongan = $this->getTopLowongan();
+    $data['top_lowongan'] = $topLowongan;
     $path = __DIR__ . '/../views/home/HomeView.php';
     $this->render($path, $data);
   }
@@ -37,6 +39,8 @@ class HomeController extends Controller
   private function companyHomePage(Request $request)
   {
     $data = $this->getLowonganCompany($request);
+    $topLowongan = $this->getTopLowonganCompany();
+    $data['top_lowongan'] = $topLowongan;
     $path = __DIR__ . '/../views/home/CompanyHomeView.php';
     $this->render($path, $data);
   }
@@ -96,6 +100,15 @@ class HomeController extends Controller
     $data['lowerPage'] = $lowerPage;
 
     return $data;
+  }
+
+  private function getTopLowongan() {
+    return $this->lowonganModel->getTopLowongan();
+  }
+
+  private function getTopLowonganCompany() {
+    $id = $this->sessionManager->getUserId();
+    return $this->lowonganModel->getTopLowonganCompany($id);
   }
 
   private function getLowonganCompany(Request $request)

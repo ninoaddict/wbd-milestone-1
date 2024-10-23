@@ -1,5 +1,5 @@
 body {
-  background: #f3f2f0;
+  background: #f4f2ee;
 }
 
 .home-section {
@@ -13,7 +13,6 @@ body {
     min-height: calc(100vh - 76px - 225px - 32px);
   }
 }
-
 
 .home-layout {
   display: grid;
@@ -30,13 +29,13 @@ body {
 }
 
 .sidebar {
-  grid-area: "sidebar";
+  grid-area: sidebar;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 .main {
-  grid-area: "main";
+  grid-area: main;
   padding-left: 1rem;
   padding-right: 1rem;
   position: relative;
@@ -44,7 +43,7 @@ body {
 }
 
 .pseudo {
-  grid-area: "pseudo";
+  grid-area: pseudo;
   display: none;
 }
 
@@ -157,6 +156,116 @@ svg[data-supported-dps="16x16"] {
   width: 12px;
 }
 
+.pseudo-card {
+  display: none;
+}
+
+.pseudo-card {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.pseudo-img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.pseudo-pp-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -36px;
+}
+
+.pseudo-pp {
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px;
+}
+
+.pseudo-identity {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pseudo-name {
+  font-weight: 500;
+}
+
+.add-btn-xl-container {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-btn-xl {
+  width: 100%;
+}
+
+.add-btn-xl {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 28px;
+  padding-right: 28px;
+  color: white;
+  background-color: #0a66c2;
+  text-align: center;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.add-btn-xl:hover {
+  background-color: #367fc7;
+}
+
+.pseudo-email {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.top-job-card-position {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0a66c2;
+}
+
+.tob-job-card {
+  padding-top: 6px;
+  padding-bottom: 8px;
+  border-top: 1px solid rgba(140, 140, 140, 0.3);
+}
+
+.top-job-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 8px;
+}
+
+.underline:hover {
+  text-decoration: underline;
+  color: #0a66c2;
+}
+
+.top-job-card-company {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+
 .sort-label {
   margin-bottom: 4px;
   font-size: 14px;
@@ -245,6 +354,14 @@ svg[data-supported-dps="16x16"] {
     max-width: unset;
   }
 
+  .sidebar {
+    padding-right: 0;
+  }
+
+  .pseudo-card {
+    display: block;
+  }
+
   .home-layout {
     grid-template-areas: "sidebar main";
     grid-template-columns: minmax(0, 280px) minmax(0, auto);
@@ -255,15 +372,20 @@ svg[data-supported-dps="16x16"] {
   .home-container {
     width: 960px;
   }
+  
+  .pseudo {
+    display: block;
+  }
+
+  .home-layout {
+    grid-template-areas: "sidebar main pseudo";
+    grid-template-columns: minmax(0, 260px) minmax(0, auto) minmax(0, 260px);
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .home-container {
     width: 1128px;
-  }
-
-  .pseudo {
-    display: block;
   }
 
   .home-layout {
@@ -361,6 +483,7 @@ svg[data-supported-dps="16x16"] {
 }
 
 .add-btn-container {
+  display: none;
   position: fixed;
   bottom: 40px;
   right: 50px;
@@ -407,6 +530,7 @@ svg[data-supported-dps="16x16"] {
 
 @media screen and (max-width: 768px) {
   .add-btn-container {
+    display: block;
     bottom: 36px;
     right: 36px;
   }

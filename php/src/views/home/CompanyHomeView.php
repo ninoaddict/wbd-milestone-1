@@ -24,6 +24,23 @@
       <div class="home-container">
         <div class="home-layout">
           <div class="sidebar">
+            <div class="pseudo-card">
+              <div>
+                <img src="/public/images/bg-linkedin.svg" alt="" class="pseudo-img">
+                <div class="pseudo-pp-container">
+                <img src="/public/images/default-profile.jpg" alt="" class="pseudo-pp">
+                </div>
+              </div>
+              <div class="pseudo-identity">
+                <h1 class="pseudo-name"><?php echo $_SESSION['nama'] ?></h1>
+                <h2 class="pseudo-email"><?php echo $_SESSION['email'] ?></h2>
+              </div>
+              <div class="add-btn-xl-container">
+                <form class="form-btn-xl" action="/lowongan/add" method="get">
+                  <button class="add-btn-xl">Add Vacancy</button>
+                </form>
+              </div>
+            </div>
             <form id="search-form">
               <div class="search-container">
                 <label class="icon-wrapper" for="query">
@@ -135,7 +152,27 @@
               <?php endif; ?>
             </nav>
           </main>
-          <div class="pseudo"></div>
+          <div class="pseudo">
+            <div class="card">
+              <div class="top-job-title-container">
+                <h1 class="top-job-title">Your popular jobs</h1>
+              </div>
+              <div class="top-job-card-container">
+              <?php foreach($data['top_lowongan'] as $top_job):?>
+                <div class="tob-job-card">
+                  <a href="/lowongan/<?php echo $top_job['lowongan_id'] ?>" class="underline">
+                    <h1 class="top-job-card-position">
+                      <?php echo $top_job['posisi'] ?>
+                    </h1>
+                  </a>
+                  <h2 class="top-job-card-company">
+                    <?php echo $top_job['nama'] ?> - <?php echo $top_job['lokasi'] ?>
+                  </h2>
+                </div>
+              <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

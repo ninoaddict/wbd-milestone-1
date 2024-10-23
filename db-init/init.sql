@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS lowongan (
   is_open BOOLEAN DEFAULT TRUE NOT NULL,
   created_at timestamp NOT NULL DEFAULT NOW(),
   updated_at timestamp NOT NULL DEFAULT NOW(),
+  applicant INT NOT NULL DEFAULT 0,
   FOREIGN KEY(company_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
@@ -63,6 +64,22 @@ CREATE OR REPLACE TRIGGER set_timestamp
 AFTER UPDATE ON lowongan
 FOR EACH ROW
 EXECUTE FUNCTION trigger_set_timestamp();
+
+CREATE OR REPLACE FUNCTION trigger_update_applicant()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE lowongan
+  SET applicant = applicant + 1
+  WHERE lowongan_id = NEW.lowongan_id;
+  
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER update_applicant
+AFTER INSERT ON lamaran
+FOR EACH ROW
+EXECUTE FUNCTION trigger_update_applicant();
 
 insert into users (email, role, nama, password) values ('sveldman0@canalblog.com', 'jobseeker', 'Stewart Veldman', '$2y$10$KCDl.0iEQL7kqyewJQI9J.qgIdOoB/tF7AIsD4vjyiqtwscczAAQa');
 insert into users (email, role, nama, password) values ('isanbroke1@biblegateway.com', 'company', 'Tokopedia', '$2y$10$KCDl.0iEQL7kqyewJQI9J.qgIdOoB/tF7AIsD4vjyiqtwscczAAQa');
