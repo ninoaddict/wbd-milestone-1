@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit lowongan">
+  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
@@ -27,7 +29,7 @@
               <input type="text" class="input-style" id="job-name" value="<?= $data['posisi'] ?>" required />
             </div>
             <div class="form-structure">
-              <label for="requirements" class="input-name-style">Company Name</label>
+              <p for="requirements" class="input-name-style">Company Name</p>
               <div class="input-style" id="requirements"><?= $data['company_name'] ?></div>
             </div>
           </div>

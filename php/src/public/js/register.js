@@ -96,7 +96,6 @@ function onSubmit(e) {
     if (xhr.status === 200) {
       window.location.replace('/');
     } else {
-      // TODO: handle gagal
       const res = JSON.parse(xhr.responseText);
       createToast('error', res.message);
     }

@@ -35,7 +35,7 @@ class LowonganModel {
     $this->db->bind($statement, ':opened', $opened);
     $ok = $this->db->execute($statement);
     if (!$ok) {
-    throw new Exception("Database error: Unable to execute query.");
+      throw new Exception("Database error: Unable to execute query.");
     }
     return $this->db->lastInsertId();
   }

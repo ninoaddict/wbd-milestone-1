@@ -5,7 +5,7 @@ class MultiSelect {
       max: null,
       search: false,
       selectAll: false,
-      listAll: true,
+      listAll: false,
       closeListOnItemSelect: false,
       name: '',
       width: '',

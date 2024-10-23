@@ -170,8 +170,7 @@ class DetailLowonganController extends Controller {
 
   public function deleteJob(Request $request) {
     try {
-      $body = $request->getBody();
-      $id = $body['id'];
+      $id = $request->getParams()[0];
       $files = $this->lowonganModel->queryFilePathByLowonganId($id);
       $this->lowonganModel->queryDeleteById($id);
       for ($i = 0; $i < count($files); $i++) {

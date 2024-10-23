@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Register account on Verlinkt">
-  <meta name="keywords" content="job, apply, vacancy, linkedin, verlinkt">
+  <meta name="description" content="Register account on Linkedin">
+  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/register.css">
   <link rel="stylesheet" href="/public/css/toast.css">
 
-  <title>Register - Verlinkt</title>
+  <title>Register - Linkedin</title>
 </head>
 
 <body>
@@ -161,7 +161,7 @@
     </div>
 
     <div class="join-now">
-      Already on Verlinkt?
+      Already on Linkedin?
       <a href="/login" class="link">Sign in</a>
     </div>
   </main>

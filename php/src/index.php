@@ -36,7 +36,7 @@ $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondL
 
 $app->router->get('/lowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganChoose']);
 $app->router->post('/lowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
-$app->router->post('/lowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
+$app->router->delete('/lowongan/:id/delete', handler:[DetailLowonganController::class, 'deleteJob']);
 
 $app->router->get('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowonganPage']);
 $app->router->post('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowongan']);

@@ -32,7 +32,8 @@ class CompProfileController extends Controller {
             header('Location: /profile');
             exit();
         } else {
-            echo "Error updating profile!";
+          $this->setErrorMessage('Not found');
+          header('Location: /profile');
         }
     }
 }

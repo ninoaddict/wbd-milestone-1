@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detail lowongan for jobseeker">
+  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
@@ -30,7 +32,7 @@
           <h3><?= $data['0']['jenis_pekerjaan']?></h3>
           <h2 class="job-requirement">Status:</h2>
           <h3><?= $data['status']?></h3>
-          <h4><?php if ($data['status_reason']) html_entity_decode($data['status_reason'])?></h4>
+          <h4><?php if ($data['status'] == 'Rejected' || $data['status'] == 'Accepted') echo html_entity_decode($data['status_reason'])?></h4>
           <?php 
             if ($data['file_path']) {
             echo '<h2 class="job-requirement">Attachments:</h2>';

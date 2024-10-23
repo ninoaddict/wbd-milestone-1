@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Not found page">
-  <meta name="keywords" content="job, apply, vacancy, linkedin, verlinkt">
+  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <title>Page Not Found</title>
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
