@@ -17,6 +17,7 @@ class AddLowonganController extends Controller {
     $this->sessionManager = SessionManager::getInstance();
     $this->lowonganModel = new LowonganModel();
     $this->fileManager = FileManager::getInstance();
+    $this->extractMessage();
   }
 
   public function addLowonganPage(Request $request) {
@@ -59,8 +60,10 @@ class AddLowonganController extends Controller {
       if ($_FILES) {
         $this->lowonganModel->insertAttachment($lastId, $file_names);
       }
+      $this->setSuccessMessage('Job added successfully!');
       echo Application::$app->response->jsonEncodes(200, ['message' => "/lowongan/$lastId"]);
     } catch (Exception $e) {
+      $this->setErrorMessage('Please fill the job name!');
       echo Application::$app->response->jsonEncodes(400, ['message' => $e->getMessage()]);
     }
   }

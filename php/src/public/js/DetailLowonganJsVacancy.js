@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (pdfButtone) {
         pdfButtone.addEventListener('click', function() {
-            console.log(pdfEmbed.innerText.split('/')[4]);
             pdfVidContent.innerHTML = '';
             const object = document.createElement('object');
             object.id = "pdf-styling"
@@ -20,13 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
             pdfVidContent.appendChild(object);
             downloader.href = pdfEmbed.innerText;
             seer.href = pdfEmbed.innerText;
-            downloader.download = pdfEmbed.innerText.split('/')[4].trim();
+            downloader.download = pdfEmbed.innerText.split('/')[3].trim();
         });
     }
 
-    if (vidButtone) {
+    if (vidButtone && vidEmbed.innerText.split('/')[3]) {
         vidButtone.addEventListener('click', function() {
-            console.log(vidEmbed.innerText.split('/')[4]);
             pdfVidContent.innerHTML = '';
             const video = document.createElement('video');
             video.id = "vid-styling"
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pdfVidContent.appendChild(video);
             downloader.href = vidEmbed.innerText;
             seer.href = vidEmbed.innerText;
-            downloader.download = vidEmbed.innerText.split('/')[4].trim();
+            downloader.download = vidEmbed.innerText.split('/')[3].trim();
         });
     }
 });

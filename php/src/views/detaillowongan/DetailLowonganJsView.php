@@ -49,7 +49,7 @@
                 }
                 for ($i = 0; $i < count($file_name); $i++) {
                   echo <<<HTML
-                    <a class="embed-file-style" href="$file_path[$i]">{$file_name[$i]}</a>
+                    <img src="$file_path[$i]" class="image-file-style"/>
                   HTML;
                 }
               }

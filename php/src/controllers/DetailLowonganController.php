@@ -16,6 +16,7 @@ class DetailLowonganController extends Controller {
     $this->lowonganModel = new LowonganModel();
     $this->sessionManager = SessionManager::getInstance();
     $this->fileManager = FileManager::getInstance();
+    $this->extractMessage();
   }
 
   public function detailLowonganChoose(Request $request) {

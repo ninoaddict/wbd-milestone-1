@@ -16,6 +16,7 @@ class EditLowonganController extends Controller {
     $this->lowonganModel = new LowonganModel();
     $this->sessionManager = SessionManager::getInstance();
     $this->fileManager = FileManager::getInstance();
+    $this->extractMessage();
   }
 
   public function editLowonganPage(Request $request) {
@@ -92,8 +93,10 @@ class EditLowonganController extends Controller {
         $jobType, $status, $htmlContent, $lowongan_id
       );
       $this->lowonganModel->insertAttachment($lowongan_id, $file_names);
+      $this->setSuccessMessage('Job edited successfully!');
       echo Application::$app->response->jsonEncodes(200, ['message' => "/lowongan/$lowongan_id"]);
     } catch (Exception $e) {
+      $this->setErrorMessage('Failed to edit job!');
       echo Application::$app->response->jsonEncodes(400, ['message' => $e->getMessage()]);
     }
   }

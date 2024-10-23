@@ -87,6 +87,14 @@
       theme: 'snow'
     });
   </script>
+  <script src="/public/js/toast.js" defer></script>
+  <?php if (isset($errorMessage)): ?>
+    <script defer>
+      window.addEventListener('load', (event) => {
+        createToast('error', '<?php echo $errorMessage?>');
+      });
+    </script>
+  <?php endif; ?>
 </body>
 
 </html>
