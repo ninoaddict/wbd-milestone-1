@@ -20,12 +20,13 @@ body {
 .delete-or-close {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .close-button {
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 10px;
     background-color: darkblue;
     color: white;
     padding: 10px;
@@ -75,11 +76,10 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 1000px;
     padding: 15px;
+    margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
-    margin-right: 5px;
 }
 
 .container-job-jsversion {
@@ -101,10 +101,8 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 1000px;
     padding: 15px;
-    margin-right: 10px;
-    margin-left: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -212,7 +210,9 @@ ol {
 
 .actual-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .actual-container-jsversion {
@@ -296,8 +296,13 @@ ol {
     margin-top: 10px;
 }
 
+h2 {
+    font-size: 18px;
+}
+
 h3 {
     font-weight: 400;
+    font-size: 15px;
 }
 
 h4 {
@@ -309,6 +314,16 @@ h1 {
 }
 
 @media (max-width: 1100px) {
+    .container-job {
+        width: 700px;
+        margin-bottom: 20px;
+    }
+
+    .container-taker {
+        width: 700px;
+        margin-bottom: 20px;
+    }
+
     .container-job-jsversion {
         width: 700px;
         margin-bottom: 20px;
@@ -384,31 +399,47 @@ h1 {
 
 @media (max-width: 540px) {
     .container-job {
-        width: 420px;
+        width: 400px;
         margin-bottom: 20px;
     }
 
     .container-job-jsversion {
-        width: 420px;
+        width: 400px;
         margin-bottom: 20px;
     }
 
     .container-attach {
-        width: 420px;
+        width: 400px;
         margin-left: 0px;
     }
 
     .company-profile {
-        width: 420px;
+        width: 400px;
         margin-left: 0px;
     }
 
     .container-taker {
-        width: 420px;
+        width: 400px;
         margin-left: 0px;
     }
 
     .container-status {
         margin-right: 0;
+    }
+
+    h2 {
+        font-size: 100%;
+    }
+
+    h3 {
+        font-size: 100%;
+    }
+
+    h4 {
+        font-size: 100%;
+    }
+
+    a {
+        font-size: 100%;
     }
 }
