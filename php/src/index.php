@@ -29,6 +29,7 @@ $app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'ap
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
-$app->router->get('/comp-profile/:id', handler: [CompProfileController::class,'companyProfilePage']);
+$app->router->get('/profile', handler: [CompProfileController::class,'profilePage']);
+$app->router->post('/profile', handler: [CompProfileController::class, 'updateProfile']);
 
 $app->run();
