@@ -18,7 +18,7 @@
 <body>
     <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
     <div class="space"></div>
-    <h1>Application History</h1>
+    <h1 class="head">History</h1>
 
     <div class="button-and-list">
         <div class="filter-buttons">
@@ -31,17 +31,13 @@
         <div id="application-list">
             <?php if (!empty($historyList)) {?>
                 <?php foreach ($historyList as $historyItem){ ?>
-                    <div class="history-card" data-id="<?= $historyItem['lowongan_id'] ?>">
+                    <a class="history-card" data-id="<?= $historyItem['lowongan_id'] ?>" href="/lowongan/ <?php echo $historyItem['lowongan_id'] ?>">
                         <div class="history-content">
-                            <p class="vacancy-id">ID: <?= htmlspecialchars($historyItem['lowongan_id']); ?></p>
-                            <h2 class="company-name"><?= htmlspecialchars($historyItem['nama']); ?></h2>
-                            <p class="position"><?= htmlspecialchars($historyItem['posisi']); ?></p>
+                            <h2 class="position"><?= htmlspecialchars($historyItem['posisi']); ?></h2>
+                            <p class="company-name"><?= htmlspecialchars($historyItem['nama']); ?></p>
+                            <p> <b><?= htmlspecialchars(ucfirst($historyItem['status'])); ?></b>  ─  <?= htmlspecialchars($historyItem['created_time']); ?></p>
                         </div>
-                        <div class="date-status">
-                            <?= htmlspecialchars($historyItem['created_time']); ?>
-                            <p class="status"> <?= htmlspecialchars($historyItem['status']); ?> </p>
-                        </div>
-                    </div>
+                    </a>
                 <?php } ?>
             <?php } else {?>
                 <p class="empty-message">No application history available at the moment.</p>
