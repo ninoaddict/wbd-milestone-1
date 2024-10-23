@@ -28,7 +28,7 @@
       </div>
       <div class="actual-container">
         <section class="container-job">
-          <h1><b class="job-title"><?= $data['posisi']?></b></h1>
+          <h1><?= $data['posisi']?></h1>
           <h2 class="descript-title">Description:</h2>
           <h3 class="job-description">
             <?= htmlspecialchars_decode($data['deskripsi'])?>
@@ -59,7 +59,7 @@
           </div>
         </section>
         <section class="container-taker">
-          <h1><b class="job-title">Job Takers</b></h1>
+          <h1>Job Takers</h1>
           <div class="scrollable-div">
             <?php 
               foreach ($data['lamaran'] as $lamarans) {

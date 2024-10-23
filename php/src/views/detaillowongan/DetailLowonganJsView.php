@@ -17,7 +17,7 @@
     <div class="content-separator-jsversion">
       <div class="actual-container-jsversion">
         <section class="container-job-jsversion">
-          <h1><b class="job-title"><?= $data['0']['posisi']?></b></h1>
+          <h1 class="job-title"><?= $data['0']['posisi']?></h1>
           <h2 class="descript-title">Description:</h2>
           <h3 class="job-description">
             <?= htmlspecialchars_decode($data['0']['deskripsi'])?>
@@ -64,13 +64,13 @@
           </div>
         </section>
         <section class="company-profile">
-          <h1><b class="attachment">About The Company</b></h1>
+          <h1 class="attachment">About The Company</h1>
           <h2><?php echo $data['company_detail']['nama']?></h2>
           <h3>Location: <?php echo $data['company_detail']['lokasi']?></h3>
           <h4><?php echo $data['company_detail']['about']?></h4>
         </section>
         <section class="container-attach">
-        <h1><b class="attachment">My Attachments</b></h1>
+        <h1 class="attachment">My Attachments</h1>
         <?php 
           if ($data["status"] == "Accepted" || $data["status"] == "Rejected" || $data["status"] == "Waiting") {
             echo '<div class="cv-or-vid">
