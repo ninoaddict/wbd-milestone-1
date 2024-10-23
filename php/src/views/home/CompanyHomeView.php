@@ -166,7 +166,7 @@
                     </h1>
                   </a>
                   <h2 class="top-job-card-company">
-                    <?php echo $top_job['nama'] ?> - <?php echo $top_job['lokasi'] ?>
+                    <?php echo $top_job['nama'] ?> ─ <?php echo $top_job['lokasi'] ?>
                   </h2>
                 </div>
               <?php endforeach; ?>
