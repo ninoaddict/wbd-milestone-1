@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label class="label">New Description</label>
-                <textarea class='input-area' id="about" name="about" rows="8" placeholder="Your new company description here"></textarea>
+                <textarea class='input-area' id="about" name="about" rows="5" placeholder="Your new company description here"></textarea>
             </div>
             <button class="submit-button" type="submit">Submit</button>
         </form>
@@ -42,10 +42,10 @@
     <ul class="notifications"></ul>
 </body>
 <script src="/public/js/toast.js" defer></script>
-<?php if (isset($successMessage)): ?>
+<?php if (isset($errorMessage)): ?>
     <script defer>
         window.addEventListener('load', (event) => {
-            createToast('success', '<?php echo $successMessage ?>')
+            createToast('error', '<?php echo $errorMessage ?>')
         });
     </script>
 <?php endif; ?>
