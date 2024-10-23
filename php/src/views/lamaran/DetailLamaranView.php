@@ -8,6 +8,7 @@
   <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/detaillamaran.css">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
@@ -90,6 +91,17 @@
       </div>
     <?php endif; ?>
   </main>
+  
+  <ul class="notifications"></ul>
+
+  <script src="/public/js/toast.js" defer></script>
+  <?php if (isset($successMessage)): ?>
+    <script defer>
+      window.addEventListener('load', (event) => {
+        createToast('success', '<?php echo $successMessage ?>')
+      });
+    </script>
+  <?php endif; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script>
@@ -129,12 +141,12 @@
             location.reload();
           } else {
             const res = JSON.parse(xhr.responseText);
-            console.log(res.error_msg);
+            createToast('error', res.message);
           }
         }
 
         xhr.onerror = function () {
-          console.log('Something wrong');
+          createToast('error', "Something went wrong");
         };
 
         xhr.send(formData);

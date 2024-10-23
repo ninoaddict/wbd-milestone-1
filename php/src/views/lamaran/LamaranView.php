@@ -8,6 +8,7 @@
   <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/lamaran.css">
 
@@ -48,6 +49,16 @@
       </form>
     </div>
   </main>
+  <ul class="notifications"></ul>
 </body>
+
+<script src="/public/js/toast.js" defer></script>
+<?php if (isset($errorMessage)): ?>
+  <script defer>
+    window.addEventListener('load', (event) => {
+      createToast('success', '<?php echo $errorMessage ?>')
+    });
+  </script>
+<?php endif; ?>
 
 </html>

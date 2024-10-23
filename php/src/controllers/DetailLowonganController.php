@@ -9,8 +9,6 @@ use app\core\SessionManager;
 use Exception;
 
 class DetailLowonganController extends Controller {
-  private int $params = 0;
-  private bool $job_status;
   private LowonganModel $lowonganModel;
   private SessionManager $sessionManager;
   private FileManager $fileManager;
@@ -34,10 +32,11 @@ class DetailLowonganController extends Controller {
       return;
     }
     $params = $request->getParams()[0];
-    $this->params = $params;
     $lamarans = $this->getLamaranById($params);
-    for ($i = 0; $i < count($lamarans); $i++) {
-      $lamarans[$i]['status'] = ucfirst($lamarans[$i]['status']);
+    if (!empty($lamarans)) {
+      for ($i = 0; $i < count($lamarans); $i++) {
+        $lamarans[$i]['status'] = ucfirst($lamarans[$i]['status']);
+      }
     }
 
     $idOfParams = $this->getIdById($params);
@@ -74,7 +73,6 @@ class DetailLowonganController extends Controller {
     }
     $user_id = $this->sessionManager->getUserId();
     $params = $request->getParams()[0];
-    $this->params = $params;
     $data = $this->getLamaranInfosById($params, $user_id);
     
     if ($data) {
@@ -173,12 +171,15 @@ class DetailLowonganController extends Controller {
       $id = $request->getParams()[0];
       $files = $this->lowonganModel->queryFilePathByLowonganId($id);
       $this->lowonganModel->queryDeleteById($id);
-      for ($i = 0; $i < count($files); $i++) {
-        $files[$i] = "/var/www/html/storage/..".$files[$i];
-        $this->fileManager->delete($files[$i]);
+      if (!empty($files)) {
+        for ($i = 0; $i < count($files); $i++) {
+          $files[$i] = "/var/www/html/storage/..".$files[$i];
+          $this->fileManager->delete($files[$i]);
+        }
       }
+      $this->setSuccessMessage("Job deleted successfully");
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to delete the data']);
     }
   }
 }

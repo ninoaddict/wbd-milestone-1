@@ -20,6 +20,7 @@ class LamaranController extends Controller
     $this->lamaranModel = new LamaranModel();
     $this->sessionManager = SessionManager::getInstance();
     $this->fileManager = FileManager::getInstance();
+    $this->extractMessage();
   }
 
   public function applyLowonganPage(Request $request)
@@ -83,8 +84,10 @@ class LamaranController extends Controller
         }
         throw new Exception('Fail to add lamaran');
       }
+      $this->setSuccessMessage('Lamaran uploaded successfully');
       Application::$app->response->redirect('/lowongan' . '/' . $lowongan_id);
     } catch (Exception $e) {
+      $this->setErrorMessage('Failed to upload lamaran');
       Application::$app->response->redirect('/lowongan' . '/' . $lowongan_id .'/apply');
     }
   }
@@ -115,7 +118,7 @@ class LamaranController extends Controller
   {
     try {
       if (!$this->sessionManager->isLoggedIn() || !$this->sessionManager->isCompany()) {
-        echo Application::$app->response->jsonEncodes(500, ['error_msg' => 'User is not authorized']);
+        echo Application::$app->response->jsonEncodes(500, ['message' => 'User is not authorized']);
         return;
       }
       $lamaran_id = $request->getParams()[0];
@@ -123,7 +126,7 @@ class LamaranController extends Controller
       $authorized = $this->lamaranModel->isCompanyAuthorized($lamaran_id, $company_id);
 
       if (!$authorized) {
-        echo Application::$app->response->jsonEncodes(500, ['error_msg' => 'User is not authorized']);
+        echo Application::$app->response->jsonEncodes(500, ['message' => 'User is not authorized']);
         return;
       }
 
@@ -132,9 +135,10 @@ class LamaranController extends Controller
       $status_reason = $body['status_reason'];
 
       $this->lamaranModel->updateStatusLamaran($lamaran_id, $new_status, $status_reason);
-      echo Application::$app->response->jsonEncodes(200, ['error_msg' => 'Status updated successfully']);
+      $this->setSuccessMessage('Status updated successfully');
+      echo Application::$app->response->jsonEncodes(200, ['message' => 'Status updated successfully']);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(500, ['error_msg' => $e->getMessage()]);
+      echo Application::$app->response->jsonEncodes(500, ['message' => $e->getMessage()]);
     }
   }
 }

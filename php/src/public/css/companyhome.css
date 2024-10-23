@@ -367,13 +367,33 @@ svg[data-supported-dps="16x16"] {
 }
 
 .delete-btn {
-  color: #d34a4a;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #d34a4a;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.edit-btn {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #0a66c2;
+  color: white;
   transition: 0.3s ease;
 }
 
 .delete-btn:hover {
-  color: #D11A2A;
-  transform: scale(1.05);
+  background-color: #D11A2A;
+}
+
+.edit-btn:hover {
+  background-color: #0a539c;
+}
+
+.action-form {
+  display: inline-block;
 }
 
 @media screen and (max-width: 768px) {

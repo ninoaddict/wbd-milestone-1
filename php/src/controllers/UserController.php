@@ -43,7 +43,7 @@ class UserController extends Controller
   public function login(Request $request)
   {
     if ($this->sessionManager->isLoggedIn()) {
-      echo Application::$app->response->jsonEncodes(400, ['error_msg' => 'User has logged in']);
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'User has logged in']);
       return;
     }
     $body = $request->getBody();

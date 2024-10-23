@@ -42,7 +42,6 @@ deleter.addEventListener("click", function () {
   xhr.onload = function () {
     if (xhr.status === 200) {
       window.location.replace("/");
-      console.log("Success:", xhr.responseText);
     } else {
       const res = JSON.parse(xhr.responseText);
       console.log(res.message);
