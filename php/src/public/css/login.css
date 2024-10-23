@@ -1,6 +1,11 @@
 .linkedin-logo {
   display: block;
-  margin: 32px 0 0 56px;
+}
+
+.linkedin-logo-header {
+  position: absolute;
+  top: 32px;
+  left: 56px;
 }
 
 body {
@@ -11,9 +16,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 108px;
+  justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
+  min-height: 100vh;
 }
 
 .card-layout {
@@ -117,6 +123,7 @@ form {
 @media (max-width: 640px) {
   main {
     margin: 0;
+    min-height: unset;
   }
 
   body {
@@ -130,5 +137,9 @@ form {
   .linkedin-logo {
     width: min-content;
     margin: 0 auto;
+  }
+
+  .linkedin-logo-header {
+    position: static;
   }
 }

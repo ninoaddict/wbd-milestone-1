@@ -9,7 +9,7 @@ use app\core\SessionManager;
 use app\core\FileManager;
 use Exception;
 
-class TambahLowonganController extends Controller {
+class AddLowonganController extends Controller {
   private LowonganModel $lowonganModel;
   private SessionManager $sessionManager;
   private FileManager $fileManager;
@@ -19,22 +19,23 @@ class TambahLowonganController extends Controller {
     $this->fileManager = FileManager::getInstance();
   }
 
-  public function tambahLowonganPage(Request $request) {
+  public function addLowonganPage(Request $request) {
     if (!$this->sessionManager->isLoggedIn()) {
       Application::$app->response->redirect("/login");
       return;
     }
     if ($this->sessionManager->isJobSeeker()) {
-      Application::$app->response->redirect("/");
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
       return;
     }
-    $path = __DIR__ . '/../views/tambahlowongan/TambahLowonganView.php';
+    $path = __DIR__ . '/../views/addlowongan/AddLowonganView.php';
     $params = $this->sessionManager->getUserId();
     $data = $this->getCompanies($params);
     $this->render($path, $data);
   }
 
-  public function tambahLowongan(Request $request) : void {
+  public function addLowongan(Request $request) : void {
     $body = $request->getBody();
     $position = $body['position'];
     $companyName = $body['companyName'];
@@ -42,9 +43,6 @@ class TambahLowonganController extends Controller {
     $jobType = $body['jobType'];
     $status = $body['status'];
     $htmlContent = $body['htmlContent'];
-    $files = $_FILES['files']['tmp_name'];
-    // $fileCount = count($_FILES['files']['name']);
-    // print_r($_FILES['files']['name']);
 
     $file_names = [];
     if (isset($_FILES['files'])) {
@@ -63,7 +61,7 @@ class TambahLowonganController extends Controller {
       }
       echo Application::$app->response->jsonEncodes(200, ['message' => "/lowongan/$lastId"]);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getTrace()]);
+      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getMessage()]);
     }
   }
 

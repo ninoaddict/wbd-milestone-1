@@ -137,6 +137,7 @@ class LowonganModel {
 
     $data = [
         'lowongan_id' => $lowongan_id,
+        'company_id' => $company_id,
         'company_name' => $company_name,
         'posisi' => $posisi,
         'deskripsi' => $deskripsi,

@@ -23,13 +23,29 @@ class EditLowonganController extends Controller {
       Application::$app->response->redirect("/login");
       return;
     }
+    if ($this->sessionManager->isJobSeeker()) {
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
+      return;
+    }
+
+    $companyId = $this->sessionManager->getUserId();
+
     $params = $request->getParams()[0];
     $data = $this->getDetailsbyId($params);
+
+    if ($companyId != $data['company_id']) {
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
+      return;
+    }
+
     if ($data['is_open']) {
       $data['is_open'] = "Open";
     } else {
       $data['is_open'] = "Close";
     }
+    
     $path = __DIR__ . '/../views/editlowongan/EditLowonganView.php';
     $this->render($path, $data);
   }
@@ -51,24 +67,22 @@ class EditLowonganController extends Controller {
     $jobType = $body['jobType'];
     $status = $body['status'];
     $htmlContent = $body['htmlContent'];
-    $lowongan_id = $body['lowongan_id'];
 
-    $files = $_FILES['files']['tmp_name'];
-    // $fileCount = count($_FILES['files']['name']);
-    // print_r($_FILES['files']['name']);
+    $lowongan_id = $request->getParams()[0];
 
     $files_delete = $this->lowonganModel->queryFilePathByLowonganId($lowongan_id);
     $this->lowonganModel->queryDeleteAttachmentById($lowongan_id);
-    for ($i = 0; $i < count($files_delete); $i++) {
-      $files_delete[$i] = "/var/www/html/storage/..".$files_delete[$i];
-      print_r($files_delete[$i]);
-      $this->fileManager->delete($files_delete[$i]);
+    if (!empty($files_delete)) {
+      for ($i = 0; $i < count($files_delete); $i++) {
+        $files_delete[$i] = "/var/www/html/storage/..".$files_delete[$i];
+        $this->fileManager->delete($files_delete[$i]);
+      }
     }
 
     $file_names = [];
     if (isset($_FILES['files'])) {
       foreach ($_FILES['files']['tmp_name'] as $key => $tmpName) {
-          array_push($file_names, substr($this->fileManager->saveImage($tmpName),21));
+        array_push($file_names, substr($this->fileManager->saveImage($tmpName),21));
       }
     }
 
@@ -78,9 +92,9 @@ class EditLowonganController extends Controller {
         $jobType, $status, $htmlContent, $lowongan_id
       );
       $this->lowonganModel->insertAttachment($lowongan_id, $file_names);
-      echo Application::$app->response->jsonEncodes(200, ['message' => "/detaillowongan/$lowongan_id"]);
+      echo Application::$app->response->jsonEncodes(200, ['message' => "/lowongan/$lowongan_id"]);
     } catch (Exception $e) {
-      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getTrace()]);
+      echo Application::$app->response->jsonEncodes(400, ['message' => $e->getMessage()]);
     }
   }
 }

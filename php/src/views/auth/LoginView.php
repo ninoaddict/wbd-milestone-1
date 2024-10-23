@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <header>
+  <header class="linkedin-logo-header">
     <a href="/" class="linkedin-logo" aria-label="Linkedin logo">
       <svg width="110" height="28" viewBox="0 0 102 26" fill="none" xmlns="http://www.w3.org/2000/svg"
         id="linkedin-logo" preserveAspectRatio="xMinYMin meet" focusable="false">
