@@ -84,10 +84,13 @@
                   <h3 class="job-title"><?php echo $job['posisi'] ?></h3>
                 </a>
                 <div class="locntype">
-                  <p class="job-location"><?php echo $job['nama'] ?> ─ <?php echo ucfirst($job['jenis_lokasi']) ?></p>
+                  <p class="job-location"><?php echo $job['nama'] ?></p>
                 </div>
                 <div class="datentype">
-                  <p class="post-time"><?php echo ucfirst($job['jenis_pekerjaan']) ?> • Posted <?php echo $job['days_before'] ?> days ago</p>
+                  <p class="post-time"><?php echo ucfirst($job['jenis_pekerjaan']) ?> • <?php echo ucfirst($job['jenis_lokasi']) ?> </p>
+                </div>
+                <div>
+                  <p class="times">Posted <?php echo $job['days_before'] ?> days ago</p>
                 </div>
                 <div class="delete-btn-container">
                   <button class="delete-btn" onclick="handleDelete(<?php echo $job['lowongan_id'] ?>)" aria-label="Delete button">

@@ -318,6 +318,14 @@ svg[data-supported-dps="16x16"] {
   border-radius: 0 8px 8px 0;
 }
 
+.times {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+
 .icon {
   width: 10px;
   height: 10px;
@@ -373,6 +381,7 @@ svg[data-supported-dps="16x16"] {
   background-color: #d34a4a;
   color: white;
   transition: 0.3s ease;
+  margin-right: 2px;
 }
 
 .edit-btn {

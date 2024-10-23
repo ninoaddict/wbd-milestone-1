@@ -72,10 +72,13 @@ function updateContent(res, rawUrl) {
           <h3 class="job-title">${job.posisi}</h3>
         </a>
         <div class="locntype">
-          <p class="job-location">${job.nama} ─ ${capitalize(job.jenis_lokasi)}</p>
+          <p class="job-location">${job.nama}</p>
         </div>
         <div class="datentype">
-          <p class="post-time">${capitalize(job.jenis_pekerjaan)} • Posted ${job.days_before} days ago</p>
+          <p class="post-time">${capitalize(job.jenis_pekerjaan)} • ${capitalize(job.jenis_lokasi)}</p>
+        </div>
+        <div>
+          <p class="times">Posted ${job.days_before} days ago</p>
         </div>
       </div>
     `;
