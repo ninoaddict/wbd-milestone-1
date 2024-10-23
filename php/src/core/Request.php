@@ -56,7 +56,7 @@ class Request {
               $data[$key] = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
           }
         } else {
-            throw new Exception('Invalid JSON in request body');
+            throw new Exception('Invalid JSON in request body', 400);
         }
         break;
     }
