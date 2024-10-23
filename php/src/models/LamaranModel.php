@@ -120,6 +120,20 @@ class LamaranModel {
     return $this->db->fetch($statement);
   }
 
+  public function isLowonganOpen(int $lowongan_id) {
+    if (empty($lowongan_id)) {
+      throw new Exception("Required fields can't be empty", 400);
+    }
+
+    $sql = "SELECT * FROM lowongan WHERE lowongan_id = :lowongan_id AND is_open = TRUE";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":lowongan_id", $lowongan_id);
+    $this->db->execute($statement);
+    $data = $this->db->fetch($statement);
+
+    return !empty($data);
+  }
+
   public function getCompanyName(int $lowongan_id) {
     if (empty($lowongan_id)) {
       throw new Exception("Required fields can't be empty", 400);

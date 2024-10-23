@@ -45,6 +45,12 @@ class LamaranController extends Controller
       return;
     }
 
+    if (!$this->lamaranModel->isLowonganOpen($lowongan_id)) {
+      $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+      $this->render($path);
+      return;
+    }
+
     $company_name = $this->lamaranModel->getCompanyName($lowongan_id);
     $name = $this->sessionManager->getName();
     $email = $this->sessionManager->getEmail();

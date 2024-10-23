@@ -90,7 +90,7 @@ class DetailLowonganController extends Controller {
 
     if (!$data) {
       $data['status_reason'] = "Click the button below to apply for this job";
-      if ($new_data['is_open']) {
+      if ($new_data['is_open'] == "Close Job") {
         $data['status'] = 'Available';
       } else {
         $data['status'] = 'Unavailable';
