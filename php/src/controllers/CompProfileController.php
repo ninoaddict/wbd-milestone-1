@@ -18,23 +18,33 @@ class CompProfileController extends Controller {
     }
 
     public function profilePage(Request $request){
-        $user_id = $_SESSION["user_id"];
-        $companyProfile = $this->userModel->getCompanyProfile($user_id);
-        $path = __DIR__ . '/../views/profile/ProfileView.php';
-        $this->render($path, ['companyProfile' => $companyProfile]);
+        if ($_SESSION["role"] === 'jobseeker'){
+            $path = __DIR__ . '/../views/not-found/NotFoundView.php';
+            $this->render($path);
+        } else {
+            $user_id = $_SESSION["user_id"];
+            $companyProfile = $this->userModel->getCompanyProfile($user_id);
+            $path = __DIR__ . '/../views/profile/ProfileView.php';
+            $this->render($path, ['companyProfile' => $companyProfile]);
+        }
     }
 
     public function updateProfile(Request $request){
-        $user_id = $_SESSION['user_id'];
-        $body = $request->getBody();
-
-        if ($this->userModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
-            $_SESSION['nama'] = $body['nama'];
-            header('Location: /profile');
+        if ($_SESSION['role'] === 'jobseeker'){
+            header('Location: /page-not-found');
             exit();
         } else {
-          $this->setErrorMessage('Not found');
-          header('Location: /profile');
+            $user_id = $_SESSION['user_id'];
+            $body = $request->getBody();
+            
+            if ($this->userModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
+                $_SESSION['nama'] = $body['nama'];
+                header('Location: /profile');
+                exit();
+            } else {
+                $this->setErrorMessage('Not found');
+                header('Location: /profile');
+            }
         }
     }
 }
