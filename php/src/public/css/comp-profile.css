@@ -1,0 +1,94 @@
+body {
+    background-color: #f3f2f0;
+}
+
+.profile-container {
+    background-color: #fdfaf5;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    padding: 4vw;
+    border-radius: 15px;
+    border : 1px solid #DCE6F1;
+}
+.space {
+    margin: 8vw;
+}
+
+h1 {
+    font-size: 3vw;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.label {
+    font-size: 1.4vw;
+    margin-bottom: 0.5vw;
+}
+
+
+button {
+    background-color: #0a66c2;
+    border-radius: 10px;
+    color: white;
+    padding: 0.5vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    font-weight: bold;
+    border: 1px solid #DCE6F1;
+}
+
+.input-area {
+    padding: 0.5vw;
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+    border-radius: 10px;
+    border: 1px solid #DCE6F1;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    .space {
+        padding: 3vw;
+    }
+
+    h1 {
+        font-size: 7.5vw;
+        text-align: center;
+        margin-bottom: 4vw;
+    }
+
+    .profile-container {
+        margin: 6vw;
+        padding: 6vw;
+    }
+
+    .form-group {
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+    }
+
+    .label {
+        font-size: 4vw;
+    }
+
+    .input-area {
+        padding: 2vw;
+    }
+
+    button {
+        font-size: 4vw;
+        padding: 1vw;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+}
