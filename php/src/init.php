@@ -14,6 +14,9 @@ require_once __DIR__ . '/db/DBconn.php';
 
 require_once __DIR__ . '/controllers/HomeController.php';
 require_once __DIR__ . '/controllers/UserController.php';
+require_once __DIR__ . '/controllers/DetailLowonganController.php';
+require_once __DIR__ . '/controllers/EditLowonganController.php';
+require_once __DIR__ . '/controllers/AddLowonganController.php';
 require_once __DIR__ . '/controllers/LamaranController.php';
 require_once __DIR__ . '/controllers/CompProfileController.php';
 require_once __DIR__ . '/controllers/HistoryController.php';

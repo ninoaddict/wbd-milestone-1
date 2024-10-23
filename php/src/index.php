@@ -7,6 +7,9 @@ use app\controllers\CompProfileController;
 use app\controllers\HistoryController;
 use app\controllers\HomeController;
 use app\controllers\UserController;
+use app\controllers\DetailLowonganController;
+use app\controllers\EditLowonganController;
+use app\controllers\AddLowonganController;
 use app\controllers\LamaranController;
 
 session_start();
@@ -29,6 +32,17 @@ $app->router->get('/lowongan/:id/apply', handler: [LamaranController::class,'app
 $app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'applyLowongan']);
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
+
+
+$app->router->get('/lowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganChoose']);
+$app->router->post('/lowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
+$app->router->post('/lowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
+
+$app->router->get('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowonganPage']);
+$app->router->post('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowongan']);
+
+$app->router->get('/lowongan/add',handler: [AddLowonganController::class, 'addLowonganPage']);
+$app->router->post('/lowongan/add', handler:[AddLowonganController::class, 'addLowongan']);
 
 $app->router->get('/history', handler: [HistoryController::class, 'historyPage']);
 $app->router->get('/profile', handler: [CompProfileController::class,'profilePage']);
