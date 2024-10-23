@@ -14,8 +14,8 @@
 <body>
   <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
   <main>
-    <div class="content-separator">
-      <div class="actual-container">
+    <div class="content-separator-jsversion">
+      <div class="actual-container-jsversion">
         <section class="container-job-jsversion">
           <h1><b class="job-title"><?= $data['0']['posisi']?></b></h1>
           <h2 class="descript-title">Description:</h2>
@@ -24,7 +24,7 @@
           </h3>
           <h2 class="job-requirement">Company:</h2>
           <h3><?= $data['0']['company_name']?></h3>
-          <h2 class="job-requirement">Location:</h2>
+          <h2 class="job-requirement">Location Type:</h2>
           <h3><?= $data['0']['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
           <h3><h3><?= $data['0']['jenis_pekerjaan']?></h3></h3>
@@ -62,6 +62,12 @@
               }
             ?>
           </div>
+        </section>
+        <section class="company-profile">
+          <h1><b class="attachment">About The Company</b></h1>
+          <h2><?php echo $data['company_detail']['nama']?></h2>
+          <h3>Location: <?php echo $data['company_detail']['lokasi']?></h3>
+          <h4><?php echo $data['company_detail']['about']?></h4>
         </section>
         <section class="container-attach">
         <h1><b class="attachment">My Attachments</b></h1>

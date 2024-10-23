@@ -66,13 +66,15 @@
               foreach ($data['lamaran'] as $lamarans) {
                 echo <<<HTML
                   <div class='container-person'>
-                    <div class='person-name'>
-                      Name: {$lamarans['nama']}
-                    </div>
-                    <div class='status-and-details'>
+                    <div class='status-and-name'>
+                      <div class='person-name'>
+                        <p>Name: {$lamarans['nama']}</p>
+                      </div>
                       <div class='container-status'>
                         Status: {$lamarans['status']}
                       </div>
+                    </div>
+                    <div class='details-placement'>
                       <div class='details-link'>
                         <a href='../lamaran/{$lamarans["lamaran_id"]}'>See Details</a>
                       </div>

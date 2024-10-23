@@ -5,8 +5,16 @@ body {
 .content-separator {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-separator-jsversion {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .delete-or-close {
@@ -17,6 +25,7 @@ body {
 .close-button {
     margin-bottom: 10px;
     margin-right: 10px;
+    margin-left: 10px;
     background-color: darkblue;
     color: white;
     padding: 10px;
@@ -66,9 +75,11 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .container-job-jsversion {
@@ -77,7 +88,7 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 700px;
     height: 50%;
     padding: 15px;
     margin-bottom: 20px;
@@ -90,9 +101,10 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 53%;
-    margin-left: 20px;
+    width: 100%;
     padding: 15px;
+    margin-right: 10px;
+    margin-left: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -109,11 +121,28 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.company-profile {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .job-title {
     font-size: 25px;
 }
 
 .attachment {
+    font-size: 25px;
+}
+
+.about-the-company {
     font-size: 25px;
 }
 
@@ -183,6 +212,11 @@ ol {
 
 .actual-container {
     display: flex;
+    flex-direction: row;
+}
+
+.actual-container-jsversion {
+    display: flex;
     flex-direction: column;
 }
 
@@ -206,10 +240,11 @@ ol {
     margin-bottom: 10px;
 }
 
-.status-and-details {
+.status-and-name {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .container-status {
@@ -226,6 +261,7 @@ ol {
 }
 
 .person-name {
+    display: flex;
     font-weight: 600;
 }
 
@@ -268,10 +304,8 @@ h4 {
     font-weight: 300;
 }
 
-.very-thin-line {
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
+h1 {
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -291,27 +325,73 @@ h4 {
     }
 
     .container-job {
-        width: 100%;
+        width: 500px;
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 20px;
     }
 
     .container-job-jsversion {
-        width: 100%;
+        width: 500px;
         margin-bottom: 20px;
     }
 
     .container-attach {
-        width: 100%;
+        width: 500px;
+        margin-left: 0px;
+    }
+
+    .company-profile {
+        width: 500px;
         margin-left: 0px;
     }
 
     .container-taker {
         width: 100%;
-        margin-left: 0px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .person-name {
+        display: flex;
+        justify-content: left;
+        align-items: start;
     }
 
     #view-cv, #view-vid, #download, #see {
         padding: 5px;
         font-size: 80%;
     }
-  }
+}
+
+@media (max-width: 540px) {
+    .container-job {
+        width: 420px;
+        margin-bottom: 20px;
+    }
+
+    .container-job-jsversion {
+        width: 420px;
+        margin-bottom: 20px;
+    }
+
+    .container-attach {
+        width: 420px;
+        margin-left: 0px;
+    }
+
+    .company-profile {
+        width: 420px;
+        margin-left: 0px;
+    }
+
+    .container-taker {
+        width: 420px;
+        margin-left: 0px;
+    }
+
+    .container-status {
+        margin-right: 0;
+    }
+}

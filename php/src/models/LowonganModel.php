@@ -137,6 +137,7 @@ class LowonganModel {
 
     $data = [
         'lowongan_id' => $lowongan_id,
+        'company_id' => $company_id,
         'company_name' => $company_name,
         'posisi' => $posisi,
         'deskripsi' => $deskripsi,
@@ -209,6 +210,23 @@ class LowonganModel {
     $res = $this->db->fetch($statement);
     $company = $res['nama'];
     return $company;
+  }
+
+  public function queryCompanyDetail(int $id) {
+    $sql = "SELECT nama, lokasi, about FROM users JOIN company_detail ON users.user_id = company_detail.user_id WHERE users.user_id = :id";
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ":id", $id);
+    $ok = $this->db->execute($statement);
+    if (!$ok) {
+      throw new Exception("Database error: Unable to delete query.");
+    }
+    $res = $this->db->fetch($statement);
+    $comps = [
+      "nama" => $res['nama'],
+      "lokasi" => $res['lokasi'],
+      "about" => $res['about']
+    ];
+    return $comps;
   }
 
   public function queryAppliedById(int $lowongan_id, int $user_id) {

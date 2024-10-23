@@ -98,6 +98,7 @@ class DetailLowonganController extends Controller {
       }
     }
     $data['file_path'] = $this->getAttachmentsById($params);
+    $data['company_detail'] = $this->getCompanyInfosById($new_data['company_id']);
     array_push($data, $new_data);
     $path = __DIR__ . '/../views/detaillowonganjs/DetailLowonganJsView.php';
     $this->render($path, $data);
@@ -124,6 +125,15 @@ class DetailLowonganController extends Controller {
   public function getLamaranById(int $id) {
     try {
       $data = $this->lowonganModel->queryLamaranById($id);
+      return $data;
+    } catch (Exception $e) {
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
+    }
+  }
+
+  public function getCompanyInfosById(int $company_id) {
+    try {
+      $data = $this->lowonganModel->queryCompanyDetail($company_id);
       return $data;
     } catch (Exception $e) {
       echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to insert the data']);
