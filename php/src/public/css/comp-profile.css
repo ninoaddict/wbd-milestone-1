@@ -8,6 +8,7 @@ body {
     margin-right: 15vw;
     padding: 4vw;
     border-radius: 15px;
+    border : 1px solid #DCE6F1;
 }
 .space {
     margin: 8vw;
