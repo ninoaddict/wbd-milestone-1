@@ -48,11 +48,11 @@ formInput.addEventListener("submit", function (e) {
       window.location.replace(res.message);
     } else {
       const res = JSON.parse(xhr.responseText);
-      console.log(res.message);
+      createToast('error', res.message);
     }
   };
   xhr.onerror = function () {
-    console.log("Something is wrong");
+    createToast('error', "Something went wrong");
   };
   xhr.send(formData);
   buttone.disabled = false;

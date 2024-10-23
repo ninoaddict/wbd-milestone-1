@@ -24,14 +24,13 @@ closer.addEventListener("click", function () {
   xhr.onload = function () {
     if (xhr.status === 200) {
       location.reload();
-      console.log("Success:", xhr.responseText);
     } else {
       const res = JSON.parse(xhr.responseText);
-      console.log(res.message);
+      createToast('error', res.message);
     }
   };
   xhr.onerror = function () {
-    console.log("Something is wrong");
+    createToast('error', "Something went wrong");
   };
   xhr.send(dummy);
 });
@@ -44,11 +43,11 @@ deleter.addEventListener("click", function () {
       window.location.replace("/");
     } else {
       const res = JSON.parse(xhr.responseText);
-      console.log(res.message);
+      createToast('error', res.message);
     }
   };
   xhr.onerror = function () {
-    console.log("Something is wrong");
+    createToast('error', "Something went wrong");
   };
   xhr.send();
 });

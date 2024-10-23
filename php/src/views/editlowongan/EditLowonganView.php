@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/addvacancy.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
   <title>Edit Job</title>
 </head>
@@ -91,6 +92,9 @@
       </div>
     </div>
   </main>
+  <ul class="notifications"></ul>
+  <script src="/public/js/toast.js" defer></script>
+
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <script src="../../public/js/initQuill.js"></script>
   <script src="../../public/js/editLowongan.js"></script>

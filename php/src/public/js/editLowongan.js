@@ -41,17 +41,16 @@ formInput.addEventListener("submit", function (e) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", path, true);
   xhr.onload = function () {
-    console.log(xhr.status);
     if (xhr.status === 200) {
       const res = JSON.parse(xhr.responseText);
       window.location.href = res.message;
     } else {
       const res = JSON.parse(xhr.responseText);
-      console.log(res.message);
+      createToast('error', res.message);
     }
   };
   xhr.onerror = function () {
-    console.log("Something is wrong");
+    createToast('error', "Something went wrong");
   };
   xhr.send(formData);
   buttone.disabled = false;

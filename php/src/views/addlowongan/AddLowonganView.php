@@ -7,6 +7,7 @@
   <meta name="description" content="Page for adding vacancy">
   <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
   <link rel="stylesheet" href="/public/css/preflight.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/addvacancy.css">
@@ -79,14 +80,8 @@
       </div>
     </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  <script src="../../public/js/addLowongan.js"></script>
+  <ul class="notifications"></ul>
 
-  <script>
-    const quill = new Quill('#editor', {
-      theme: 'snow'
-    });
-  </script>
   <script src="/public/js/toast.js" defer></script>
   <?php if (isset($errorMessage)): ?>
     <script defer>
@@ -95,6 +90,15 @@
       });
     </script>
   <?php endif; ?>
+
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <script src="../../public/js/addLowongan.js"></script>
+
+  <script>
+    const quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+  </script>
 </body>
 
 </html>
