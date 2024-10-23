@@ -273,19 +273,13 @@ ol {
 
 .attachment-placement {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
 }
 
-.embed-file-style {
-  background-color: rgb(94, 94, 94);
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  color: white;
-  width: 50%;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.image-file-style {
+  width: 15%;
+  height: 15%;
+  margin-right: 10px;
 }
 
 #apply-job-style {

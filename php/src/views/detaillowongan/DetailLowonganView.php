@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/vacancy.css">
+  <link rel="stylesheet" href="/public/css/toast.css">
   <title>Vacancy Details</title>
 </head>
 
@@ -53,7 +54,7 @@
                 }
                 for ($i = 0; $i < count($file_name); $i++) {
                   echo <<<HTML
-                    <a class="embed-file-style" href="$file_path[$i]">{$file_name[$i]}</a>
+                    <img src="$file_path[$i]" class="image-file-style"/>
                   HTML;
                 }
               }
@@ -89,7 +90,16 @@
       </div>
     </div>
   </main>
+  <ul class="notifications"></ul>
   <script src="../../public/js/DetailLowonganVacancy.js"></script>
+  <script src="/public/js/toast.js" defer></script>
+  <?php if (isset($successMessage)): ?>
+    <script defer>
+      window.addEventListener('load', (event) => {
+        createToast('success', '<?php echo $successMessage?>');
+      });
+    </script>
+  <?php endif; ?>
 </body>
 
 </html>
