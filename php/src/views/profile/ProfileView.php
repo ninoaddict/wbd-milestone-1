@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/public/css/globals.css">
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/comp-profile.css">
-    <title>Company Profile - <?= htmlspecialchars($data['nama']) ?></title>
+    <title>Edit Company Profile</title>
 </head>
 <body>
     <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
@@ -21,15 +21,15 @@
         <form action="/profile" method="POST">
             <div class="form-group">
                 <label class="label">New Name</label>
-                <input class='input-area' type="text" id="nama" name="nama" value="Name" required>
+                <input class='input-area' type="text" id="nama" name="nama" placeholder="Your new name here" required>
             </div>
             <div class="form-group">
                 <label class="label">New Location</label>
-                <input class='input-area' type="text" id="lokasi" name="lokasi" value="Location" required>
+                <input class='input-area' type="text" id="lokasi" name="lokasi" placeholder="Your new location here" required>
             </div>
             <div class="form-group">
                 <label class="label">New Description</label>
-                <textarea class='input-area' id="about" name="about" rows="8" required>Your company description here</textarea>
+                <textarea class='input-area' id="about" name="about" rows="8" placeholder="Your new company description here"></textarea>
             </div>
             <button type="submit">Submit</button>
         </form>
