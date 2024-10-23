@@ -448,3 +448,50 @@ h1 {
         font-size: 100%;
     }
 }
+
+@media (max-width: 420px) {
+    .container-job {
+        width: 350px;
+        margin-bottom: 20px;
+    }
+
+    .container-job-jsversion {
+        width: 350px;
+        margin-bottom: 20px;
+    }
+
+    .container-attach {
+        width: 350px;
+        margin-left: 0px;
+    }
+
+    .company-profile {
+        width: 350px;
+        margin-left: 0px;
+    }
+
+    .container-taker {
+        width: 350px;
+        margin-left: 0px;
+    }
+
+    .container-status {
+        margin-right: 0;
+    }
+
+    h2 {
+        font-size: 100%;
+    }
+
+    h3 {
+        font-size: 100%;
+    }
+
+    h4 {
+        font-size: 100%;
+    }
+
+    a {
+        font-size: 100%;
+    }
+}
