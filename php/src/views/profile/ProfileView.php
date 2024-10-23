@@ -1,3 +1,7 @@
+<?php 
+    extract($data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +16,23 @@
 <body>
     <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
     <div class="space"></div>
-
-    <div class="box">
-        <h1><?= htmlspecialchars($data['nama'])?></h1>
-        <p class="location"><?= htmlspecialchars($data['lokasi'])?></p>
-    </div>
-    <div class="box">
-        <h2>About</h2>
-        <p><?= nl2br(htmlspecialchars($data['about']))?></p>
+    <div class="profile-container">
+        <h1>Edit Company Profile</h1>
+        <form action="/profile" method="POST">
+            <div class="form-group">
+                <label class="label">New Name</label>
+                <input class='input-area' type="text" id="nama" name="nama" value="Name" required>
+            </div>
+            <div class="form-group">
+                <label class="label">New Location</label>
+                <input class='input-area' type="text" id="lokasi" name="lokasi" value="Location" required>
+            </div>
+            <div class="form-group">
+                <label class="label">New Description</label>
+                <textarea class='input-area' id="about" name="about" rows="8" required>Your company description here</textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </body>
 </html>
