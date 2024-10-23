@@ -13,9 +13,9 @@ session_start();
 
 $app = new Application();
 
-// add your routers along with its class and function handler
-
 $app->router->get('/', handler: [HomeController::class, 'homePage']);
+$app->router->get('/jobs', handler: [HomeController::class, 'getLowonganData']);
+$app->router->get('/page-not-found', handler: [HomeController::class, 'notFoundPage']);
 
 $app->router->get('/login', handler: [UserController::class, 'loginPage']);
 $app->router->post('/login', handler: [UserController::class, 'login']);
@@ -30,7 +30,8 @@ $app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'ap
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
-$app->router->get('/comp-profile/:id', handler: [CompProfileController::class,'companyProfilePage']);
 $app->router->get('/history', handler: [HistoryController::class, 'historyPage']);
+$app->router->get('/profile', handler: [CompProfileController::class,'profilePage']);
+$app->router->post('/profile', handler: [CompProfileController::class, 'updateProfile']);
 
 $app->run();

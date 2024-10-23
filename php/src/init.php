@@ -8,6 +8,7 @@ require_once __DIR__ . '/core/Request.php';
 require_once __DIR__ . '/core/Response.php';
 require_once __DIR__ . '/core/Router.php';
 require_once __DIR__ . '/core/SessionManager.php';
+require_once __DIR__ . '/core/FileManager.php';
 
 require_once __DIR__ . '/db/DBconn.php';
 
@@ -21,3 +22,4 @@ require_once __DIR__ . '/models/UserModel.php';
 require_once __DIR__ . '/models/LamaranModel.php';
 require_once __DIR__ . '/models/CompanyProfileModel.php';
 require_once __DIR__ . '/models/HistoryModel.php';
+require_once __DIR__ . '/models/LowonganModel.php';

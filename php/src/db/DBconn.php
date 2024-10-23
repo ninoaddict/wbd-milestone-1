@@ -21,7 +21,7 @@ class DBconn {
           PDO::ATTR_EMULATE_PREPARES => false, 
       ]);
     } catch (PDOException $e) {
-      throw new Exception("Connection failed: " . $e->getMessage());
+      throw new Exception("Connection failed: " . $e->getMessage(), 500);
     }
   }
 
@@ -36,7 +36,7 @@ class DBconn {
     try {
       return $this->pdo->query($sql);
     } catch (PDOException $e) {
-      throw new Exception("Query failed: " . $e->getMessage());
+      throw new Exception("Query failed: " . $e->getMessage(), 500);
     }
   }
 
@@ -44,7 +44,7 @@ class DBconn {
     try {
       return $this->pdo->prepare($sql);
     } catch (PDOException $e) {
-      throw new Exception("Prepare failed: " . $e->getMessage());
+      throw new Exception("Prepare failed: " . $e->getMessage(), 500);
     }
   }
   public function bind(&$statement, $param, $value, $type = null) {
@@ -67,11 +67,14 @@ class DBconn {
     $statement->bindValue($param, $value, $type);
 }
 
-  public function execute($statement) {
+  public function execute($statement, $params = []) {
     try {
-      return $statement->execute();
+      if (empty($params)) {
+        return $statement->execute();
+      }
+      return $statement->execute($params);
     } catch (PDOException $e) {
-      throw new Exception("Execution failed: " . $e->getMessage());
+      throw new Exception("Execution failed: " . $e->getMessage(), 500);
     }
   }
 
@@ -79,14 +82,14 @@ class DBconn {
     try {
       return $statement->fetchAll();
     } catch (PDOException $e) {
-      throw new Exception("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage(), 500);
     }
 }
   public function fetch($statement) {
     try {
       return $statement->fetch();
     } catch (PDOException $e) {
-      throw new Exception("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage(), 500);
     }
   }
 
@@ -94,7 +97,7 @@ class DBconn {
     try {
       return $statement->fetchColumn($columnNumber);
     } catch (PDOException $e) {
-      throw new Exception("Fetch failed: " . $e->getMessage());
+      throw new Exception("Fetch failed: " . $e->getMessage(), 500);
     }
   }
 

@@ -105,9 +105,18 @@ main {
   border-radius: 9999px;
   font-size: 15px;
   font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #367fc7;
 }
 
 .btn-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.red-star {
+  color: red;
 }

@@ -21,7 +21,11 @@ class Application {
     try {
       $this->router->resolve();
     } catch (Exception $e) {
-      echo $this->response->jsonEncodes(500, ['message' => $e->getMessage()]);  
+      if ($this->request->getMethod() === 'get') {
+        $this->router->handleNotFound();
+      } else {
+        echo $this->response->jsonEncodes(500, ['message' => $e->getMessage()]);  
+      }
     }
   }
 }

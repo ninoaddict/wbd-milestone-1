@@ -1,3 +1,7 @@
+<?php 
+    extract($data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +11,28 @@
     <link rel="stylesheet" href="/public/css/globals.css">
     <link rel="stylesheet" href="/public/css/navbar.css">
     <link rel="stylesheet" href="/public/css/comp-profile.css">
-    <title>Company Profile - <?= htmlspecialchars($data['nama']) ?></title>
+    <title>Edit Company Profile</title>
 </head>
 <body>
     <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
     <div class="space"></div>
-
-    <div class="box">
-        <h1><?= htmlspecialchars($data['nama'])?></h1>
-        <p class="location"><?= htmlspecialchars($data['lokasi'])?></p>
-    </div>
-    <div class="box">
-        <h2>About</h2>
-        <p><?= nl2br(htmlspecialchars($data['about']))?></p>
+    <div class="profile-container">
+        <h1>Edit Company Profile</h1>
+        <form action="/profile" method="POST">
+            <div class="form-group">
+                <label class="label">New Name</label>
+                <input class='input-area' type="text" id="nama" name="nama" placeholder="Your new name here" required>
+            </div>
+            <div class="form-group">
+                <label class="label">New Location</label>
+                <input class='input-area' type="text" id="lokasi" name="lokasi" placeholder="Your new location here" required>
+            </div>
+            <div class="form-group">
+                <label class="label">New Description</label>
+                <textarea class='input-area' id="about" name="about" rows="8" placeholder="Your new company description here"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </body>
 </html>

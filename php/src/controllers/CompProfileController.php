@@ -16,26 +16,23 @@ class CompProfileController extends Controller {
         $this->companyProfileModel = new CompanyProfileModel();
     }
 
-    public function companyProfilePage(Request $request){
-        $params = $request->getParams()[0];
-        $this->params = $params;
-
-        $data = $this->getCompanyProfileByID($params);
-
-        $data['nama'] = ucwords($data['nama']);
-        $data['lokasi'] = ucwords($data['lokasi']);
-
+    public function profilePage(Request $request){
+        $user_id = $_SESSION["user_id"];
+        $companyProfile = $this->companyProfileModel->getCompanyProfile($user_id);
         $path = __DIR__ . '/../views/profile/ProfileView.php';
-
-        $this->render($path, $data);
+        $this->render($path, ['companyProfile' => $companyProfile]);
     }
 
-    public function getCompanyProfileByID(int $id){
-        try {
-            $data = $this->companyProfileModel->queryCompanyProfile($id);
-            return $data;
-        } catch (Exception $e) {
-            echo Application::$app->response->jsonEncodes(400, ['message' => 'Failed to retrieve company profile']);
+    public function updateProfile(Request $request){
+        $user_id = $_SESSION['user_id'];
+        $body = $request->getBody();
+
+        if ($this->companyProfileModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
+            $_SESSION['nama'] = $body['nama'];
+            header('Location: /profile');
+            exit();
+        } else {
+            echo "Error updating profile!";
         }
     }
 }
