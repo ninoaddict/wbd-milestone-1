@@ -1,20 +1,20 @@
 body {
-    background-color: #f3f2f0;
+  background-color: #f3f2f0;
 }
 
 .content-separator {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content-separator-jsversion {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .delete-or-close {
@@ -35,39 +35,39 @@ body {
 }
 
 .close-button:hover {
-    background-color: rgb(235, 235, 235);
-    color: darkblue;
+  background-color: rgb(235, 235, 235);
+  color: #0a66c2;
 }
 
 .add-button {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    background-color: darkgreen;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-color: darkgreen;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .add-button:hover {
-    background-color: rgb(235, 235, 235);
-    color: darkgreen;
+  background-color: rgb(235, 235, 235);
+  color: darkgreen;
 }
 
 
 .delete-button {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    background-color: darkred;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-color: darkred;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .delete-button:hover {
-    background-color: rgb(235, 235, 235);
-    color: darkred;
+  background-color: rgb(235, 235, 235);
+  color: darkred;
 }
 
 .container-job {
@@ -133,79 +133,81 @@ body {
 }
 
 .job-title {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .attachment {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .about-the-company {
-    font-size: 25px;
+  font-size: 25px;
 }
 
-#view-cv, #view-vid {
-    padding: 10px;
-    background-color: darkblue;
-    border-radius: 5px;
-    color: white;
+#view-cv,
+#view-vid {
+  padding: 10px;
+  background-color: #0a66c2;
+  border-radius: 5px;
+  color: white;
 }
 
-#pdf-embed, #video-embed {
-    display: none;
+#pdf-embed,
+#video-embed {
+  display: none;
 }
 
 #pdf-vid-show {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #pdf-styling {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 #vid-styling {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 #download {
-    color: white;
-    background-color: darkgreen;
-    padding: 10px;
-    border-radius: 5px;
+  color: white;
+  background-color: darkgreen;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #see {
-    color: white;
-    background-color: rgb(0, 114, 73);
-    padding: 10px;
-    border-radius: 5px;
+  color: white;
+  background-color: rgb(0, 114, 73);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .descript-title {
-    margin-top: 10px;
-    font-weight: 600;
+  margin-top: 10px;
+  font-weight: 600;
 }
 
 .job-requirement {
-    margin-top: 10px;
-    font-weight: 600;
+  margin-top: 10px;
+  font-weight: 600;
 }
 
 .job-description {
-    text-align: justify;
+  text-align: justify;
 }
 
 main {
-    padding-top: 90px;
+  padding-top: 90px;
 }
 
 ol {
-    list-style-type: decimal;
-    list-style-position: inside;
+  list-style-type: decimal;
+  list-style-position: inside;
 }
 
 [data-list="bullet"] {
-    list-style-type: disc;
+  list-style-type: disc;
 }
 
 .actual-container {
@@ -216,84 +218,84 @@ ol {
 }
 
 .actual-container-jsversion {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .scrollable-div {
-    overflow-y: scroll;
-    border: 1px solid rgb(200,200,200);
-    padding: 10px;
-    border-radius: 5px;
-    height: 300px;
+  overflow-y: scroll;
+  border: 1px solid rgb(200, 200, 200);
+  padding: 10px;
+  border-radius: 5px;
+  height: 300px;
 }
 
 .container-person {
-    background-color: rgb(220, 220, 220);
-    border: 1px solid rgb(200,200,200);
-    width: 100%;
-    padding: 10px;
-    justify-content: space-between;
-    display: flex;
-    border-radius: 5px;
-    align-items: center;
-    margin-bottom: 10px;
+  background-color: rgb(220, 220, 220);
+  border: 1px solid rgb(200, 200, 200);
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  display: flex;
+  border-radius: 5px;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .status-and-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 .container-status {
-    font-weight: 500;
-    margin-right: 20px;
+  font-weight: 500;
+  margin-right: 20px;
 }
 
 .details-link {
-    background-color: darkblue;
-    color: white;
-    border-radius: 5px;
-    font-size: 80%;
-    padding: 8px;
+  background-color: #0a66c2;
+  color: white;
+  border-radius: 5px;
+  font-size: 80%;
+  padding: 8px;
 }
 
 .person-name {
-    display: flex;
-    font-weight: 600;
+  display: flex;
+  font-weight: 600;
 }
 
 .attachment-placement {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .embed-file-style {
-    background-color: rgb(94, 94, 94);
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    color: white;
-    width: 50%;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgb(94, 94, 94);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  width: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #apply-job-style {
-    background-color: darkblue;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
+  background-color: #0a66c2;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
 }
 
 .flexing-apply {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 h2 {
@@ -306,11 +308,11 @@ h3 {
 }
 
 h4 {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 h1 {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 @media (max-width: 1100px) {
@@ -341,60 +343,63 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    .content-separator {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-left: 0;
-    }
+  .content-separator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
 
-    .actual-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .actual-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .container-job {
-        width: 500px;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
+  .container-job {
+    width: 500px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 
-    .container-job-jsversion {
-        width: 500px;
-        margin-bottom: 20px;
-    }
+  .container-job-jsversion {
+    width: 500px;
+    margin-bottom: 20px;
+  }
 
-    .container-attach {
-        width: 500px;
-        margin-left: 0px;
-    }
+  .container-attach {
+    width: 500px;
+    margin-left: 0px;
+  }
 
-    .company-profile {
-        width: 500px;
-        margin-left: 0px;
-    }
+  .company-profile {
+    width: 500px;
+    margin-left: 0px;
+  }
 
-    .container-taker {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
+  .container-taker {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 
-    .person-name {
-        display: flex;
-        justify-content: left;
-        align-items: start;
-    }
+  .person-name {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+  }
 
-    #view-cv, #view-vid, #download, #see {
-        padding: 5px;
-        font-size: 80%;
-    }
+  #view-cv,
+  #view-vid,
+  #download,
+  #see {
+    padding: 5px;
+    font-size: 80%;
+  }
 }
 
 @media (max-width: 540px) {

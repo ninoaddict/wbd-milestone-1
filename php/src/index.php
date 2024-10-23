@@ -7,7 +7,7 @@ use app\controllers\HomeController;
 use app\controllers\UserController;
 use app\controllers\DetailLowonganController;
 use app\controllers\EditLowonganController;
-use app\controllers\TambahLowonganController;
+use app\controllers\AddLowonganController;
 use app\controllers\LamaranController;
 
 session_start();
@@ -36,9 +36,9 @@ $app->router->post('/lowongan/closeopen', handler:[DetailLowonganController::cla
 $app->router->post('/lowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
 
 $app->router->get('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowonganPage']);
-$app->router->post('/lowongan/edit',handler: [EditLowonganController::class, 'editLowongan']);
+$app->router->post('/lowongan/:id/edit',handler: [EditLowonganController::class, 'editLowongan']);
 
-$app->router->get('/lowongan/add',handler: [TambahLowonganController::class, 'tambahLowonganPage']);
-$app->router->post('/lowongan/add', handler:[TambahLowonganController::class, 'tambahLowongan']);
+$app->router->get('/lowongan/add',handler: [AddLowonganController::class, 'addLowonganPage']);
+$app->router->post('/lowongan/add', handler:[AddLowonganController::class, 'addLowongan']);
 
 $app->run();

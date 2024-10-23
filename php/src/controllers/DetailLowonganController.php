@@ -100,7 +100,7 @@ class DetailLowonganController extends Controller {
     $data['file_path'] = $this->getAttachmentsById($params);
     $data['company_detail'] = $this->getCompanyInfosById($new_data['company_id']);
     array_push($data, $new_data);
-    $path = __DIR__ . '/../views/detaillowonganjs/DetailLowonganJsView.php';
+    $path = __DIR__ . '/../views/detaillowongan/DetailLowonganJsView.php';
     $this->render($path, $data);
   }
 
@@ -176,7 +176,6 @@ class DetailLowonganController extends Controller {
       $this->lowonganModel->queryDeleteById($id);
       for ($i = 0; $i < count($files); $i++) {
         $files[$i] = "/var/www/html/storage/..".$files[$i];
-        print_r($files[$i]);
         $this->fileManager->delete($files[$i]);
       }
     } catch (Exception $e) {
