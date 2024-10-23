@@ -3,6 +3,8 @@ require_once __DIR__ . "/init.php";
 
 use app\core\Application;
 
+use app\controllers\CompProfileController;
+use app\controllers\HistoryController;
 use app\controllers\HomeController;
 use app\controllers\UserController;
 use app\controllers\DetailLowonganController;
@@ -31,6 +33,7 @@ $app->router->post('/lowongan/:id/apply', handler: [LamaranController::class,'ap
 $app->router->get('/lamaran/:id', handler: [LamaranController::class, 'detailLamaranPage']);
 $app->router->post('/lamaran/:id', handler: [LamaranController::class, 'respondLamaran']);
 
+
 $app->router->get('/lowongan/:id',handler: [DetailLowonganController::class, 'detailLowonganChoose']);
 $app->router->post('/lowongan/closeopen', handler:[DetailLowonganController::class, 'closeOpenJob']);
 $app->router->post('/lowongan/delete', handler:[DetailLowonganController::class, 'deleteJob']);
@@ -40,5 +43,9 @@ $app->router->post('/lowongan/:id/edit',handler: [EditLowonganController::class,
 
 $app->router->get('/lowongan/add',handler: [AddLowonganController::class, 'addLowonganPage']);
 $app->router->post('/lowongan/add', handler:[AddLowonganController::class, 'addLowongan']);
+
+$app->router->get('/history', handler: [HistoryController::class, 'historyPage']);
+$app->router->get('/profile', handler: [CompProfileController::class,'profilePage']);
+$app->router->post('/profile', handler: [CompProfileController::class, 'updateProfile']);
 
 $app->run();
