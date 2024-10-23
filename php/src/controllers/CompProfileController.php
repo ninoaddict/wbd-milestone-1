@@ -39,11 +39,13 @@ class CompProfileController extends Controller {
             
             if ($this->userModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
                 $_SESSION['nama'] = $body['nama'];
-                header('Location: /profile');
+                $this->setSuccessMessage('Successfully updated profile!');
+                header('Location: /');
                 exit();
             } else {
                 $this->setErrorMessage('Not found');
-                header('Location: /profile');
+                $this->setErrorMessage('Update profile failed!');
+                header('Location: /');
             }
         }
     }
