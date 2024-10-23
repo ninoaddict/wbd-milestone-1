@@ -54,8 +54,8 @@ class DetailLowonganController extends Controller {
     }
 
     $data = $this->getDetailsbyId($params);
-    $data['jenis_pekerjaan'] = str_replace(' ','-',ucwords(str_replace('-',' ', $data['jenis_pekerjaan'])));
-    $data['jenis_lokasi'] = str_replace(' ','-',ucwords(str_replace('-',' ', $data['jenis_lokasi'])));
+    $data['jenis_pekerjaan'] = ucfirst($data['jenis_pekerjaan']);
+    $data['jenis_lokasi'] = ucfirst($data['jenis_lokasi']);
     if ($data['is_open']) {
       $data['is_open'] = "Close Job";
     } else {

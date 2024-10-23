@@ -38,7 +38,7 @@
           <h2 class="job-requirement">Location:</h2>
           <h3><?= $data['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
-          <><?= $data['jenis_pekerjaan']?></h3>
+          <h3><?= $data['jenis_pekerjaan']?></h3>
           <h2 class="job-requirement">Attachments:</h2>
           <div class="attachment-placement">
             <?php 
@@ -61,7 +61,6 @@
         <section class="container-taker">
           <h1><b class="job-title">Job Takers</b></h1>
           <div class="scrollable-div">
-            <!-- Add content here -->
             <?php 
               foreach ($data['lamaran'] as $lamarans) {
                 echo <<<HTML

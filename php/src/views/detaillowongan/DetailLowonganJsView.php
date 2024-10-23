@@ -27,7 +27,7 @@
           <h2 class="job-requirement">Location Type:</h2>
           <h3><?= $data['0']['jenis_lokasi']?></h3>
           <h2 class="job-requirement">Job Type:</h2>
-          <h3><h3><?= $data['0']['jenis_pekerjaan']?></h3></h3>
+          <h3><?= $data['0']['jenis_pekerjaan']?></h3>
           <h2 class="job-requirement">Status:</h2>
           <h3><?= $data['status']?></h3>
           <h4><?= html_entity_decode($data['status_reason'])?></h4>
