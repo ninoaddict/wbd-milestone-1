@@ -31,7 +31,7 @@
       </div>
       <div class="actual-container">
         <section class="container-job">
-          <h1><?= $data['posisi']?></h1>
+          <h1 id="position"><?= $data['posisi']?></h1>
           <h2 class="descript-title">Description:</h2>
           <h3 class="job-description">
             <?= htmlspecialchars_decode($data['deskripsi'])?>
@@ -85,6 +85,12 @@
                 HTML;
               }
             ?>
+          </div>
+          <div class="export-container">
+            <button id="button-csv">Export CSV</button>
+          </div>
+          <div id="embed-csv">
+            <?= json_encode($data['lamaran']);?>
           </div>
         </section>
       </div>
