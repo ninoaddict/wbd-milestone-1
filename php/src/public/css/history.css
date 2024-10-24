@@ -110,30 +110,30 @@ body {
     text-decoration: underline;
 }
 
-@media screen and (max-width: 600px){
+/* @media screen and (max-width: 600px){
     .space {
         padding: 10vw;
     }
 
-    h1 {
+    .head {
         margin: 0;
         padding: 0;
-        font-size: 10vw;
+        font-size: 8vw;
         font: bold;
         text-align: center;
         margin-bottom: 5vw;
-        /* border: 2px solid; */
+        border: 2px solid;
     }
 
     .button-and-list {
         display: flex;
         flex-direction: column;
-        /* border: 2px solid; */
+        border: 2px solid;
     }
 
     .filter-buttons {
-        margin-left: 20vw;
-        margin-right: 20vw;
+        margin-left: 35vw;
+        margin-right: 35vw;
     }
 
     .filter-button {
@@ -142,12 +142,12 @@ body {
 
     .history-card {
         margin: 3vw;
-        gap: 0vw;
+        
     }
 
     .history-content {
         margin: 4vw;
-        /* border: 2px solid; */
+        border: 2px solid;
     }
     
     .vacancy-id {
@@ -165,7 +165,68 @@ body {
     .date-status {
         font-size: 4vw;
         margin-right: 4vw;
+        border: 2px solid;
+    }
+
+} */
+
+@media screen and (max-width: 600px) {
+
+    .space {
+        padding: 10vw;
+    }
+    .head {
+        margin-bottom: 2vw;
+        padding: 0;
+        font-size: 9vw;
+        text-align: center;
         /* border: 2px solid; */
     }
 
+    .history-card {
+        margin: 0;
+        margin-bottom: 2vw;
+        padding: 2vw;
+        /* border: 2px solid; */
+
+    }
+
+    .history-content {
+        margin: 0;
+        padding-right: 0;
+        text-align: left;
+        /* border: 2px solid; */
+    }
+
+    .filter-buttons {
+        margin-left: 30vw;
+        margin-right: 30vw;
+        padding: 0;
+        /* border: 2px solid; */
+        
+    }
+
+    .filter-button {
+        font-size: 4vw;
+    }
+
+    .button-and-list {
+        justify-content: center;
+        gap: 3vw;
+        display: flex;
+        flex-direction: column;
+        margin:5vw;
+    }
+
+    .company-name {
+        font-size: 4vw;
+    }
+
+    .position {
+        font-size: 5vw;
+    }
+
+    .date-status {
+        font-size: 4vw;
+    }
 }
