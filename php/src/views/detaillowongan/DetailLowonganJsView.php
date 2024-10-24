@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/public/css/navbar.css">
   <link rel="stylesheet" href="/public/css/vacancy.css">
   <link rel="stylesheet" href="/public/css/toast.css">
+  <link rel="stylesheet" href="/public/css/footer.css">
   <title>Vacancy Details</title>
 </head>
 
@@ -100,6 +101,7 @@
     </div>
   </main>
   <ul class="notifications"></ul>
+  <?php include dirname(__DIR__) . '/components/Footer.php' ?>
 
   <script src="../../public/js/DetailLowonganJsVacancy.js"></script>
   <script src="/public/js/toast.js" defer></script>

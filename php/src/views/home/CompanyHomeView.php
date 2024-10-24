@@ -121,6 +121,13 @@
                 </div>
               </div>
             <?php endforeach; ?>
+            <?php if (empty($data['jobs']) || !count($data['jobs'])): ?>
+              <div class="not-posted">
+                <p class="not-posted-job">
+                  You have not posted any jobs
+                </p>
+              </div>
+            <?php endif; ?>
             </div>
             <nav class="pagination-nav" id="pagination-nav">
               <?php if ($data['maxPage'] > 0): ?>
@@ -155,7 +162,7 @@
           <div class="pseudo">
             <div class="card">
               <div class="top-job-title-container">
-                <h1 class="top-job-title">Your popular jobs</h1>
+                <h1 class="top-job-title">Your most popular jobs</h1>
               </div>
               <div class="top-job-card-container">
               <?php foreach($data['top_lowongan'] as $top_job):?>
@@ -170,6 +177,13 @@
                   </h2>
                 </div>
               <?php endforeach; ?>
+              <?php if (empty($data['top_lowongan']) || !count($data['top_lowongan'])): ?>
+                <div class="not-exist">
+                  <p class="not-exist-job">
+                    You have not posted any jobs
+                  </p>
+                </div>
+              <?php endif; ?>
               </div>
             </div>
           </div>

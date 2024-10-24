@@ -15,29 +15,30 @@
     <link rel="stylesheet" href="/public/css/comp-profile.css">
     <link rel="stylesheet" href="/public/css/toast.css">
     <link rel="stylesheet" href="/public/css/footer.css">
-    <title>Edit Company Profile</title>
+    <title>Company Profile</title>
 </head>
 <body>
     <?php include dirname(__DIR__) . '/components/Navbar.php' ?>
-    <div class="space"></div>
-    <div class="profile-container">
-        <h1 class="head">Edit Company Profile</h1>
-        <form action="/profile" method="POST">
-            <div class="form-group">
-                <label class="label">New Name</label>
-                <input class='input-area' type="text" id="nama" name="nama" placeholder="Your new name here" required>
-            </div>
-            <div class="form-group">
-                <label class="label">New Location</label>
-                <input class='input-area' type="text" id="lokasi" name="lokasi" placeholder="Your new location here" required>
-            </div>
-            <div class="form-group">
-                <label class="label">New Description</label>
-                <textarea class='input-area' id="about" name="about" rows="5" placeholder="Your new company description here"></textarea>
-            </div>
-            <button class="submit-button" type="submit">Submit</button>
-        </form>
-    </div>
+    <main class="main">
+        <div class="profile-container">
+            <h1 class="head">Company Profile</h1>
+            <form action="/profile" method="POST">
+                <div class="form-group">
+                    <label class="label">Company Name</label>
+                    <input class='input-area' type="text" id="nama" name="nama" value="<?php echo $companyProfile['nama'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Location</label>
+                    <input class='input-area' type="text" id="lokasi" name="lokasi" value="<?php echo $companyProfile['lokasi'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Description</label>
+                    <textarea class='input-area' id="about" name="about" rows="5"><?php echo $companyProfile['about'] ?></textarea>
+                </div>
+                <button class="submit-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
     <?php include dirname(__DIR__) . '/components/Footer.php' ?>
     <ul class="notifications"></ul>
 </body>
@@ -46,6 +47,13 @@
     <script defer>
         window.addEventListener('load', (event) => {
             createToast('error', '<?php echo $errorMessage ?>')
+        });
+    </script>
+<?php endif; ?>
+<?php if (isset($successMessage)): ?>
+    <script defer>
+        window.addEventListener('load', (event) => {
+            createToast('success', '<?php echo $successMessage ?>')
         });
     </script>
 <?php endif; ?>

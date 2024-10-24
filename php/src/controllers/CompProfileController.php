@@ -9,12 +9,12 @@ use app\models\UserModel;
 use Exception;
 
 
-class CompProfileController extends Controller {   
-    private int $params = 0;
+class CompProfileController extends Controller {
     private UserModel $userModel;
 
     public function __construct() {
         $this->userModel = new UserModel();
+        $this->extractMessage();
     }
 
     public function profilePage(Request $request){
@@ -40,12 +40,11 @@ class CompProfileController extends Controller {
             if ($this->userModel->updateCompanyProfile($user_id, $body['nama'], $body['lokasi'], $body['about'])){
                 $_SESSION['nama'] = $body['nama'];
                 $this->setSuccessMessage('Successfully updated profile!');
-                header('Location: /');
+                header('Location: /profile');
                 exit();
             } else {
-                $this->setErrorMessage('Not found');
                 $this->setErrorMessage('Update profile failed!');
-                header('Location: /');
+                header('Location: /profile');
             }
         }
     }
