@@ -31,7 +31,7 @@
         <div id="application-list">
             <?php if (!empty($historyList)) {?>
                 <?php foreach ($historyList as $historyItem){ ?>
-                    <a class="history-card" data-id="<?= $historyItem['lowongan_id'] ?>" href="/lowongan/ <?php echo $historyItem['lowongan_id'] ?>">
+                    <a class="history-card" data-id="<?= $historyItem['lowongan_id'] ?>" href="/lowongan/<?php echo $historyItem['lowongan_id'] ?>">
                         <div class="history-content">
                             <h2 class="position"><?= htmlspecialchars($historyItem['posisi']); ?></h2>
                             <p class="company-name"><?= htmlspecialchars($historyItem['nama']); ?></p>
