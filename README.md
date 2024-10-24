@@ -60,47 +60,71 @@ docker compose down -v
 
 1. Login Page
 ![Login Page](/php/src/public/images/login.png)
+![Login Page](/php/src/public/images/login-mobile.png)
+![Login Page](/php/src/public/images/login-lighthouse.png)
 
 2. Register Page
 ![Login Page](/php/src/public/images/register.png)
+![Login Page](/php/src/public/images/register-mobile.png)
+![Login Page](/php/src/public/images/register-lighthouse.png)
 
 3. Home Page (Job Seeker)
 ![Home Page Job Seeker](/php/src/public/images/home-job-seeker.png)
+![Home Page Job Seeker](/php/src/public/images/home-jobseeker-mobile.png)
+![Home Page Job Seeker](/php/src/public/images/home-jobseeker-lighthouse.png)
 
 4. Home Page (Company)
 ![Home Page Company](/php/src/public/images/home-company.png)
+![Home Page Company](/php/src/public/images/home-company-mobile.png)
+![Home Page Company](/php/src/public/images/home-company-lighthouse.png)
 
 5. Add Lowongan Page
 ![Add Lowongan Page](/php/src/public/images/add-lowongan.png)
+![Add Lowongan Page](/php/src/public/images/add-job-mobile.png)
+![Add Lowongan Page](/php/src/public/images/add-job-lighthouse.png)
 
 6. Detail Lowongan (Company)
 ![Detail Lowongan Page](/php/src/public/images/detail-lowongan-company.png)
+![Detail Lowongan Page](/php/src/public/images/detail-lowongan-mobile.png)
+![Detail Lowongan Page](/php/src/public/images/detail-lowongan-lighthouse.png)
 
 7. Detail Lamaran (Company)
 ![Detail Lamaran Page](/php/src/public/images/detail-lamaran.png)
+![Detail Lamaran Page](/php/src/public/images/detail-lamaran-mobile.png)
+![Detail Lamaran Page](/php/src/public/images/detail-lamaran-lighthouse.png)
 
 8. Edit Lowongan Page
 ![Edit Lowongan Page](/php/src/public/images/edit-lowongan.png)
+![Detail Lamaran Page](/php/src/public/images/edit-job-mobile.png)
+![Detail Lamaran Page](/php/src/public/images/edit-job-lighthouse.png)
 
 9. Profile Page
 ![Profile Page](/php/src/public/images/profile.png)
+![Profile Page](/php/src/public/images/profile-mobile.png)
+![Profile Page](/php/src/public/images/profile-lighthouse.png)
 
 10. Lamaran Page
 ![Lamaran Page](/php/src/public/images/lamaran.png)
+![Lamaran Page](/php/src/public/images/lamaran-mobile.png)
+![Lamaran Page](/php/src/public/images/lamaran-lighthouse.png)
 
 11. Detail Lamaran Page (Job Seeker)
 ![Detail Lamaran](/php/src/public/images/detail-lamaran-js.png)
+![Detail Lamaran](/php/src/public/images/detail-lowonganjs-mobile.png)
+![Detail Lamaran](/php/src/public/images/detail-lowonganjs-lighthouse.png)
 
 12. History Page
 ![History Page](/php/src/public/images/history.png)
+![History Page](/php/src/public/images/history-mobile.png)
+![History Page](/php/src/public/images/history-lighthouse.png)
 
 <h2 id='contributions'>Pembagian Tugas</h2>
 <h3>Server Side</h3>
 
-| 13522068                                 | 13522000    | 13522000                |
+| 13522068                                 | 13522105    | 13522110                |
 | ---------------------------------------- | ----------- | ----------------------- |
-| Set up project architecture              |             |                         |
-| Set up database                          |             |                         |
+| Set up project architecture              |             | CRUD lowongan           |
+| Set up database                          |             | Get Data for CSV Export |
 | Set up base class and functions          |             |                         |
 | Set up docker                            |             |                         |
 | CRUD user                                |             |                         |
@@ -112,12 +136,12 @@ docker compose down -v
 
 <h3>Client Side</h3>
 
-| 13522068                                 | 13522000    | 13522000                |
+| 13522068                                 | 13522105    | 13522110                |
 | ---------------------------------------- | ----------- | ----------------------- |
-| Navbar                                   |             |                         |
-| Footer                                   |             |                         |
-| Toast error and success message          |             |                         |
-| Login page                               |             |                         |
+| Navbar                                   |             | Detail lowongan page    |
+| Footer                                   |             | Add lowongan            |
+| Toast error and success message          |             | Edit lowongan           |
+| Login page                               |             | Export to CSV           |
 | Register page                            |             |                         |
 | Home page for job seeker                 |             |                         |
 | Home page for company                    |             |                         |
