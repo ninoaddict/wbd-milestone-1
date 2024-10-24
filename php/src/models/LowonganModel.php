@@ -180,7 +180,7 @@ class LowonganModel {
   }
 
   public function queryLamaranById(int $id) {
-    $sql = 'SELECT lamaran_id, nama, status FROM lamaran JOIN users ON lamaran.user_id = users.user_id WHERE lowongan_id = :id';
+    $sql = 'SELECT lamaran_id, nama, created_at, cv_path, video_path, status FROM lamaran JOIN users ON lamaran.user_id = users.user_id WHERE lowongan_id = :id';
     $statement = $this->db->prepare($sql);
     $this->db->bind($statement, ":id", $id);
     $ok = $this->db->execute($statement);
@@ -193,7 +193,10 @@ class LowonganModel {
       $singular = [
         'lamaran_id' => $row['lamaran_id'],
         'nama' => $row['nama'],
-        'status' => $row['status']
+        'status' => $row['status'],
+        'created_at' => $row['created_at'],
+        'cv_path' => $row['cv_path'],
+        'vid_path' => $row['video_path']
       ];
       array_push($data, $singular);
     }
