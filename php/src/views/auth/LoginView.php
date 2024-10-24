@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Login to Linkedin">
-  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
+  <meta name="description" content="Login to LinkinPurry">
+  <meta name="keywords" content="job, apply, vacancy, LinkinPurry">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/login.css">
@@ -87,7 +87,7 @@
     </div>
 
     <div class="join-now">
-      New to Linkedin?
+      New to LinkinPurry?
       <a href="/register" class="link">Join now</a>
     </div>
   </main>

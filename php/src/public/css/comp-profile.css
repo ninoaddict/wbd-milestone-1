@@ -72,6 +72,10 @@ body {
     min-height: calc(100vh - 32px - 225px);
   }
 
+  .profile-container {
+    margin-top: 36px;
+  }
+
   .head {
     font-size: 28px;
   }

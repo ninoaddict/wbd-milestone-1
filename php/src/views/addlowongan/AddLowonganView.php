@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Page for adding vacancy">
-  <meta name="keywords" content="job, apply, vacancy, linkedin, Linkedin">
+  <meta name="keywords" content="job, apply, vacancy, LinkinPurry">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/globals.css">
