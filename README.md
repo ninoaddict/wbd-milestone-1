@@ -18,6 +18,8 @@ Platform ini tidak hanya memberikan kemudahan bagi para jobseeker dalam mencari 
 - <a href="#tech-stack">Tech Stack</a><br/>
 - <a href="#requirements">Requirements</a><br/>
 - <a href="#how-to-run">How To Run</a><br/>
+- <a href="#screenshots">Tampilan Layar</a><br/>
+- <a href="#contributions">Pembagian Tugas</a><br/>
 
 <h2 id="tech-stack">💻 Tech Stack</h2>
 
@@ -53,3 +55,71 @@ docker compose down
 ```bash
 docker compose down -v
 ```
+
+<h2 id="screenshots">📱 Tampilan Layar</h2>
+
+1. Login Page
+![Login Page](/php/src/public/images/login.png)
+
+2. Register Page
+![Login Page](/php/src/public/images/register.png)
+
+3. Home Page (Job Seeker)
+![Home Page Job Seeker](/php/src/public/images/home-job-seeker.png)
+
+4. Home Page (Company)
+![Home Page Company](/php/src/public/images/home-company.png)
+
+5. Add Lowongan Page
+![Add Lowongan Page](/php/src/public/images/add-lowongan.png)
+
+6. Detail Lowongan (Company)
+![Detail Lowongan Page](/php/src/public/images/detail-lowongan-company.png)
+
+7. Detail Lamaran (Company)
+![Detail Lamaran Page](/php/src/public/images/detail-lamaran.png)
+
+8. Edit Lowongan Page
+![Edit Lowongan Page](/php/src/public/images/edit-lowongan.png)
+
+9. Profile Page
+![Profile Page](/php/src/public/images/profile.png)
+
+10. Lamaran Page
+![Lamaran Page](/php/src/public/images/lamaran.png)
+
+11. Detail Lamaran Page (Job Seeker)
+![Detail Lamaran](/php/src/public/images/detail-lamaran-js.png)
+
+12. History Page
+![History Page](/php/src/public/images/history.png)
+
+<h2 id='contributions'>Pembagian Tugas</h2>
+<h3>Server Side</h3>
+
+| 13522068                                 | 13522000    | 13522000                |
+| ---------------------------------------- | ----------- | ----------------------- |
+| Set up project architecture              |             |                         |
+| Set up database                          |             |                         |
+| Set up base class and functions          |             |                         |
+| Set up docker                            |             |                         |
+| CRUD user                                |             |                         |
+| Search and filter lowongan               |             |                         |
+| Job recommendation for job seeker        |             |                         |
+| CRUD lamaran                             |             |                         |
+| Review CRUD                              |             |                         |
+| Utilities                                |             |                         |
+
+<h3>Client Side</h3>
+
+| 13522068                                 | 13522000    | 13522000                |
+| ---------------------------------------- | ----------- | ----------------------- |
+| Navbar                                   |             |                         |
+| Footer                                   |             |                         |
+| Toast error and success message          |             |                         |
+| Login page                               |             |                         |
+| Register page                            |             |                         |
+| Home page for job seeker                 |             |                         |
+| Home page for company                    |             |                         |
+| Lamaran page                             |             |                         |
+| Detail lamaran page                      |             |                         |
