@@ -17,7 +17,6 @@ formInput.addEventListener("submit", function (e) {
   var htmlContent = quill.root.innerHTML;
 
   if (!(jobName && location && status && jobType && htmlContent)) {
-    // TOOO: hendle error message using toast
     buttone.disabled = false;
     return;
   }

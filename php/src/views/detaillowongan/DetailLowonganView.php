@@ -90,9 +90,6 @@
           <div class="export-container">
             <button id="button-csv">Export CSV</button>
           </div>
-          <div id="embed-csv">
-            <?= json_encode($data['lamaran']);?>
-          </div>
         </section>
       </div>
     </div>

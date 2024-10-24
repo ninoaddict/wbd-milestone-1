@@ -121,6 +121,41 @@ class DetailLowonganController extends Controller {
     }
   }
 
+  public function getApplicantsData(Request $request) {
+    if (!$this->sessionManager->isLoggedIn() || $this->sessionManager->getRole() == "jobseeker") {
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'Unauthorized']);
+      return;
+    }
+
+    $company_id = $this->sessionManager->getUserId();
+    $lowongan_id = $request->getParams()[0];
+
+    if (!$this->lowonganModel->isCompanyAuthorized($lowongan_id, $company_id)) {
+      echo Application::$app->response->jsonEncodes(400, ['message' => 'Unauthorized']);
+      return;
+    }
+
+    $data = $this->getLamaranById($lowongan_id); 
+    $job_data = $this->lowonganModel->getLowonganById($lowongan_id);
+;    
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="applicants.csv"');
+    $output = fopen('php://output', 'w');
+    fputcsv($output, array('nama', 'posisi', 'created_at', 'cv_path', 'video_path', 'status'));
+    foreach ($data as $row) {
+      fputcsv($output, array(
+        $row['nama'],
+        $job_data['posisi'],
+        $row['created_at'],
+        $row['cv_path'],
+        $row['vid_path'],
+        $row['status']
+      ));
+    }
+    fclose($output);
+    exit;
+  } 
+
   public function getLamaranById(int $id) {
     try {
       $data = $this->lowonganModel->queryLamaranById($id);

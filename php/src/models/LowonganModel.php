@@ -461,4 +461,33 @@ class LowonganModel {
     $res['maxPage'] = $numPage;
     return $res;
   }
+
+  public function isCompanyAuthorized(int $lowongan_id, int $company_id) {
+    if (empty($lowongan_id) || empty($company_id)) {
+      throw new Exception('Bad request exception', 400);
+    }
+    $sql = 'SELECT * 
+    FROM lowongan
+    WHERE lowongan_id = :lowongan_id
+    AND company_id = :company_id';
+
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':company_id', $company_id);
+    $this->db->bind($statement, ':lowongan_id', $lowongan_id);
+    $this->db->execute($statement);
+    $res = $this->db->fetch($statement);
+    return !empty($res);
+  }
+
+  public function getLowonganById(int $lowongan_id) {
+    if (empty($lowongan_id)) {
+      throw new Exception('Bad request exception', 400);
+    }
+
+    $sql = 'SELECT * FROM lowongan WHERE lowongan_id = :lowongan_id';
+    $statement = $this->db->prepare($sql);
+    $this->db->bind($statement, ':lowongan_id', $lowongan_id);
+    $this->db->execute($statement);
+    return $this->db->fetch($statement);
+  }
 }
