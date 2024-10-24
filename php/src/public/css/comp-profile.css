@@ -3,19 +3,20 @@ body {
 }
 
 .profile-container {
-    background-color: #fdfaf5;
+    background-color: white;
     margin-left: 15vw;
     margin-right: 15vw;
-    padding: 4vw;
+    padding: 2vw;
     border-radius: 15px;
-    border : 1px solid #DCE6F1;
+    /* border : 1px solid #DCE6F1; */
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 .space {
     margin: 8vw;
 }
 
-h1 {
-    font-size: 3vw;
+.head {
+    font-size: 2.3vw;
 }
 
 .form-group {
@@ -31,7 +32,7 @@ h1 {
 }
 
 
-button {
+.submit-button {
     background-color: #0a66c2;
     border-radius: 10px;
     color: white;
@@ -40,6 +41,18 @@ button {
     padding-right: 1.5vw;
     font-weight: bold;
     border: 1px solid #DCE6F1;
+}
+
+.submit-button:active {
+    background-color: white;
+}
+
+.submit-button.active {
+    background-color: white;
+}
+
+.submit-button:hover {
+    background-color: #0a66c2c2 ;
 }
 
 .input-area {
@@ -60,8 +73,8 @@ button:active {
         padding: 3vw;
     }
 
-    h1 {
-        font-size: 7.5vw;
+    .head {
+        font-size: 6vw;
         text-align: center;
         margin-bottom: 4vw;
     }
@@ -85,7 +98,7 @@ button:active {
     }
 
     button {
-        font-size: 4vw;
+        font-size: 3.5vw;
         padding: 1vw;
         padding-right: 3vw;
         padding-left: 3vw;
