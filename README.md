@@ -108,10 +108,10 @@ docker compose down -v
 ![Lamaran Page](/php/src/public/images/lamaran-mobile.png)
 ![Lamaran Page](/php/src/public/images/lamaran-lighthouse.png)
 
-11. Detail Lamaran Page (Job Seeker)
-![Detail Lamaran](/php/src/public/images/detail-lamaran-js.png)
-![Detail Lamaran](/php/src/public/images/detail-lowonganjs-mobile.png)
-![Detail Lamaran](/php/src/public/images/detail-lowonganjs-lighthouse.png)
+11. Detail Lowongan Page (Job Seeker)
+![Detail Lowongan](/php/src/public/images/detail-lamaran-js.png)
+![Detail Lowongan](/php/src/public/images/detail-lowonganjs-mobile.png)
+![Detail Lowongan](/php/src/public/images/detail-lowonganjs-lighthouse.png)
 
 12. History Page
 ![History Page](/php/src/public/images/history.png)
@@ -136,14 +136,14 @@ docker compose down -v
 
 <h3>Client Side</h3>
 
-| 13522068                                 | 13522105    | 13522110                |
-| ---------------------------------------- | ----------- | ----------------------- |
-| Navbar                                   |             | Detail lowongan page    |
-| Footer                                   |             | Add lowongan            |
-| Toast error and success message          |             | Edit lowongan           |
-| Login page                               |             | Export to CSV           |
-| Register page                            |             |                         |
-| Home page for job seeker                 |             |                         |
-| Home page for company                    |             |                         |
-| Lamaran page                             |             |                         |
-| Detail lamaran page                      |             |                         |
+| 13522068                                 | 13522105    | 13522110                            |
+| ---------------------------------------- | ----------- | ----------------------------------- |
+| Navbar                                   |             | Detail lowongan page for comopany   |
+| Footer                                   |             | Detail lowongan page for job seeker |
+| Toast error and success message          |             | Edit lowongan                       |
+| Login page                               |             | Export to CSV                       |
+| Register page                            |             | Add lowongan                        |
+| Home page for job seeker                 |             |                                     |
+| Home page for company                    |             |                                     |
+| Lamaran page                             |             |                                     |
+| Detail lamaran page                      |             |                                     |
