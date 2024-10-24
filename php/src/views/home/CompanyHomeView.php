@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Homepage for job seeker">
+  <meta name="description" content="Homepage for company">
   <meta name="keywords" content="job, apply, vacancy, LinkinPurry">
   <link rel="stylesheet" href="/public/css/preflight.css">
   <link rel="stylesheet" href="/public/css/globals.css">
   <link rel="stylesheet" href="/public/css/navbar.css">
-  <link rel="stylesheet" href="/public/css/home.css">
+  <link rel="stylesheet" href="/public/css/companyhome.css">
   <link rel="stylesheet" href="/public/css/toast.css">
   <link rel="stylesheet" href="/public/css/multiselect.css">
   <link rel="stylesheet" href="/public/css/footer.css">
@@ -24,7 +24,6 @@
       <div class="home-container">
         <div class="home-layout">
           <div class="sidebar">
-            <?php if (isset($_SESSION['user_id'])): ?>
             <div class="pseudo-card">
               <div>
                 <img src="/public/images/bg-linkedin.svg" alt="" class="pseudo-img">
@@ -36,8 +35,12 @@
                 <h1 class="pseudo-name"><?php echo $_SESSION['nama'] ?></h1>
                 <h2 class="pseudo-email"><?php echo $_SESSION['email'] ?></h2>
               </div>
+              <div class="add-btn-xl-container">
+                <form class="form-btn-xl" action="/lowongan/add" method="get">
+                  <button class="add-btn-xl">Add Vacancy</button>
+                </form>
+              </div>
             </div>
-            <?php endif; ?>
             <form id="search-form">
               <div class="search-container">
                 <label class="icon-wrapper" for="query">
@@ -106,11 +109,28 @@
                 <div>
                   <p class="times">Posted <?php echo $job['days_before'] ?> days ago</p>
                 </div>
+                <div class="delete-btn-container">
+                  <button class="delete-btn" onclick="handleDelete(<?php echo $job['lowongan_id'] ?>)" aria-label="Delete button">
+                    Delete
+                  </button>
+                  <form class="action-form" action="/lowongan/<?php echo $job['lowongan_id'] ?>/edit" action="GET">
+                    <button class="edit-btn" aria-label="Edit button">
+                      Edit
+                    </button>
+                  </form>
+                </div>
               </div>
             <?php endforeach; ?>
+            <?php if (empty($data['jobs']) || !count($data['jobs'])): ?>
+              <div class="not-posted">
+                <p class="not-posted-job">
+                  You have not posted any jobs
+                </p>
+              </div>
+            <?php endif; ?>
             </div>
             <nav class="pagination-nav" id="pagination-nav">
-            <?php if ($data['maxPage'] > 0): ?>
+              <?php if ($data['maxPage'] > 0): ?>
               <ul class="pagination">
                 <li>
                   <a href="/?jobtype=<?php echo implode(',', array: $data['jobType']) ?>&loctype=<?php echo implode(',', array: $data['locType']) ?>&sort=<?php echo $data['order'] ?>&query=<?php echo $data['query'] ?>&page=<?php echo max(1, $data['page'] - 1) ?>" class="page-link prev" aria-label="Previous page button">
@@ -136,13 +156,13 @@
                   </a>
                 </li>
               </ul>
-            <?php endif; ?>
+              <?php endif; ?>
             </nav>
           </main>
           <div class="pseudo">
             <div class="card">
               <div class="top-job-title-container">
-                <h1 class="top-job-title">Popular jobs for you</h1>
+                <h1 class="top-job-title">Your most popular jobs</h1>
               </div>
               <div class="top-job-card-container">
               <?php foreach($data['top_lowongan'] as $top_job):?>
@@ -157,6 +177,13 @@
                   </h2>
                 </div>
               <?php endforeach; ?>
+              <?php if (empty($data['top_lowongan']) || !count($data['top_lowongan'])): ?>
+                <div class="not-exist">
+                  <p class="not-exist-job">
+                    You have not posted any jobs
+                  </p>
+                </div>
+              <?php endif; ?>
               </div>
             </div>
           </div>
@@ -164,6 +191,13 @@
       </div>
     </section>
   </main>
+  <div class="add-btn-container">
+    <div class="add-btn">
+      <a href="/lowongan/add">
+        <span class="plus-icon">&#43;</span>
+      </a>
+    </div>
+  </div>
   <?php include dirname(__DIR__) . '/components/Footer.php' ?>
   <ul class="notifications"></ul>
 </body>
@@ -177,6 +211,6 @@
   </script>
 <?php endif; ?>
 <script src="/public/js/multiselect.js"></script>
-<script src="/public/js/home.js"></script>
+<script src="/public/js/companyhome.js"></script>
 
 </html>

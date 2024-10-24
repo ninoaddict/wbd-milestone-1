@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  /* Primary Colors */
+  --primary-blue: #0a66c2; /* Main brand color */
+  --accent-green: #83941f; /* Accent/Highlight color */
+  --accent-yellow: #e7a33e; /* Secondary accent color */
+  --accent-red: #f5987e; /* Alert or warning color */
+
+  /* Secondary Colors */
+  --secondary-blue: #56687a; /* Subtle text or background */
+  --dark-blue: #004182; /* Darker variant for headers or emphasis */
+  --dark-green: #44712e; /* Darker green for buttons or links */
+  --dark-orange: #915907; /* Highlight or call-to-action color */
+  --dark-red: #b24020; /* Used for errors or critical information */
+
+  /* Neutral and Background Colors */
+  --dark-gray: #38434f; /* Text or background */
+  --light-gray: #dce6f1; /* Backgrounds or borders */
+  --light-green: #d7ebce; /* Background highlights */
+  --light-yellow: #fce2ba; /* Subtle highlights */
+  --light-red: #fadfd8; /* Backgrounds for error messages */
+  --off-white: #e9e5df; /* Background or card background */
+  --other-white: #fdfaf5; /* Pure white, for text or elements or background */
+  --pure-white: #f4f2ee;
+
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
+  --xl: 1280px;
+  --2xl: 1536px;
+}
+
+body {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;;
+}
+
+.text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+}
+
+.text-sm	{
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+
+.text-base {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+}
+
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.text-2xl	{
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+}
+
+.text-3xl {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+}
+.text-4xl	{
+  font-size: 2.25rem; /* 36px */
+  line-height: 2.5rem; /* 40px */
+}
+
+.text-5xl {
+	font-size: 3rem; /* 48px */
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem; /* 60px */
+  line-height: 1;
+}
+
+.text-7xl {
+  font-size: 4.5rem; /* 72px */
+  line-height: 1;
+}
+
+.text-8xl	{
+  font-size: 6rem; /* 96px */
+  line-height: 1;
+}
+
+.text-9xl	{
+  font-size: 8rem; /* 128px */
+  line-height: 1;
+}

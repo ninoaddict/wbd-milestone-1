@@ -1,0 +1,85 @@
+body {
+  background-color: #f4f2ee;
+}
+
+.submit-button {
+  background-color: #0a66c2;
+  border-radius: 10px;
+  color: white;
+  padding: 6px 8px;
+  font-weight: 500;
+  border: 1px solid #DCE6F1;
+  margin-top: 6px;
+}
+
+.submit-button:active {
+  background-color: white;
+}
+
+.submit-button.active {
+  background-color: white;
+}
+
+.submit-button:hover {
+  background-color: #0a66c2c2 ;
+}
+
+.input-area {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #DCE6F1;
+}
+
+.main {
+  min-height: calc(100vh - 129px - 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 640px;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 15px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.head {
+  font-size: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  gap: 4px;
+}
+
+.label {
+  font-size: 16px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .main {
+    min-height: calc(100vh - 32px - 225px);
+  }
+
+  .profile-container {
+    margin-top: 36px;
+  }
+
+  .head {
+    font-size: 28px;
+  }
+  .input-area {
+    padding: 6px 8px;
+  }
+}
