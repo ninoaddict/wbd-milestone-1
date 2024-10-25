@@ -123,8 +123,8 @@ docker compose down -v
 
 | 13522068                                 | 13522105    | 13522110                |
 | ---------------------------------------- | ----------- | ----------------------- |
-| Set up project architecture              |             | CRUD lowongan           |
-| Set up database                          |             | Get Data for CSV Export |
+| Set up project architecture              |  CRUD User  | CRUD lowongan           |
+| Set up database                          | CRUD Lamaran| Get Data for CSV Export |
 | Set up base class and functions          |             |                         |
 | Set up docker                            |             |                         |
 | CRUD user                                |             |                         |
@@ -136,14 +136,14 @@ docker compose down -v
 
 <h3>Client Side</h3>
 
-| 13522068                                 | 13522105    | 13522110                            |
-| ---------------------------------------- | ----------- | ----------------------------------- |
-| Navbar                                   |             | Detail lowongan page for comopany   |
-| Footer                                   |             | Detail lowongan page for job seeker |
-| Toast error and success message          |             | Edit lowongan                       |
-| Login page                               |             | Export to CSV                       |
-| Register page                            |             | Add lowongan                        |
-| Home page for job seeker                 |             |                                     |
-| Home page for company                    |             |                                     |
-| Lamaran page                             |             |                                     |
-| Detail lamaran page                      |             |                                     |
+| 13522068                                 | 13522105                     | 13522110                            |
+| ---------------------------------------- | ---------------------------- | ----------------------------------- |
+| Navbar                                   | History page for jobseeker   | Detail lowongan page for company    |
+| Footer                                   | Edit profile page for company| Detail lowongan page for job seeker |
+| Toast error and success message          |                              | Edit lowongan                       |
+| Login page                               |                              | Export to CSV                       |
+| Register page                            |                              | Add lowongan                        |
+| Home page for job seeker                 |                              |                                     |
+| Home page for company                    |                              |                                     |
+| Lamaran page                             |                              |                                     |
+| Detail lamaran page                      |                              |                                     |
