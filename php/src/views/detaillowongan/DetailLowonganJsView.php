@@ -58,13 +58,9 @@
             ?>
           </div>
           <div class="flexing-apply">
-            <?php 
-              if ($data["status"] == "Available") {
-                echo <<<HTML
-                      <a href='/lowongan/{$data["0"]["lowongan_id"]}/apply' id="apply-job-style">Apply Job</a>
-                    HTML;
-              }
-            ?>
+            <?php if ($data["status"] == "Available" && isset($_SESSION['role']) && $_SESSION['role'] == 'jobseeker'): ?>
+              <a href='/lowongan/{$data["0"]["lowongan_id"]}/apply' id="apply-job-style">Apply Job</a>
+            <?php endif; ?>
           </div>
         </section>
         <section class="company-profile">

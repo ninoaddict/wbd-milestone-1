@@ -50,7 +50,9 @@ class DetailLowonganController extends Controller {
     }
 
     if (!$isMatching) {
-      Application::$app->response->redirect("/");
+      // Application::$app->response->redirect("/");
+      $this->detailLowonganJSeekerPage($request);
+      return;
     }
 
     $data = $this->getDetailsbyId($params);
@@ -68,17 +70,19 @@ class DetailLowonganController extends Controller {
   }
 
   public function detailLowonganJSeekerPage(Request $request) {
-    if (!$this->sessionManager->isLoggedIn()) {
-      Application::$app->response->redirect("/login");
-      return;
-    }
-    $user_id = $this->sessionManager->getUserId();
+    $user_id = $_SESSION['user_id'] ?? null;
+    $role = $_SESSION['role'] ?? null;
     $params = $request->getParams()[0];
-    $data = $this->getLamaranInfosById($params, $user_id);
+    $data = null;
+
+    if (!empty($user_id) && $role == 'jobseeker') {
+      $data = $this->getLamaranInfosById($params, $user_id);
+    }
     
-    if ($data) {
+    if (!empty($data)) {
       $data['status'] = ucfirst($data['status']);
     }
+
     $new_data = $this->getDetailsbyId($params);
     $new_data['jenis_pekerjaan'] = str_replace(' ','-',ucwords(str_replace('-',' ', $new_data['jenis_pekerjaan'])));
     $new_data['jenis_lokasi'] = str_replace(' ','-',ucwords(str_replace('-',' ', $new_data['jenis_lokasi'])));
