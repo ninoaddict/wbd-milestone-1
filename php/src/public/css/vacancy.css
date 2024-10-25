@@ -31,7 +31,8 @@ body {
 .close-button {
   margin-bottom: 10px;
   margin-right: 10px;
-  background-color: #0a66c2;;
+  background-color: #0a66c2;
+  ;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -214,7 +215,38 @@ body {
 }
 
 .job-description {
-  text-align: justify;
+  word-wrap: break-word;
+  text-wrap: wrap;
+}
+
+.job-description blockquote {
+  margin: revert;
+}
+
+.job-description b, .job-description strong {
+  font-weight: revert;
+}
+
+.job-description code,
+.job-description kbd,
+.job-description samp,
+.job-description pre {
+  font-family: revert;
+  font-feature-settings: revert;
+  font-variation-settings: revert;
+  font-size: revert;
+}
+
+.job-description ol,
+.job-description ul,
+.job-description menu {
+  list-style: revert;
+  padding: revert;
+}
+
+.job-description a {
+  color: revert;
+  text-decoration: revert;
 }
 
 main {

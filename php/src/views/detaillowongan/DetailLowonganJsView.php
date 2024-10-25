@@ -23,9 +23,9 @@
         <section class="container-job-jsversion">
           <h1 class="job-title"><?= $data['0']['posisi']?></h1>
           <h2 class="descript-title">Description:</h2>
-          <h3 class="job-description">
+          <div class="job-description">
             <?= htmlspecialchars_decode($data['0']['deskripsi'])?>
-          </h3>
+          </div>
           <h2 class="job-requirement">Company:</h2>
           <h3><?= $data['0']['company_name']?></h3>
           <h2 class="job-requirement">Location Type:</h2>
@@ -34,7 +34,7 @@
           <h3><?= $data['0']['jenis_pekerjaan']?></h3>
           <h2 class="job-requirement">Status:</h2>
           <h3><?= $data['status']?></h3>
-          <h4><?php if ($data['status'] == 'Rejected' || $data['status'] == 'Accepted') echo html_entity_decode($data['status_reason'])?></h4>
+          <div class="job-description"><?php if ($data['status'] == 'Rejected' || $data['status'] == 'Accepted') echo html_entity_decode($data['status_reason'])?></div>
           <?php 
             if ($data['file_path']) {
             echo '<h2 class="job-requirement">Attachments:</h2>';
@@ -59,7 +59,7 @@
           </div>
           <div class="flexing-apply">
             <?php if ($data["status"] == "Available" && isset($_SESSION['role']) && $_SESSION['role'] == 'jobseeker'): ?>
-              <a href='/lowongan/{$data["0"]["lowongan_id"]}/apply' id="apply-job-style">Apply Job</a>
+              <a href='/lowongan/<?php echo $data["0"]["lowongan_id"] ?>/apply' id="apply-job-style">Apply Job</a>
             <?php endif; ?>
           </div>
         </section>

@@ -34,9 +34,9 @@
         <section class="container-job">
           <h1 id="position"><?= $data['posisi']?></h1>
           <h2 class="descript-title">Description:</h2>
-          <h3 class="job-description">
+          <div class="job-description">
             <?= htmlspecialchars_decode($data['deskripsi'])?>
-          </h3>
+          </div>
           <h2 class="job-requirement">Company:</h2>
           <h3><?= $data['company_name']?></h3>
           <h2 class="job-requirement">Location:</h2>
