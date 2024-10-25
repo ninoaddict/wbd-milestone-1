@@ -6,19 +6,21 @@
   <img src="php/src/public/images/logo.webp" width="200" alt="LinkinPurry Logo" />
 </p>
 
-
-## ✨ Deskripsi
+<h2 id="description">✨ Deskripsi</h2>
 LinkinPurry adalah sebuah platform yang dirancang agar para pencari kerja dapat dengan mudah menemukan lowongan kerja yang sesuai dengan spesialisasi mereka, serta mempermudah akses terhadap informasi lowongan pekerjaan. Dengan fitur pencarian yang intuitif, kemudahan navigasi, serta keamanan data pengguna yang terjamin, LinkinPurry bertujuan untuk menjadi solusi utama bagi para jobseeker dalam mencari pengalaman kerja yang relevan.
 
 Platform ini tidak hanya memberikan kemudahan bagi para jobseeker dalam mencari lowongan yang sesuai dengan spesialisasi mereka, tetapi juga menyediakan wadah bagi perusahaan atau pemberi kerja untuk mengunggah lowongan pekerjaan baru. LinkinPurry memungkinkan perusahaan untuk melihat lamaran yang masuk dan meresponsnya secara langsung, menciptakan jalur komunikasi yang lebih efisien antara agen pencari kerja dan pemberi kerja.
 
 <h2 id="table-of-contents">🔍 Table of Contents</h2>
+
 - <a href="#description">Description</a><br/>
 - <a href="#table-of-contents">Table of Contents</a><br/>
 - <a href="#tech-stack">Tech Stack</a><br/>
 - <a href="#requirements">Requirements</a><br/>
 - <a href="#how-to-run">How To Run</a><br/>
 - <a href="#screenshots">Tampilan Layar</a><br/>
+- <a href="#bonus">Bonus</a><br/>
+- <a href="#author">Contributors</a><br/>
 - <a href="#contributions">Pembagian Tugas</a><br/>
 
 <h2 id="tech-stack">💻 Tech Stack</h2>
@@ -118,7 +120,72 @@ docker compose down -v
 ![History Page](/php/src/public/images/history-mobile.png)
 ![History Page](/php/src/public/images/history-lighthouse.png)
 
-<h2 id='contributions'>Pembagian Tugas</h2>
+<h2 id='bonus'>🦴 Bonus</h2>
+
+- All Responsive Web Design
+  
+  Website ini sudah memberikan design yang responsif sesuai dengan layar perangkat.
+- UI/UX Seperti Linkedin
+  
+  Website ini menggunakan Linkedin sebagai inspirasi untuk tampilan. 
+- Data Export
+  
+  Website ini menyediakan export data pelamar dari suatu lowongan untuk company dalam bentuk csv.
+- Simple Job Recommendation
+  
+  Website ini memberikan simple job recommendation berupa lowongan aktif yang paling banyak pendaftarnya.
+- Google Lighthouse
+  
+  Semua page pada website ini sudah memiliki nilai lebih dari 90 untuk setiap metriks penilaian, seperti performance, accessibility, best practice, dan SEO. 
+
+<h2 id="author">🤵 Contributors</h2>
+<table>
+  <tr>
+    <th>Nama</th>
+    <th>NIM</th>
+    <th>Email</th>
+    <th>Github</th>
+  </tr>
+  <tr>
+    <th>Fabian Radenta Bangun</th>
+    <th>13522105</th>
+    <th>
+      <a href="mailto:13522105@std.stei.itb.ac.id">13522105@std.stei.itb.ac.id</a>
+    </th>
+    <th>
+      <a href="https://github.com/fabianradenta">
+        fabianradenta
+      </a>
+    </th>
+  </tr>
+  <tr>
+    <th>Marvin Scifo Y. Hutahaean</th>
+    <th>13522110</th>
+    <th>
+      <a href="mailto:13522110@std.stei.itb.ac.id">13522110@std.stei.itb.ac.id</a>
+    </th>
+    <th>
+      <a href="https://github.com/scifo04">
+        scifo04
+      </a>
+    </th>
+  </tr>
+  <tr>
+    <th>Adril Putra Merin</th>
+    <th>13522068</th>
+        <th>
+      <a href="mailto:13522068@std.stei.itb.ac.id">13522068@std.stei.itb.ac.id</a>
+    </th>
+    <th>
+      <a href="https://github.com/ninoaddict">
+        ninoaddict
+      </a>
+    </th>
+  </tr>
+</table>
+
+
+<h2 id='contributions'>🐈‍⬛ Pembagian Tugas</h2>
 <h3>Server Side</h3>
 
 | 13522068                                 | 13522105    | 13522110                |
